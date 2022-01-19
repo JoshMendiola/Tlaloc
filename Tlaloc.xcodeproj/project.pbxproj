@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B20D7B02797E3BA00C69825 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20D7AF2797E3BA00C69825 /* AppDelegate.swift */; };
 		9B20D7B22797E3BA00C69825 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20D7B12797E3BA00C69825 /* SceneDelegate.swift */; };
-		9B20D7B42797E3BA00C69825 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20D7B32797E3BA00C69825 /* ViewController.swift */; };
+		9B20D7B42797E3BA00C69825 /* plantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20D7B32797E3BA00C69825 /* plantListView.swift */; };
 		9B20D7B72797E3BA00C69825 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7B52797E3BA00C69825 /* Main.storyboard */; };
 		9B20D7BA2797E3BA00C69825 /* Tlaloc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B20D7B82797E3BA00C69825 /* Tlaloc.xcdatamodeld */; };
 		9B20D7BC2797E3BB00C69825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7BB2797E3BB00C69825 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		9B20D7AC2797E3BA00C69825 /* Tlaloc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tlaloc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B20D7AF2797E3BA00C69825 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B20D7B12797E3BA00C69825 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9B20D7B32797E3BA00C69825 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9B20D7B32797E3BA00C69825 /* plantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantListView.swift; sourceTree = "<group>"; };
 		9B20D7B62797E3BA00C69825 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B20D7B92797E3BA00C69825 /* Tlaloc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tlaloc.xcdatamodel; sourceTree = "<group>"; };
 		9B20D7BB2797E3BB00C69825 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				9B20D7AF2797E3BA00C69825 /* AppDelegate.swift */,
 				9B20D7B12797E3BA00C69825 /* SceneDelegate.swift */,
-				9B20D7B32797E3BA00C69825 /* ViewController.swift */,
+				9B20D7B32797E3BA00C69825 /* plantListView.swift */,
 				9B20D7B52797E3BA00C69825 /* Main.storyboard */,
 				9B20D7BB2797E3BB00C69825 /* Assets.xcassets */,
 				9B20D7BD2797E3BB00C69825 /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B20D7B42797E3BA00C69825 /* ViewController.swift in Sources */,
+				9B20D7B42797E3BA00C69825 /* plantListView.swift in Sources */,
 				9B20D7B02797E3BA00C69825 /* AppDelegate.swift in Sources */,
 				9B20D7BA2797E3BA00C69825 /* Tlaloc.xcdatamodeld in Sources */,
 				9B20D7B22797E3BA00C69825 /* SceneDelegate.swift in Sources */,

@@ -1,24 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Plant List View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="plantListView" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZO-Q6-Vji">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="SZ9-V0-3yK">
+                                        <rect key="frame" x="125" y="50.5" width="164" height="43.5"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
+                                        <color key="textColor" red="0.96862745098039216" green="0.64313725490196072" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Schedules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE2-8d-yAi">
+                                        <rect key="frame" x="71" y="113" width="272" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="TcC-pm-tBf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.28627450980392155" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SZ9-V0-3yK" secondAttribute="trailing" id="3Tl-K1-i2a"/>
+                                    <constraint firstItem="SZ9-V0-3yK" firstAttribute="centerX" secondItem="9ZO-Q6-Vji" secondAttribute="centerX" id="6oA-HV-Jbd"/>
+                                    <constraint firstItem="IE2-8d-yAi" firstAttribute="top" secondItem="SZ9-V0-3yK" secondAttribute="bottom" constant="19" id="B9L-9L-3d3"/>
+                                    <constraint firstItem="SZ9-V0-3yK" firstAttribute="leading" secondItem="9ZO-Q6-Vji" secondAttribute="leading" constant="125" id="IBd-0P-ekE"/>
+                                    <constraint firstItem="IE2-8d-yAi" firstAttribute="centerX" secondItem="9ZO-Q6-Vji" secondAttribute="centerX" id="Uhh-Pu-don"/>
+                                    <constraint firstAttribute="bottom" secondItem="IE2-8d-yAi" secondAttribute="bottom" id="XbG-Q5-LUN"/>
+                                    <constraint firstAttribute="trailing" secondItem="IE2-8d-yAi" secondAttribute="trailing" constant="71" id="ae3-ov-FAI"/>
+                                    <constraint firstAttribute="height" constant="159" id="ptm-Ac-tDc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnH-g2-v6a">
+                                <rect key="frame" x="0.0" y="159" width="414" height="737"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no plants registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-ti-DOP">
+                                        <rect key="frame" x="25" y="140" width="364" height="37.5"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="31"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-IT-ydu">
+                                        <rect key="frame" x="0.0" y="64" width="414" height="673"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="plantCell" rowHeight="112" id="98h-zO-K68">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="112"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="98h-zO-K68" id="i6c-T3-FSf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3OS-uW-d76">
+                                                            <rect key="frame" x="8" y="6" width="77" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-Go-6J1">
+                                                            <rect key="frame" x="93" y="25" width="209" height="62"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="EJ7-8L-Lua">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="101.5" height="24"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Gc-2R7">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="46.5" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DLa-g2-Plv">
+                                                                            <rect key="frame" x="68.5" y="0.0" width="33" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k9f-91-nfR">
+                                                                    <rect key="frame" x="0.0" y="38" width="209" height="24"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcy-1b-F2p">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="61" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desert Gem Cacti" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-pm-69l">
+                                                                            <rect key="frame" x="69" y="0.0" width="140" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38D-u6-e73">
+                                        <rect key="frame" x="10" y="20" width="394" height="32"/>
+                                        <segments>
+                                            <segment title="Water"/>
+                                            <segment title="Fertilizer"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.792156862745098" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="DGO-IT-ydu" firstAttribute="leading" secondItem="bnH-g2-v6a" secondAttribute="leading" id="4hB-j8-zf3"/>
+                                    <constraint firstItem="38D-u6-e73" firstAttribute="centerX" secondItem="bnH-g2-v6a" secondAttribute="centerX" id="KJG-Mz-eLT"/>
+                                    <constraint firstAttribute="trailing" secondItem="38D-u6-e73" secondAttribute="trailing" constant="10" id="NDV-X4-ntJ"/>
+                                    <constraint firstItem="fRI-ti-DOP" firstAttribute="leading" secondItem="bnH-g2-v6a" secondAttribute="leading" constant="25" id="OrL-Ko-tBP"/>
+                                    <constraint firstAttribute="trailing" secondItem="DGO-IT-ydu" secondAttribute="trailing" id="Y98-hK-3Ys"/>
+                                    <constraint firstItem="38D-u6-e73" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bnH-g2-v6a" secondAttribute="leading" id="au9-T2-0yU"/>
+                                    <constraint firstItem="38D-u6-e73" firstAttribute="top" secondItem="bnH-g2-v6a" secondAttribute="top" constant="20" id="bJF-oU-W0p"/>
+                                    <constraint firstItem="fRI-ti-DOP" firstAttribute="top" secondItem="bnH-g2-v6a" secondAttribute="top" constant="140" id="cem-iv-3tJ"/>
+                                    <constraint firstItem="fRI-ti-DOP" firstAttribute="centerX" secondItem="bnH-g2-v6a" secondAttribute="centerX" id="ixH-Pg-05A"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fRI-ti-DOP" secondAttribute="trailing" id="pzx-6x-f1l"/>
+                                    <constraint firstItem="DGO-IT-ydu" firstAttribute="top" secondItem="38D-u6-e73" secondAttribute="bottom" constant="13" id="xJM-Uu-oMa"/>
+                                    <constraint firstAttribute="bottom" secondItem="DGO-IT-ydu" secondAttribute="bottom" id="yYZ-km-rHR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9ZO-Q6-Vji" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="49s-Nf-lSP"/>
+                            <constraint firstItem="9ZO-Q6-Vji" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4fS-Tr-fUw"/>
+                            <constraint firstAttribute="bottom" secondItem="bnH-g2-v6a" secondAttribute="bottom" id="8LQ-j3-J43"/>
+                            <constraint firstItem="bnH-g2-v6a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8OB-BS-H2o"/>
+                            <constraint firstItem="9ZO-Q6-Vji" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8a4-Kd-RAN"/>
+                            <constraint firstItem="bnH-g2-v6a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TVH-Lg-GmB"/>
+                            <constraint firstAttribute="bottom" secondItem="bnH-g2-v6a" secondAttribute="bottom" id="ZRL-r1-xpv"/>
+                            <constraint firstItem="bnH-g2-v6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eAy-JH-9bh"/>
+                            <constraint firstItem="bnH-g2-v6a" firstAttribute="top" secondItem="9ZO-Q6-Vji" secondAttribute="bottom" id="v8Y-fa-q7T"/>
+                            <constraint firstItem="bnH-g2-v6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vII-4W-2Bc"/>
+                            <constraint firstItem="9ZO-Q6-Vji" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yWb-KM-AqK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="17.39130434782609" y="64.955357142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="seal.fill" catalog="system" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

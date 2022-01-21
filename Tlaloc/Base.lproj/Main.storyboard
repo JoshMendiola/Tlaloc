@@ -19,12 +19,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZO-Q6-Vji">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="SZ9-V0-3yK">
-                                        <rect key="frame" x="125" y="50.5" width="164" height="43.5"/>
-                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
-                                        <color key="textColor" red="0.96862745098039216" green="0.64313725490196072" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Schedules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE2-8d-yAi">
                                         <rect key="frame" x="71" y="113" width="272" height="46"/>
                                         <constraints>
@@ -34,15 +28,22 @@
                                         <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="SZ9-V0-3yK">
+                                        <rect key="frame" x="125" y="65" width="164" height="43.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="OPb-2G-Oty"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
+                                        <color key="textColor" red="0.96862745098039216" green="0.64313725490196072" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.28627450980392155" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SZ9-V0-3yK" secondAttribute="trailing" id="3Tl-K1-i2a"/>
-                                    <constraint firstItem="SZ9-V0-3yK" firstAttribute="centerX" secondItem="9ZO-Q6-Vji" secondAttribute="centerX" id="6oA-HV-Jbd"/>
-                                    <constraint firstItem="IE2-8d-yAi" firstAttribute="top" secondItem="SZ9-V0-3yK" secondAttribute="bottom" constant="19" id="B9L-9L-3d3"/>
-                                    <constraint firstItem="SZ9-V0-3yK" firstAttribute="leading" secondItem="9ZO-Q6-Vji" secondAttribute="leading" constant="125" id="IBd-0P-ekE"/>
+                                    <constraint firstItem="IE2-8d-yAi" firstAttribute="top" secondItem="SZ9-V0-3yK" secondAttribute="bottom" constant="4.5" id="OPc-u2-4hm"/>
                                     <constraint firstItem="IE2-8d-yAi" firstAttribute="centerX" secondItem="9ZO-Q6-Vji" secondAttribute="centerX" id="Uhh-Pu-don"/>
                                     <constraint firstAttribute="bottom" secondItem="IE2-8d-yAi" secondAttribute="bottom" id="XbG-Q5-LUN"/>
+                                    <constraint firstItem="SZ9-V0-3yK" firstAttribute="centerX" secondItem="IE2-8d-yAi" secondAttribute="centerX" id="ZJX-cj-LP1"/>
                                     <constraint firstAttribute="trailing" secondItem="IE2-8d-yAi" secondAttribute="trailing" constant="71" id="ae3-ov-FAI"/>
                                     <constraint firstAttribute="height" constant="159" id="ptm-Ac-tDc"/>
                                 </constraints>
@@ -60,60 +61,98 @@
                                         <rect key="frame" x="0.0" y="64" width="414" height="673"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="plantCell" rowHeight="112" id="98h-zO-K68">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="plantCell" rowHeight="112" id="98h-zO-K68" customClass="plantCell" customModule="Tlaloc" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="112"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="98h-zO-K68" id="i6c-T3-FSf">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3OS-uW-d76">
-                                                            <rect key="frame" x="8" y="6" width="77" height="100"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-Go-6J1">
-                                                            <rect key="frame" x="93" y="25" width="209" height="62"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-Go-6J1">
+                                                            <rect key="frame" x="93" y="25" width="209" height="62.5"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="EJ7-8L-Lua">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="101.5" height="24"/>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="EJ7-8L-Lua">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="97.5" height="24.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-Gc-2R7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="46.5" height="24"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="46.5" height="24.5"/>
                                                                             <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="DLa-g2-Plv">
-                                                                            <rect key="frame" x="68.5" y="0.0" width="33" height="24"/>
+                                                                            <rect key="frame" x="64.5" y="0.0" width="33" height="24.5"/>
                                                                             <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k9f-91-nfR">
-                                                                    <rect key="frame" x="0.0" y="38" width="209" height="24"/>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="k9f-91-nfR">
+                                                                    <rect key="frame" x="0.0" y="38.5" width="171" height="24"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcy-1b-F2p">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="61" height="24"/>
-                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Species:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcy-1b-F2p">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="55" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="18"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desert Gem Cacti" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-pm-69l">
-                                                                            <rect key="frame" x="69" y="0.0" width="140" height="24"/>
-                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desert Gem Cacti" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-pm-69l">
+                                                                            <rect key="frame" x="66" y="0.0" width="105" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="15"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="k9f-91-nfR" firstAttribute="top" secondItem="1gH-Go-6J1" secondAttribute="top" constant="38.5" id="4bw-N2-2uL"/>
+                                                            </constraints>
                                                         </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6ZT-ld-eWg">
+                                                            <rect key="frame" x="329" y="19" width="71" height="73"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="77.5" id="2o0-Yi-10o"/>
+                                                                <constraint firstAttribute="width" constant="71" id="Oe9-R6-5VH"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fj-oU-jaS">
+                                                            <rect key="frame" x="329" y="10.5" width="28" height="42"/>
+                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="35"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3OS-uW-d76">
+                                                            <rect key="frame" x="20" y="10.5" width="65" height="85"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="83.5" id="Nwg-4l-y05"/>
+                                                                <constraint firstAttribute="width" constant="65" id="d2a-6w-qXY"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="1gH-Go-6J1" firstAttribute="leading" secondItem="3OS-uW-d76" secondAttribute="trailing" constant="8" symbolic="YES" id="2ft-hb-Li5"/>
+                                                        <constraint firstItem="3OS-uW-d76" firstAttribute="top" secondItem="i6c-T3-FSf" secondAttribute="topMargin" constant="0.33333333333325754" id="5d9-bK-A4c"/>
+                                                        <constraint firstItem="1gH-Go-6J1" firstAttribute="top" secondItem="i6c-T3-FSf" secondAttribute="topMargin" constant="14" id="AbG-wJ-RMD"/>
+                                                        <constraint firstItem="6ZT-ld-eWg" firstAttribute="leading" secondItem="1gH-Go-6J1" secondAttribute="trailing" constant="27" id="HLl-y8-MbB"/>
+                                                        <constraint firstItem="1gH-Go-6J1" firstAttribute="centerY" secondItem="6ZT-ld-eWg" secondAttribute="centerY" id="Mbj-wb-OYe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0Fj-oU-jaS" secondAttribute="trailing" constant="57" id="VAd-jf-bMI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6ZT-ld-eWg" secondAttribute="trailing" constant="14" id="Xvc-T5-dB1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6ZT-ld-eWg" secondAttribute="trailing" constant="14" id="ZFW-Pv-SAa"/>
+                                                        <constraint firstAttribute="bottom" secondItem="6ZT-ld-eWg" secondAttribute="bottom" constant="17" id="dxO-Tq-zdV"/>
+                                                        <constraint firstItem="0Fj-oU-jaS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1gH-Go-6J1" secondAttribute="trailing" constant="8" symbolic="YES" id="kPa-X6-9iu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="6ZT-ld-eWg" secondAttribute="bottom" constant="17" id="q41-39-wGc"/>
+                                                        <constraint firstItem="3OS-uW-d76" firstAttribute="leading" secondItem="i6c-T3-FSf" secondAttribute="leadingMargin" id="tFX-Wg-7DL"/>
+                                                        <constraint firstItem="0Fj-oU-jaS" firstAttribute="top" secondItem="i6c-T3-FSf" secondAttribute="top" constant="10.5" id="vBU-j0-KdX"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="plantName" destination="DLa-g2-Plv" id="zRY-CD-oKA"/>
+                                                    <outlet property="plantSpecies" destination="ovg-pm-69l" id="enJ-4m-MEq"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -158,13 +197,17 @@
                             <constraint firstItem="9ZO-Q6-Vji" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yWb-KM-AqK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="DGO-IT-ydu" id="Qdt-R3-Q9i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17.39130434782609" y="64.955357142857139"/>
+            <point key="canvasLocation" x="16.800000000000001" y="64.285714285714292"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="seal.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

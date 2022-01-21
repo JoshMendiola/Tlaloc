@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PlantInformation" representedClassName="PlantInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="plantName" optional="YES" attributeType="String"/>
+        <attribute name="plantSpecies" optional="YES" attributeType="String"/>
+        <attribute name="timeUntilWater" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="74"/>
+    </elements>
 </model>

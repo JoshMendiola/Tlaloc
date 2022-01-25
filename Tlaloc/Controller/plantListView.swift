@@ -41,14 +41,20 @@ class plantListView: UIViewController
             }
         }
     }
+    
+    @IBAction func addGoalBtnWasPressed(_ sender: Any)
+    {
+        guard let createGoalViewController = storyboard?.instantiateViewController(withIdentifier: "plantAdditionViewController") else {return}
+        presentDetail(createGoalViewController)
+    }
 }
 
+//this handles the tables and their processing and presentation
 extension plantListView: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return plants.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell") as? plantCell
@@ -57,11 +63,37 @@ extension plantListView: UITableViewDelegate, UITableViewDataSource
         cell.configureCell(plant: plant)
         return cell
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
+    {
+        return .none
+    }
     
 }
+
+//This section manages the general fetching, grabbing and managaement of the values within the table
 extension plantListView
 {
+    
+    func removePlant(atIndexPath indexPath: IndexPath)
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
+        managedContext.delete(plants[indexPath.row])
+        do
+        {
+            try managedContext.save()
+        }
+        catch
+        {
+            debugPrint("Could not remove: \(error.localizedDescription)")
+        }
+    }
     func fetch(completion: (_ complete: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}

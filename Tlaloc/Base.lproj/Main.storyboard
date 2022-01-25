@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZO-Q6-Vji">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Schedules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE2-8d-yAi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Schedules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="IE2-8d-yAi">
                                         <rect key="frame" x="71" y="113" width="272" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="TcC-pm-tBf"/>
@@ -37,11 +38,24 @@
                                         <color key="textColor" red="0.96862745098039216" green="0.64313725490196072" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3N-sv-8YT">
+                                        <rect key="frame" x="346" y="95" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="3c9-Em-bsM"/>
+                                            <constraint firstAttribute="height" constant="50" id="Ln6-Hc-nc1"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.28627450980392155" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="j3N-sv-8YT" secondAttribute="trailing" constant="18" id="Kxm-Ot-wNN"/>
                                     <constraint firstItem="IE2-8d-yAi" firstAttribute="top" secondItem="SZ9-V0-3yK" secondAttribute="bottom" constant="4.5" id="OPc-u2-4hm"/>
                                     <constraint firstItem="IE2-8d-yAi" firstAttribute="centerX" secondItem="9ZO-Q6-Vji" secondAttribute="centerX" id="Uhh-Pu-don"/>
+                                    <constraint firstAttribute="bottom" secondItem="j3N-sv-8YT" secondAttribute="bottom" constant="14" id="UtW-V8-oIm"/>
                                     <constraint firstAttribute="bottom" secondItem="IE2-8d-yAi" secondAttribute="bottom" id="XbG-Q5-LUN"/>
                                     <constraint firstItem="SZ9-V0-3yK" firstAttribute="centerX" secondItem="IE2-8d-yAi" secondAttribute="centerX" id="ZJX-cj-LP1"/>
                                     <constraint firstAttribute="trailing" secondItem="IE2-8d-yAi" secondAttribute="trailing" constant="71" id="ae3-ov-FAI"/>
@@ -205,9 +219,159 @@
             </objects>
             <point key="canvasLocation" x="16.800000000000001" y="64.285714285714292"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="K5D-Rf-P80">
+            <objects>
+                <viewController storyboardIdentifier="plantAdditionViewController" id="A0h-SC-sMI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Pl-Dl-51g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jzp-lD-z0J">
+                                <rect key="frame" x="0.0" y="158" width="414" height="738"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.63921568627450975" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZu-fB-wjd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Schedules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieo-jD-GeJ">
+                                        <rect key="frame" x="130.5" y="113" width="153" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="5JC-pD-cad"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="LTx-p3-gSm">
+                                        <rect key="frame" x="125" y="65" width="164" height="43.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="W7q-lZ-qaH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Ieo-jD-GeJ" firstAttribute="top" secondItem="LTx-p3-gSm" secondAttribute="bottom" constant="4.5" id="66T-cz-5Tr"/>
+                                    <constraint firstItem="LTx-p3-gSm" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="8Kf-nX-sgS"/>
+                                    <constraint firstItem="LTx-p3-gSm" firstAttribute="top" secondItem="mZu-fB-wjd" secondAttribute="top" constant="65" id="otC-nS-CYT"/>
+                                    <constraint firstAttribute="height" constant="159" id="pdt-ho-Y8j"/>
+                                    <constraint firstItem="Ieo-jD-GeJ" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="xov-Lu-sZ5"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Plant Name" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vSr-j6-jIw">
+                                <rect key="frame" x="20" y="261.5" width="374" height="120"/>
+                                <color key="backgroundColor" red="1" green="0.792156862745098" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="vl8-3p-FXt"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your plants name ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jae-2B-nMR">
+                                <rect key="frame" x="46.5" y="204" width="321" height="37.5"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your plants species ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFN-bP-FSy">
+                                <rect key="frame" x="34.5" y="389" width="345" height="37.5"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Plant Species" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PQf-ep-Qbn">
+                                <rect key="frame" x="20" y="446.5" width="374" height="120"/>
+                                <color key="backgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="XK4-uZ-pFO"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="kle-44-PMU">
+                                <rect key="frame" x="20" y="583" width="374" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many days until water?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ts-0P-b9C">
+                                        <rect key="frame" x="0.0" y="0.0" width="173" height="80"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many days until fertilizer?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-dI-w6l">
+                                        <rect key="frame" x="201" y="0.0" width="173" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="cLk-vP-AUn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1OG-N2-bVM"/>
+                                    <constraint firstAttribute="width" constant="374" id="QF9-nT-Psv"/>
+                                </constraints>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-kp-hu7">
+                                <rect key="frame" x="20" y="664" width="130" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="yx2-dV-PMr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F1Y-d1-7Gs">
+                                <rect key="frame" x="264" y="664" width="130" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Pfb-32-4dU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ay3-el-dg8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mZu-fB-wjd" firstAttribute="trailing" secondItem="Ay3-el-dg8" secondAttribute="trailing" id="5KP-6G-Jio"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="trailing" secondItem="vSr-j6-jIw" secondAttribute="trailing" constant="20" id="5wU-Bc-Q4x"/>
+                            <constraint firstItem="PQf-ep-Qbn" firstAttribute="top" secondItem="KFN-bP-FSy" secondAttribute="bottom" constant="20" id="5zh-ih-D0W"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="trailing" secondItem="KFN-bP-FSy" secondAttribute="trailing" constant="34.5" id="6Hx-9k-ULc"/>
+                            <constraint firstItem="vSr-j6-jIw" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="7tB-5x-20f"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="trailing" secondItem="F1Y-d1-7Gs" secondAttribute="trailing" constant="20" id="BwC-nR-YxF"/>
+                            <constraint firstItem="JzT-kp-hu7" firstAttribute="top" secondItem="kle-44-PMU" secondAttribute="bottom" constant="1" id="NBz-qz-XAV"/>
+                            <constraint firstItem="mZu-fB-wjd" firstAttribute="top" secondItem="2Pl-Dl-51g" secondAttribute="top" id="PM6-QS-m74"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="trailing" secondItem="PQf-ep-Qbn" secondAttribute="trailing" constant="20" id="QBD-LM-ug0"/>
+                            <constraint firstItem="mZu-fB-wjd" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" id="ROo-Iu-7Sk"/>
+                            <constraint firstItem="JzT-kp-hu7" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="TMd-lr-xGm"/>
+                            <constraint firstItem="KFN-bP-FSy" firstAttribute="centerX" secondItem="2Pl-Dl-51g" secondAttribute="centerX" id="UWw-dh-GfN"/>
+                            <constraint firstItem="vSr-j6-jIw" firstAttribute="top" secondItem="Jae-2B-nMR" secondAttribute="bottom" constant="20" id="VCd-3E-acH"/>
+                            <constraint firstItem="F1Y-d1-7Gs" firstAttribute="top" secondItem="kle-44-PMU" secondAttribute="bottom" constant="1" id="aew-zM-CtA"/>
+                            <constraint firstItem="kle-44-PMU" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="bPp-u0-Bp9"/>
+                            <constraint firstItem="Jae-2B-nMR" firstAttribute="top" secondItem="mZu-fB-wjd" secondAttribute="bottom" constant="45" id="dOC-M2-Tl8"/>
+                            <constraint firstItem="KFN-bP-FSy" firstAttribute="top" secondItem="vSr-j6-jIw" secondAttribute="bottom" constant="7.5" id="hST-LC-r6k"/>
+                            <constraint firstItem="kle-44-PMU" firstAttribute="top" secondItem="PQf-ep-Qbn" secondAttribute="bottom" constant="16.5" id="hYp-g7-4ee"/>
+                            <constraint firstItem="PQf-ep-Qbn" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="uq9-z8-YAn"/>
+                            <constraint firstItem="Jae-2B-nMR" firstAttribute="centerX" secondItem="2Pl-Dl-51g" secondAttribute="centerX" id="v3u-eG-VQu"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="trailing" secondItem="kle-44-PMU" secondAttribute="trailing" constant="20" id="xxp-XM-TuP"/>
+                            <constraint firstItem="vSr-j6-jIw" firstAttribute="centerX" secondItem="2Pl-Dl-51g" secondAttribute="centerX" id="zDc-wf-soV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x1j-ur-Rsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826.08695652173924" y="62.946428571428569"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="seal.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

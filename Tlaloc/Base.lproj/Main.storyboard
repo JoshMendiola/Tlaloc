@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Plant List View-->
+        <!--Plant List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="plantListView" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="plantListViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,18 +41,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3N-sv-8YT">
                                         <rect key="frame" x="346" y="95" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="3c9-Em-bsM"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="3c9-Em-bsM"/>
                                             <constraint firstAttribute="height" constant="50" id="Ln6-Hc-nc1"/>
+                                            <constraint firstAttribute="width" secondItem="j3N-sv-8YT" secondAttribute="height" multiplier="1:1" id="gqG-1u-2C8"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="">
                                             <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addPlantBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YA5-gV-jrT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.28627450980392155" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="j3N-sv-8YT" secondAttribute="trailing" constant="18" id="Kxm-Ot-wNN"/>
+                                    <constraint firstItem="j3N-sv-8YT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IE2-8d-yAi" secondAttribute="trailing" constant="3" id="Loz-CB-j84"/>
                                     <constraint firstItem="IE2-8d-yAi" firstAttribute="top" secondItem="SZ9-V0-3yK" secondAttribute="bottom" constant="4.5" id="OPc-u2-4hm"/>
                                     <constraint firstItem="IE2-8d-yAi" firstAttribute="centerX" secondItem="9ZO-Q6-Vji" secondAttribute="centerX" id="Uhh-Pu-don"/>
                                     <constraint firstAttribute="bottom" secondItem="j3N-sv-8YT" secondAttribute="bottom" constant="14" id="UtW-V8-oIm"/>
@@ -71,7 +76,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-IT-ydu">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-IT-ydu">
                                         <rect key="frame" x="0.0" y="64" width="414" height="673"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
@@ -219,10 +224,10 @@
             </objects>
             <point key="canvasLocation" x="16.800000000000001" y="64.285714285714292"/>
         </scene>
-        <!--View Controller-->
+        <!--Plant Creation View Controller-->
         <scene sceneID="K5D-Rf-P80">
             <objects>
-                <viewController storyboardIdentifier="plantAdditionViewController" id="A0h-SC-sMI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="plantCreationViewController" id="A0h-SC-sMI" customClass="plantCreationViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Pl-Dl-51g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,13 +258,48 @@
                                         <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBR-KD-Tah">
+                                        <rect key="frame" x="8" y="101" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="DSS-x2-H1L"/>
+                                            <constraint firstAttribute="width" secondItem="gBR-KD-Tah" secondAttribute="height" multiplier="1:1" id="Oib-WD-GST"/>
+                                            <constraint firstAttribute="height" constant="50" id="dld-ua-brG"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addPlantBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gMZ-hM-jkU"/>
+                                            <action selector="backBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="219-FP-EzC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-Cj-c3t">
+                                        <rect key="frame" x="319.5" y="120" width="86.5" height="31"/>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add Plant">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="createPlantBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="fGE-v0-sVb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ieo-jD-GeJ" firstAttribute="top" secondItem="LTx-p3-gSm" secondAttribute="bottom" constant="4.5" id="66T-cz-5Tr"/>
                                     <constraint firstItem="LTx-p3-gSm" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="8Kf-nX-sgS"/>
+                                    <constraint firstItem="RXD-Cj-c3t" firstAttribute="leading" secondItem="Ieo-jD-GeJ" secondAttribute="trailing" constant="36" id="C1F-E5-Oxx"/>
+                                    <constraint firstItem="LTx-p3-gSm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gBR-KD-Tah" secondAttribute="trailing" constant="8" symbolic="YES" id="N0G-O9-AOQ"/>
+                                    <constraint firstItem="gBR-KD-Tah" firstAttribute="width" secondItem="gBR-KD-Tah" secondAttribute="height" multiplier="1:1" id="Ps7-OX-eUI"/>
+                                    <constraint firstItem="gBR-KD-Tah" firstAttribute="leading" secondItem="mZu-fB-wjd" secondAttribute="leading" constant="8" id="WNb-YD-ddG"/>
+                                    <constraint firstAttribute="bottom" secondItem="RXD-Cj-c3t" secondAttribute="bottom" constant="8" id="ghA-bl-Urj"/>
+                                    <constraint firstAttribute="bottom" secondItem="gBR-KD-Tah" secondAttribute="bottom" constant="8" id="nZk-no-eeF"/>
                                     <constraint firstItem="LTx-p3-gSm" firstAttribute="top" secondItem="mZu-fB-wjd" secondAttribute="top" constant="65" id="otC-nS-CYT"/>
                                     <constraint firstAttribute="height" constant="159" id="pdt-ho-Y8j"/>
+                                    <constraint firstAttribute="trailing" secondItem="RXD-Cj-c3t" secondAttribute="trailing" constant="8" id="xlT-0M-Eo8"/>
                                     <constraint firstItem="Ieo-jD-GeJ" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="xov-Lu-sZ5"/>
                                 </constraints>
                             </view>
@@ -298,13 +338,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="kle-44-PMU">
                                 <rect key="frame" x="20" y="583" width="374" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many days until water?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ts-0P-b9C">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days between Watering" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ts-0P-b9C">
                                         <rect key="frame" x="0.0" y="0.0" width="173" height="80"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many days until fertilizer?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-dI-w6l">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days between fertilizerr" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-dI-w6l">
                                         <rect key="frame" x="201" y="0.0" width="173" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="cLk-vP-AUn"/>
@@ -325,7 +365,7 @@
                                     <constraint firstAttribute="width" constant="130" id="yx2-dV-PMr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F1Y-d1-7Gs">
                                 <rect key="frame" x="264" y="664" width="130" height="34"/>
@@ -333,7 +373,7 @@
                                     <constraint firstAttribute="width" constant="130" id="Pfb-32-4dU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ay3-el-dg8"/>
@@ -363,6 +403,12 @@
                             <constraint firstItem="vSr-j6-jIw" firstAttribute="centerX" secondItem="2Pl-Dl-51g" secondAttribute="centerX" id="zDc-wf-soV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="fertilizerDayCount" destination="F1Y-d1-7Gs" id="MpB-x6-nXp"/>
+                        <outlet property="plantName" destination="vSr-j6-jIw" id="aHL-EP-wXH"/>
+                        <outlet property="plantSpecies" destination="PQf-ep-Qbn" id="Kvk-kX-XkI"/>
+                        <outlet property="waterDayCount" destination="JzT-kp-hu7" id="Ngb-J0-hbZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1j-ur-Rsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,6 +416,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="seal.fill" catalog="system" width="128" height="128"/>

@@ -11,10 +11,11 @@ import CoreData
 
 let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
-class plantListView: UIViewController
+class plantListViewController: UIViewController
 {
     
     var plants: [PlantInformation] = []
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad()
@@ -24,8 +25,16 @@ class plantListView: UIViewController
         tableView.isHidden = false
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        fetchCoreDataObjects()
+        tableView.reloadData()
+    }
+    
+    //fetches core data and checks to see if the table should be visible or not
     func fetchCoreDataObjects()
     {
         self.fetch { (complete) in
@@ -42,15 +51,15 @@ class plantListView: UIViewController
         }
     }
     
-    @IBAction func addGoalBtnWasPressed(_ sender: Any)
+    @IBAction func addPlantBtnWasPressed(_ sender: Any)
     {
-        guard let createGoalViewController = storyboard?.instantiateViewController(withIdentifier: "plantAdditionViewController") else {return}
-        presentDetail(createGoalViewController)
+        guard let plantCreationViewController = storyboard?.instantiateViewController(withIdentifier: "plantCreationViewController") else {return}
+        presentDetail(plantCreationViewController)
     }
 }
 
 //this handles the tables and their processing and presentation
-extension plantListView: UITableViewDelegate, UITableViewDataSource
+extension plantListViewController: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return plants.count
@@ -78,7 +87,7 @@ extension plantListView: UITableViewDelegate, UITableViewDataSource
 }
 
 //This section manages the general fetching, grabbing and managaement of the values within the table
-extension plantListView
+extension plantListViewController
 {
     
     func removePlant(atIndexPath indexPath: IndexPath)

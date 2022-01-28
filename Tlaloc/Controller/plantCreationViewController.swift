@@ -20,6 +20,8 @@ class plantCreationViewController: UIViewController, UITextViewDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        plantName.delegate = self
+        plantSpecies.delegate = self
         waterDayCount.layer.cornerRadius = 5.0
         fertilizerDayCount.layer.cornerRadius = 5.0
         plantName.layer.cornerRadius = 8.0
@@ -50,17 +52,34 @@ class plantCreationViewController: UIViewController, UITextViewDelegate
         }
     }
     
+    func calculateNextDate() -> (Date?,Date?)
+    {
+        let date = Date()
+        let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
+        let currentDate = Calendar.current.date(from: dateComponents)
+        let futureWaterDate = Calendar.current.date(byAdding: .day, value: Int(waterDayCount.text!)!, to: date)!
+        
+        debugPrint(currentDate!)
+        debugPrint(futureWaterDate)
+        
+        return (currentDate, futureWaterDate)
+        
+        
+    }
     func save(completion: (_ finished: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext
         else { return }
         let plants = PlantInformation(context: managedContext)
         
+        let (currentDate,futureWaterDate) = calculateNextDate()
+        
+        plants.waterStartDate = currentDate
+        plants.nextWaterDate = futureWaterDate
         plants.plantName = plantName.text
         plants.plantSpecies = plantSpecies.text
         plants.timeUntilWater = Int32(waterDayCount.text!)!
         plants.timeUntilFertilizer = Int32(fertilizerDayCount.text!)!
-        
         
         do
         {

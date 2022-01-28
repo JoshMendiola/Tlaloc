@@ -51,6 +51,7 @@ class plantListViewController: UIViewController
         }
     }
     
+    
     @IBAction func addPlantBtnWasPressed(_ sender: Any)
     {
         guard let plantCreationViewController = storyboard?.instantiateViewController(withIdentifier: "plantCreationViewController") else {return}
@@ -83,7 +84,19 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     {
         return .none
     }
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .destructive, title: "DELETE") { (rowAction, view, completion: (Bool) -> Void) in
+            self.removePlant(atIndexPath: indexPath)
+            completion(true)
+            self.fetchCoreDataObjects()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = UIColor.red
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
 //This section manages the general fetching, grabbing and managaement of the values within the table

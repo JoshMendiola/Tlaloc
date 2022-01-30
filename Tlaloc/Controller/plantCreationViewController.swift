@@ -52,17 +52,18 @@ class plantCreationViewController: UIViewController, UITextViewDelegate
         }
     }
     
-    func calculateNextDate() -> (Date?,Date?)
+    func calculateNextDate() -> (Date?, Date?)
     {
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let currentDate = Calendar.current.date(from: dateComponents)
         let futureWaterDate = Calendar.current.date(byAdding: .day, value: Int(waterDayCount.text!)!, to: date)!
+        let futureFertilizerDate = Calendar.current.date(byAdding: .day, value: Int(fertilizerDayCount.text!)!, to: date)!
         
         debugPrint(currentDate!)
-        debugPrint(futureWaterDate)
+        debugPrint(futureFertilizerDate, futureWaterDate)
         
-        return (currentDate, futureWaterDate)
+        return (futureFertilizerDate, futureWaterDate)
         
         
     }
@@ -72,14 +73,12 @@ class plantCreationViewController: UIViewController, UITextViewDelegate
         else { return }
         let plants = PlantInformation(context: managedContext)
         
-        let (currentDate,futureWaterDate) = calculateNextDate()
+        let (futureFertilizerDate,futureWaterDate) = calculateNextDate()
         
-        plants.waterStartDate = currentDate
         plants.nextWaterDate = futureWaterDate
+        plants.nextFertilizerDate = futureFertilizerDate
         plants.plantName = plantName.text
         plants.plantSpecies = plantSpecies.text
-        plants.timeUntilWater = Int32(waterDayCount.text!)!
-        plants.timeUntilFertilizer = Int32(fertilizerDayCount.text!)!
         
         do
         {

@@ -15,6 +15,7 @@ class plantListViewController: UIViewController
 {
     
     var plants: [PlantInformation] = []
+    private var tableDecision: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -51,6 +52,22 @@ class plantListViewController: UIViewController
         }
     }
     
+    @IBAction func tableSwitch(sender : UISegmentedControl)
+    {
+        switch sender.selectedSegmentIndex
+        {
+            case 0:
+                tableDecision = true
+                tableView.reloadData()
+                break
+            case 1:
+                tableDecision = false
+                tableView.reloadData()
+                break
+            default:
+                break
+        }
+    }
     
     @IBAction func addPlantBtnWasPressed(_ sender: Any)
     {
@@ -70,7 +87,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell") as? plantCell
         else {return UITableViewCell()}
         let plant = plants[indexPath.row]
-        cell.configureCell(plant: plant)
+        cell.configureCell(plant: plant, tableChoice: tableDecision)
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,7 +103,8 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .destructive, title: "DELETE") { (rowAction, view, completion: (Bool) -> Void) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "DELETE")
+        { (rowAction, view, completion: (Bool) -> Void) in
             self.removePlant(atIndexPath: indexPath)
             completion(true)
             self.fetchCoreDataObjects()
@@ -102,7 +120,6 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
 //This section manages the general fetching, grabbing and managaement of the values within the table
 extension plantListViewController
 {
-    
     func removePlant(atIndexPath indexPath: IndexPath)
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}

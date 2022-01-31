@@ -52,6 +52,7 @@ class plantListViewController: UIViewController
         }
     }
     
+    //handles the segmented control and setting the correct variables
     @IBAction func tableSwitch(sender : UISegmentedControl)
     {
         switch sender.selectedSegmentIndex
@@ -65,10 +66,12 @@ class plantListViewController: UIViewController
                 tableView.reloadData()
                 break
             default:
+                debugPrint("ERROR: Segmented Control not operating correctly")
                 break
         }
     }
     
+    //segues into the next view controller
     @IBAction func addPlantBtnWasPressed(_ sender: Any)
     {
         guard let plantCreationViewController = storyboard?.instantiateViewController(withIdentifier: "plantCreationViewController") else {return}
@@ -101,7 +104,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     {
         return .none
     }
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let deleteAction = UIContextualAction(style: .destructive, title: "DELETE")
         { (rowAction, view, completion: (Bool) -> Void) in

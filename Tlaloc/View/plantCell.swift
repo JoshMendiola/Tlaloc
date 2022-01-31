@@ -13,7 +13,7 @@ class plantCell: UITableViewCell
     @IBOutlet weak var plantSpecies: UILabel!
     @IBOutlet weak var dayCount: UILabel!
     
-    
+    //configures the cell properly
     func configureCell(plant: PlantInformation, tableChoice: Bool)
     {
         self.plantName.text = plant.plantName
@@ -43,6 +43,7 @@ class plantCell: UITableViewCell
     }
 }
 
+//adds functionality needed for Calender commands
 extension Calendar
 {
     func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {

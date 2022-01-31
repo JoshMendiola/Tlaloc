@@ -32,37 +32,51 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         plantSpecies.layer.cornerRadius = 8.0
     }
     
+    //checks if the current inputs into each spot is valid
+    func inputIsValid() -> Bool
+    {
+        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != "" && fertilizerDayCount.text != "" && Int(waterDayCount.text!)! > 0 && Int(fertilizerDayCount.text!)! > 0
+        {
+            return true
+        }
+        plantCreationBtn.alpha = 0.5
+        return false
+    }
+    
+    //handles the back button
     @IBAction func backBtnWasPressed(_ sender: Any)
     {
         dismissDetail()
     }
     
+    //deletes placeholder text in the inputs
     func textViewDidBeginEditing(_ textView: UITextView)
     {
         textView.textColor = UIColor.black
         textView.text = ""
     }
     
+    //changes button alpha to let user know if they can make their plant
     func textViewDidEndEditing(_ textView: UITextView)
     {
-        debugPrint("bingus")
-        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != ""
+        if inputIsValid()
         {
             plantCreationBtn.alpha = 1.0
         }
     }
+    //changes button alpha to let user know if they can make their plant
     func textFieldDidEndEditing(_ textField: UITextField)
     {
-        debugPrint("bingus")
-        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != ""
+        if inputIsValid()
         {
             plantCreationBtn.alpha = 1.0
         }
     }
     
+    //handles what would happen if the create button was pressed
     @IBAction func createPlantBtnWasPressed(_ sender: Any)
     {
-        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != ""
+        if inputIsValid()
         {
             self.save { (complete) in
                 if complete
@@ -73,6 +87,7 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         }
     }
     
+    //calculates the next date to be counted down to
     func calculateNextDate() -> (Date?, Date?)
     {
         let date = Date()
@@ -88,6 +103,12 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         
         
     }
+}
+
+//this section handles background stuff, saving to core data, and the addition of a done button on the kyboard
+extension plantCreationViewController
+{
+    //handles the saving of values into coredata
     func save(completion: (_ finished: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext

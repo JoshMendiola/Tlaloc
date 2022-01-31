@@ -21,7 +21,7 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.addDoneButtonOnKeyboard)
+        self.addDoneButtonOnKeyboard()
         plantName.delegate = self
         plantSpecies.delegate = self
         waterDayCount.delegate = self

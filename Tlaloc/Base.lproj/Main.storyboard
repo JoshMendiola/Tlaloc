@@ -280,11 +280,16 @@
                                             <action selector="backBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="219-FP-EzC"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-Cj-c3t">
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-Cj-c3t">
                                         <rect key="frame" x="319.5" y="120" width="86.5" height="31"/>
-                                        <color key="backgroundColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="RXD-Cj-c3t" secondAttribute="height" multiplier="86:31" id="Ydx-Ws-FPK"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add Plant">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
@@ -317,7 +322,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your plants name ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jae-2B-nMR">
                                 <rect key="frame" x="46.5" y="204" width="321" height="37.5"/>
@@ -339,7 +344,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="kle-44-PMU">
                                 <rect key="frame" x="20" y="583" width="374" height="80"/>
@@ -411,6 +416,7 @@
                     </view>
                     <connections>
                         <outlet property="fertilizerDayCount" destination="F1Y-d1-7Gs" id="MpB-x6-nXp"/>
+                        <outlet property="plantCreationBtn" destination="RXD-Cj-c3t" id="1Ds-Gb-Dq5"/>
                         <outlet property="plantName" destination="vSr-j6-jIw" id="aHL-EP-wXH"/>
                         <outlet property="plantSpecies" destination="PQf-ep-Qbn" id="Kvk-kX-XkI"/>
                         <outlet property="waterDayCount" destination="JzT-kp-hu7" id="Ngb-J0-hbZ"/>

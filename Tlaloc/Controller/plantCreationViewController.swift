@@ -10,18 +10,22 @@ import CoreData
 
 
 
-class plantCreationViewController: UIViewController, UITextViewDelegate
+class plantCreationViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
     @IBOutlet weak var plantName: UITextView!
     @IBOutlet weak var plantSpecies: UITextView!
     @IBOutlet weak var waterDayCount: UITextField!
     @IBOutlet weak var fertilizerDayCount: UITextField!
+    @IBOutlet weak var plantCreationBtn: UIButton!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.addDoneButtonOnKeyboard()
         plantName.delegate = self
         plantSpecies.delegate = self
+        waterDayCount.delegate = self
+        fertilizerDayCount.delegate = self
         waterDayCount.layer.cornerRadius = 5.0
         fertilizerDayCount.layer.cornerRadius = 5.0
         plantName.layer.cornerRadius = 8.0
@@ -39,9 +43,26 @@ class plantCreationViewController: UIViewController, UITextViewDelegate
         textView.text = ""
     }
     
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        debugPrint("bingus")
+        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != ""
+        {
+            plantCreationBtn.alpha = 1.0
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        debugPrint("bingus")
+        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != ""
+        {
+            plantCreationBtn.alpha = 1.0
+        }
+    }
+    
     @IBAction func createPlantBtnWasPressed(_ sender: Any)
     {
-        if plantName.text != "" && plantSpecies.text != ""
+        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != ""
         {
             self.save { (complete) in
                 if complete
@@ -91,4 +112,29 @@ class plantCreationViewController: UIViewController, UITextViewDelegate
             completion(false)
         }
     }
+    
+    func addDoneButtonOnKeyboard(){
+            let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            doneToolbar.barStyle = .default
+
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+            let items = [flexSpace, done]
+            doneToolbar.items = items
+            doneToolbar.sizeToFit()
+
+            plantName.inputAccessoryView = doneToolbar
+            plantSpecies.inputAccessoryView = doneToolbar
+            waterDayCount.inputAccessoryView = doneToolbar
+            fertilizerDayCount.inputAccessoryView = doneToolbar
+        }
+
+        @objc func doneButtonAction()
+        {
+            plantName.resignFirstResponder()
+            plantSpecies.resignFirstResponder()
+            waterDayCount.resignFirstResponder()
+            fertilizerDayCount.resignFirstResponder()
+        }
 }

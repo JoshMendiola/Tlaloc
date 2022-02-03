@@ -104,19 +104,37 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     {
         return .none
     }
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .destructive, title: "DELETE")
-        { (rowAction, view, completion: (Bool) -> Void) in
-            self.removePlant(atIndexPath: indexPath)
-            completion(true)
-            self.fetchCoreDataObjects()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+        if(tableDecision == true)
+        {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Water")
+            { (rowAction, view, completion: (Bool) -> Void) in
+                self.removePlant(atIndexPath: indexPath)
+                completion(true)
+                self.fetchCoreDataObjects()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            deleteAction.backgroundColor = UIColor.blue
+            return UISwipeActionsConfiguration(actions: [deleteAction])
         }
-        
-        deleteAction.backgroundColor = UIColor.red
-        
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        else
+        {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Fertilize")
+            { (rowAction, view, completion: (Bool) -> Void) in
+                self.removePlant(atIndexPath: indexPath)
+                completion(true)
+                self.fetchCoreDataObjects()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            deleteAction.backgroundColor = UIColor.systemBrown
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        guard let plantEditViewController = storyboard?.instantiateViewController(withIdentifier: "plantEditViewController") else {return}
+        presentDetail(plantEditViewController)
     }
 }
 

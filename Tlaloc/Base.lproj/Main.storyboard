@@ -76,9 +76,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-IT-ydu">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-IT-ydu">
                                         <rect key="frame" x="0.0" y="64" width="414" height="673"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="separatorColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <color key="sectionIndexBackgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="plantCell" rowHeight="112" id="98h-zO-K68" customClass="plantCell" customModule="Tlaloc" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="112"/>
@@ -170,6 +173,7 @@
                                                         <constraint firstItem="0Fj-oU-jaS" firstAttribute="top" secondItem="i6c-T3-FSf" secondAttribute="top" constant="10.5" id="vBU-j0-KdX"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="dayCount" destination="0Fj-oU-jaS" id="X8Q-ge-xSn"/>
                                                     <outlet property="plantName" destination="DLa-g2-Plv" id="zRY-CD-oKA"/>
@@ -232,6 +236,112 @@
             </objects>
             <point key="canvasLocation" x="16.800000000000001" y="64.285714285714292"/>
         </scene>
+        <!--Plant Edit View Controller-->
+        <scene sceneID="hra-JQ-Xn7">
+            <objects>
+                <viewController storyboardIdentifier="plantEditViewController" id="Tij-8d-csk" customClass="plantEditViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4sK-zi-PKt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2U-Ei-vQ1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Schedules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-Ix-O2d">
+                                        <rect key="frame" x="71" y="113" width="272" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="yCM-pn-GTH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-jC-Hzs">
+                                        <rect key="frame" x="125" y="65" width="164" height="43.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="bca-KL-LNr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
+                                        <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlM-JS-axS">
+                                        <rect key="frame" x="0.0" y="101" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="OU8-4j-kRT"/>
+                                            <constraint firstAttribute="width" secondItem="mlM-JS-axS" secondAttribute="height" multiplier="1:1" id="j2d-fW-HI1"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="sw5-WN-kqo"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addPlantBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xtn-yE-lf9"/>
+                                            <action selector="backBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="F3U-gM-QMN"/>
+                                            <action selector="backBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="iL5-mq-jsN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mlM-JS-axS" firstAttribute="width" secondItem="mlM-JS-axS" secondAttribute="height" multiplier="1:1" id="2dc-el-rFr"/>
+                                    <constraint firstItem="1HE-jC-Hzs" firstAttribute="centerX" secondItem="rOH-Ix-O2d" secondAttribute="centerX" id="2ek-zy-QH3"/>
+                                    <constraint firstItem="rOH-Ix-O2d" firstAttribute="centerX" secondItem="N2U-Ei-vQ1" secondAttribute="centerX" id="6lO-hP-3Pm"/>
+                                    <constraint firstItem="mlM-JS-axS" firstAttribute="width" secondItem="mlM-JS-axS" secondAttribute="height" multiplier="1:1" id="CDs-b1-5FI"/>
+                                    <constraint firstItem="rOH-Ix-O2d" firstAttribute="top" secondItem="1HE-jC-Hzs" secondAttribute="bottom" constant="4.5" id="FAX-1J-z9d"/>
+                                    <constraint firstAttribute="trailing" secondItem="rOH-Ix-O2d" secondAttribute="trailing" constant="71" id="Hry-m0-FUZ"/>
+                                    <constraint firstItem="rOH-Ix-O2d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mlM-JS-axS" secondAttribute="trailing" constant="8" symbolic="YES" id="JXB-S1-Lob"/>
+                                    <constraint firstAttribute="bottom" secondItem="rOH-Ix-O2d" secondAttribute="bottom" id="YWt-CU-3oP"/>
+                                    <constraint firstAttribute="height" constant="159" id="m84-tQ-eVo"/>
+                                    <constraint firstItem="1HE-jC-Hzs" firstAttribute="centerX" secondItem="N2U-Ei-vQ1" secondAttribute="centerX" id="oRU-aH-jWp"/>
+                                    <constraint firstItem="mlM-JS-axS" firstAttribute="bottom" secondItem="N2U-Ei-vQ1" secondAttribute="bottomMargin" id="owE-sd-QhC"/>
+                                    <constraint firstItem="mlM-JS-axS" firstAttribute="leading" secondItem="N2U-Ei-vQ1" secondAttribute="leading" id="uM3-6Z-r1f"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Peh-iO-YZh">
+                                <rect key="frame" x="0.0" y="159" width="414" height="737"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-ZD-7xi">
+                                        <rect key="frame" x="60" y="606" width="294" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="TEG-DB-LSe"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Delete Plant">
+                                            <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="25"/>
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="deletePlantBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="yc9-xL-Dm2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0S5-ZD-7xi" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="8gR-Kq-19u"/>
+                                    <constraint firstAttribute="bottom" secondItem="0S5-ZD-7xi" secondAttribute="bottom" constant="71" id="O1d-6g-ClO"/>
+                                    <constraint firstItem="0S5-ZD-7xi" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="60" id="oxP-iL-91v"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pcf-nN-P1D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Peh-iO-YZh" firstAttribute="trailing" secondItem="pcf-nN-P1D" secondAttribute="trailing" id="Bl3-xF-03n"/>
+                            <constraint firstItem="Peh-iO-YZh" firstAttribute="top" secondItem="N2U-Ei-vQ1" secondAttribute="bottom" id="IPQ-JB-697"/>
+                            <constraint firstItem="N2U-Ei-vQ1" firstAttribute="trailing" secondItem="pcf-nN-P1D" secondAttribute="trailing" id="PkP-4c-oGS"/>
+                            <constraint firstAttribute="bottom" secondItem="Peh-iO-YZh" secondAttribute="bottom" id="RpQ-UI-tuG"/>
+                            <constraint firstItem="N2U-Ei-vQ1" firstAttribute="leading" secondItem="pcf-nN-P1D" secondAttribute="leading" id="SEK-Yg-5L8"/>
+                            <constraint firstItem="Peh-iO-YZh" firstAttribute="leading" secondItem="pcf-nN-P1D" secondAttribute="leading" id="aH1-7c-Yeg"/>
+                            <constraint firstItem="N2U-Ei-vQ1" firstAttribute="top" secondItem="4sK-zi-PKt" secondAttribute="top" id="nH9-l1-XvE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8s5-vD-tIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-878.26086956521749" y="63.616071428571423"/>
+        </scene>
         <!--Plant Creation View Controller-->
         <scene sceneID="K5D-Rf-P80">
             <objects>
@@ -241,7 +351,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzp-lD-z0J">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="981"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.63921568627450975" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZu-fB-wjd">
@@ -319,7 +429,7 @@
                                 <rect key="frame" x="20" y="261.5" width="374" height="120"/>
                                 <color key="backgroundColor" red="1" green="0.792156862745098" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="vl8-3p-FXt"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="vl8-3p-FXt"/>
                                 </constraints>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
@@ -341,7 +451,7 @@
                                 <rect key="frame" x="20" y="446.5" width="374" height="120"/>
                                 <color key="backgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="XK4-uZ-pFO"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="XK4-uZ-pFO"/>
                                 </constraints>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
@@ -398,7 +508,8 @@
                             <constraint firstItem="vSr-j6-jIw" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="7tB-5x-20f"/>
                             <constraint firstItem="Jzp-lD-z0J" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" id="BmI-pf-DpF"/>
                             <constraint firstItem="Ay3-el-dg8" firstAttribute="trailing" secondItem="F1Y-d1-7Gs" secondAttribute="trailing" constant="20" id="BwC-nR-YxF"/>
-                            <constraint firstAttribute="bottom" secondItem="Jzp-lD-z0J" secondAttribute="bottom" id="CMF-6v-iYO"/>
+                            <constraint firstAttribute="bottom" secondItem="Jzp-lD-z0J" secondAttribute="bottom" constant="-129" id="CMF-6v-iYO"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="F1Y-d1-7Gs" secondAttribute="bottom" constant="164" id="K5q-lP-7Sg"/>
                             <constraint firstItem="JzT-kp-hu7" firstAttribute="top" secondItem="kle-44-PMU" secondAttribute="bottom" constant="1" id="NBz-qz-XAV"/>
                             <constraint firstItem="mZu-fB-wjd" firstAttribute="top" secondItem="2Pl-Dl-51g" secondAttribute="top" id="PM6-QS-m74"/>
                             <constraint firstItem="Jzp-lD-z0J" firstAttribute="top" secondItem="Ay3-el-dg8" secondAttribute="top" id="Pd0-8E-VDL"/>
@@ -409,7 +520,8 @@
                             <constraint firstItem="vSr-j6-jIw" firstAttribute="top" secondItem="Jae-2B-nMR" secondAttribute="bottom" constant="20" id="VCd-3E-acH"/>
                             <constraint firstItem="F1Y-d1-7Gs" firstAttribute="top" secondItem="kle-44-PMU" secondAttribute="bottom" constant="1" id="aew-zM-CtA"/>
                             <constraint firstItem="kle-44-PMU" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="bPp-u0-Bp9"/>
-                            <constraint firstItem="Jae-2B-nMR" firstAttribute="top" secondItem="mZu-fB-wjd" secondAttribute="bottom" constant="45" id="dOC-M2-Tl8"/>
+                            <constraint firstItem="Jae-2B-nMR" firstAttribute="top" relation="lessThanOrEqual" secondItem="mZu-fB-wjd" secondAttribute="bottom" constant="45" id="dOC-M2-Tl8"/>
+                            <constraint firstItem="Ay3-el-dg8" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JzT-kp-hu7" secondAttribute="bottom" constant="20" id="e6K-Uk-zep"/>
                             <constraint firstItem="KFN-bP-FSy" firstAttribute="top" secondItem="vSr-j6-jIw" secondAttribute="bottom" constant="7.5" id="hST-LC-r6k"/>
                             <constraint firstItem="kle-44-PMU" firstAttribute="top" secondItem="PQf-ep-Qbn" secondAttribute="bottom" constant="16.5" id="hYp-g7-4ee"/>
                             <constraint firstItem="PQf-ep-Qbn" firstAttribute="leading" secondItem="Ay3-el-dg8" secondAttribute="leading" constant="20" id="uq9-z8-YAn"/>
@@ -428,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1j-ur-Rsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826.08695652173924" y="62.946428571428569"/>
+            <point key="canvasLocation" x="824.79999999999995" y="62.518740629685162"/>
         </scene>
     </scenes>
     <resources>
@@ -438,6 +550,12 @@
         <image name="seal.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

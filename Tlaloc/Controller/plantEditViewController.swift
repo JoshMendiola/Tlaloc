@@ -11,6 +11,13 @@ import CoreData
 class plantEditViewController: UIViewController
 {
     var plants: [PlantInformation] = []
+    var plantName: String!
+    @IBOutlet weak var plantNameEditor: UITextView!
+    
+    func initdata(plantName: String)
+    {
+        self.plantName = plantName
+    }
     
     override func viewDidLoad()
     {

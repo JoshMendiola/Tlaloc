@@ -316,12 +316,34 @@
                                             <action selector="deletePlantBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="yc9-xL-Dm2"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hsp-rT-qeZ">
+                                        <rect key="frame" x="25" y="116" width="364" height="120"/>
+                                        <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="qcD-Y3-Bgi"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ca6-8b-XNs">
+                                        <rect key="frame" x="129" y="64" width="156" height="44"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hsp-rT-qeZ" secondAttribute="trailing" constant="25" id="1Fp-zB-rpW"/>
                                     <constraint firstItem="0S5-ZD-7xi" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="8gR-Kq-19u"/>
                                     <constraint firstAttribute="bottom" secondItem="0S5-ZD-7xi" secondAttribute="bottom" constant="71" id="O1d-6g-ClO"/>
+                                    <constraint firstItem="hsp-rT-qeZ" firstAttribute="top" secondItem="Ca6-8b-XNs" secondAttribute="bottom" constant="8" symbolic="YES" id="Uy5-Ks-zYg"/>
+                                    <constraint firstItem="Ca6-8b-XNs" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="daC-43-BHH"/>
+                                    <constraint firstItem="hsp-rT-qeZ" firstAttribute="leading" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="25" id="jdl-DL-k5v"/>
                                     <constraint firstItem="0S5-ZD-7xi" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="60" id="oxP-iL-91v"/>
+                                    <constraint firstItem="Ca6-8b-XNs" firstAttribute="top" secondItem="Peh-iO-YZh" secondAttribute="top" constant="64" id="ujU-Oq-MD3"/>
+                                    <constraint firstItem="hsp-rT-qeZ" firstAttribute="top" secondItem="Ca6-8b-XNs" secondAttribute="bottom" constant="8" symbolic="YES" id="y7d-6g-X4f"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -337,6 +359,9 @@
                             <constraint firstItem="N2U-Ei-vQ1" firstAttribute="top" secondItem="4sK-zi-PKt" secondAttribute="top" id="nH9-l1-XvE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="plantNameEditor" destination="hsp-rT-qeZ" id="3h7-BG-GsI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8s5-vD-tIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

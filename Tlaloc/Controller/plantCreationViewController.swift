@@ -18,6 +18,7 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     @IBOutlet weak var fertilizerDayCount: UITextField!
     @IBOutlet weak var plantCreationBtn: UIButton!
     
+    //handles viewcontroller presentation
     override func viewDidLoad()
     {
         super.viewDidLoad()

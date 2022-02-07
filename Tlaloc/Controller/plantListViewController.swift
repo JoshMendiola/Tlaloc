@@ -19,6 +19,7 @@ class plantListViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
+    //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
     {
         tableView.delegate = self
@@ -27,7 +28,6 @@ class plantListViewController: UIViewController
         
         super.viewDidLoad()
     }
-    
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
@@ -82,6 +82,7 @@ class plantListViewController: UIViewController
 //this handles the tables and their processing and presentation
 extension plantListViewController: UITableViewDelegate, UITableViewDataSource
 {
+    //basic tableview information allowing for proper presentation of tableview details
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return plants.count
     }
@@ -104,6 +105,8 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     {
         return .none
     }
+    
+    //this handles the telling of the core data system that the plant has been succesfully watered
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         if(tableDecision == true)
@@ -131,6 +134,8 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
     }
+    
+    //this handles the transition to the editing screen
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         guard let plantEditViewController = storyboard?.instantiateViewController(withIdentifier: "plantEditViewController") as? plantEditViewController else {return}

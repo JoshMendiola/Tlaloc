@@ -313,7 +313,7 @@
                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="deletePlantBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="yc9-xL-Dm2"/>
+                                            <action selector="deleteBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="gQS-ve-MIc"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hsp-rT-qeZ">

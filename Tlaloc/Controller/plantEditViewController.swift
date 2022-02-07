@@ -12,7 +12,7 @@ class plantEditViewController: UIViewController
 {
     var plantName: String!
     var plants: [PlantInformation] = []
-    var dex: Int = 0
+    var dex: Int!
     @IBOutlet weak var plantNameEditor: UITextView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
@@ -49,9 +49,15 @@ class plantEditViewController: UIViewController
         self.save { (complete) in
             if complete
             {
-                dismiss(animated: true, completion: nil)
+                dismissDetail()
             }
         }
+    }
+    @IBAction func deleteBtnWasPressed(_ sender: Any)
+    {
+        dismissDetail()
+        removePlant(atIndexPath: [dex])
+        debugPrint("Deleted !!!!")
     }
 }
 extension plantEditViewController
@@ -59,7 +65,7 @@ extension plantEditViewController
     func removePlant(atIndexPath indexPath: IndexPath)
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
-        managedContext.delete(plants[indexPath.row])
+        managedContext.delete(plants[dex])
         do
         {
             try managedContext.save()
@@ -101,5 +107,22 @@ extension plantEditViewController
             debugPrint("Could not save !: \(error.localizedDescription)")
             completion(false)
         }
+    }
+    func addDoneButtonOnKeyboard(){
+            let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            doneToolbar.barStyle = .default
+
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+            let items = [flexSpace, done]
+            doneToolbar.items = items
+            doneToolbar.sizeToFit()
+
+            plantNameEditor.inputAccessoryView = doneToolbar
+        }
+    @objc func doneButtonAction()
+    {
+        plantNameEditor.resignFirstResponder()
     }
 }

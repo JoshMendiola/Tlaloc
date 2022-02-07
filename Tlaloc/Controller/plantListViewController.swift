@@ -134,8 +134,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         guard let plantEditViewController = storyboard?.instantiateViewController(withIdentifier: "plantEditViewController") as? plantEditViewController else {return}
-        let thisPlant = plants[indexPath.row]
-        plantEditViewController.initdata(thisPlant: thisPlant)
+        plantEditViewController.initdata(dex: indexPath.row)
         presentDetail(plantEditViewController)
     }
 }

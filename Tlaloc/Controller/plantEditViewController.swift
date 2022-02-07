@@ -12,29 +12,47 @@ class plantEditViewController: UIViewController
 {
     var plantName: String!
     var plants: [PlantInformation] = []
+    var dex: Int = 0
     @IBOutlet weak var plantNameEditor: UITextView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
     
-    func initdata(thisPlant: PlantInformation)
+    func initdata(dex: Int)
     {
-        plantName = thisPlant.plantName
+        self.dex = dex
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        fetchCoreDataObjects()
         plantNameEditor.layer.cornerRadius = 5.0
         updateBtn.layer.cornerRadius = 5.0
         deleteBtn.layer.cornerRadius = 5.0
-        plantNameEditor.text = plantName
+        plantNameEditor.text = plants[dex].plantName
+    }
+    func fetchCoreDataObjects()
+    {
+        self.fetch { (complete) in
+            if complete {
+               return
+            }
+        }
     }
     @IBAction func backBtnWasPressed(_ sender: Any)
     {
         dismissDetail()
     }
-    
-    
+    @IBAction func updateBtnWasPressed(_ sender: Any)
+    {
+        plants[dex].plantName = plantNameEditor.text
+        self.save { (complete) in
+            if complete
+            {
+                dismiss(animated: true, completion: nil)
+            }
+        }
+    }
 }
 extension plantEditViewController
 {
@@ -68,5 +86,20 @@ extension plantEditViewController
             completion(false)
         }
     }
+    func save(completion: (_ finished: Bool) -> ())
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext
+        else { return }
+        
+        do
+        {
+            try managedContext.save()
+            completion(true)
+        }
+        catch
+        {
+            debugPrint("Could not save !: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
 }
-

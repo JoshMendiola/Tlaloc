@@ -323,7 +323,7 @@
                                             <constraint firstAttribute="height" constant="120" id="qcD-Y3-Bgi"/>
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ca6-8b-XNs">
@@ -332,13 +332,28 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-9p-GKG">
+                                        <rect key="frame" x="50" y="271" width="314" height="50"/>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="pwt-HQ-Mzw"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Update">
+                                            <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="29"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hsp-rT-qeZ" secondAttribute="trailing" constant="25" id="1Fp-zB-rpW"/>
                                     <constraint firstItem="0S5-ZD-7xi" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="8gR-Kq-19u"/>
+                                    <constraint firstItem="8RK-9p-GKG" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="Bxw-PG-RJ8"/>
                                     <constraint firstAttribute="bottom" secondItem="0S5-ZD-7xi" secondAttribute="bottom" constant="71" id="O1d-6g-ClO"/>
+                                    <constraint firstAttribute="trailing" secondItem="8RK-9p-GKG" secondAttribute="trailing" constant="50" id="Ppg-0a-Ozr"/>
                                     <constraint firstItem="hsp-rT-qeZ" firstAttribute="top" secondItem="Ca6-8b-XNs" secondAttribute="bottom" constant="8" symbolic="YES" id="Uy5-Ks-zYg"/>
+                                    <constraint firstItem="8RK-9p-GKG" firstAttribute="top" secondItem="hsp-rT-qeZ" secondAttribute="bottom" constant="35" id="WSj-y6-OIM"/>
                                     <constraint firstItem="Ca6-8b-XNs" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="daC-43-BHH"/>
                                     <constraint firstItem="hsp-rT-qeZ" firstAttribute="leading" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="25" id="jdl-DL-k5v"/>
                                     <constraint firstItem="0S5-ZD-7xi" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="60" id="oxP-iL-91v"/>
@@ -360,7 +375,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteBtn" destination="0S5-ZD-7xi" id="JJX-HY-hRN"/>
                         <outlet property="plantNameEditor" destination="hsp-rT-qeZ" id="3h7-BG-GsI"/>
+                        <outlet property="updateBtn" destination="8RK-9p-GKG" id="O34-Eo-9CK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8s5-vD-tIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

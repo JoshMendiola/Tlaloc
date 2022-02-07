@@ -10,19 +10,24 @@ import CoreData
 
 class plantEditViewController: UIViewController
 {
-    var plants: [PlantInformation] = []
     var plantName: String!
+    var plants: [PlantInformation] = []
     @IBOutlet weak var plantNameEditor: UITextView!
+    @IBOutlet weak var deleteBtn: UIButton!
+    @IBOutlet weak var updateBtn: UIButton!
     
-    func initdata(plantName: String)
+    func initdata(thisPlant: PlantInformation)
     {
-        self.plantName = plantName
+        plantName = thisPlant.plantName
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        plantNameEditor.layer.cornerRadius = 5.0
+        updateBtn.layer.cornerRadius = 5.0
+        deleteBtn.layer.cornerRadius = 5.0
+        plantNameEditor.text = plantName
     }
     @IBAction func backBtnWasPressed(_ sender: Any)
     {

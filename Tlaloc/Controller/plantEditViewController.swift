@@ -17,11 +17,11 @@ class plantEditViewController: UIViewController
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
     
+    //initalizers and viewcontroller presentation
     func initdata(dex: Int)
     {
         self.dex = dex
     }
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -31,6 +31,8 @@ class plantEditViewController: UIViewController
         deleteBtn.layer.cornerRadius = 5.0
         plantNameEditor.text = plants[dex].plantName
     }
+    
+    //grabs the data from the core data system
     func fetchCoreDataObjects()
     {
         self.fetch { (complete) in
@@ -39,10 +41,14 @@ class plantEditViewController: UIViewController
             }
         }
     }
+    
+    //back button
     @IBAction func backBtnWasPressed(_ sender: Any)
     {
         dismissDetail()
     }
+    
+    //updates the plant name with the new name put in the name editor
     @IBAction func updateBtnWasPressed(_ sender: Any)
     {
         plants[dex].plantName = plantNameEditor.text
@@ -53,6 +59,8 @@ class plantEditViewController: UIViewController
             }
         }
     }
+    
+    //handles deletion of the plant from the core data system
     @IBAction func deleteBtnWasPressed(_ sender: Any)
     {
         dismissDetail()

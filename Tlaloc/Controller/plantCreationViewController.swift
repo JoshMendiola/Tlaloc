@@ -89,13 +89,13 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     }
     
     //calculates the next date to be counted down to
-    func calculateNextDate() -> (Date?, Date?)
+    func calculateNextDate(waterDayCount: Int16, fertilizerDayCount: Int16) -> (Date?, Date?)
     {
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let currentDate = Calendar.current.date(from: dateComponents)
-        let futureWaterDate = Calendar.current.date(byAdding: .day, value: Int(waterDayCount.text!)!, to: date)!
-        let futureFertilizerDate = Calendar.current.date(byAdding: .day, value: Int(fertilizerDayCount.text!)!, to: date)!
+        let futureWaterDate = Calendar.current.date(byAdding: .day, value: Int(waterDayCount), to: date)!
+        let futureFertilizerDate = Calendar.current.date(byAdding: .day, value: Int(fertilizerDayCount), to: date)!
         
         debugPrint(currentDate!)
         debugPrint(futureFertilizerDate, futureWaterDate)
@@ -116,12 +116,13 @@ extension plantCreationViewController
         else { return }
         let plants = PlantInformation(context: managedContext)
         
-        let (futureFertilizerDate,futureWaterDate) = calculateNextDate()
-        
-        plants.nextWaterDate = futureWaterDate
-        plants.nextFertilizerDate = futureFertilizerDate
         plants.plantName = plantName.text
         plants.plantSpecies = plantSpecies.text
+        plants.daysBetweenWater = Int16(waterDayCount.text!)!
+        plants.daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
+        let (futureFertilizerDate,futureWaterDate) = calculateNextDate(waterDayCount: plants.daysBetweenWater, fertilizerDayCount: plants.daysBetweenFertilizer)
+        plants.nextWaterDate = futureWaterDate
+        plants.nextFertilizerDate = futureFertilizerDate
         
         do
         {

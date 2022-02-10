@@ -16,6 +16,8 @@ class plantEditViewController: UIViewController
     @IBOutlet weak var plantNameEditor: UITextView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
+    @IBOutlet weak var waterDayCount: UITextField!
+    @IBOutlet weak var fertilizerDayCount: UITextField!
     
     //initalizers and viewcontroller presentation
     func initdata(dex: Int)
@@ -25,11 +27,16 @@ class plantEditViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.addDoneButtonOnKeyboard()
         fetchCoreDataObjects()
         plantNameEditor.layer.cornerRadius = 5.0
         updateBtn.layer.cornerRadius = 5.0
         deleteBtn.layer.cornerRadius = 5.0
+        waterDayCount.layer.cornerRadius = 5.0
+        fertilizerDayCount.layer.cornerRadius = 5.0
         plantNameEditor.text = plants[dex].plantName
+        waterDayCount.text = String(plants[dex].daysBetweenWater)
+        fertilizerDayCount.text = String(plants[dex].daysBetweenFertilizer)
     }
     
     //grabs the data from the core data system
@@ -52,6 +59,8 @@ class plantEditViewController: UIViewController
     @IBAction func updateBtnWasPressed(_ sender: Any)
     {
         plants[dex].plantName = plantNameEditor.text
+        plants[dex].daysBetweenWater = Int16(waterDayCount.text!)!
+        plants[dex].daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
         self.save { (complete) in
             if complete
             {
@@ -117,20 +126,26 @@ extension plantEditViewController
         }
     }
     func addDoneButtonOnKeyboard(){
-            let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-            doneToolbar.barStyle = .default
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
 
-            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
 
-            let items = [flexSpace, done]
-            doneToolbar.items = items
-            doneToolbar.sizeToFit()
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
 
-            plantNameEditor.inputAccessoryView = doneToolbar
+        plantNameEditor.inputAccessoryView = doneToolbar
+        waterDayCount.inputAccessoryView = doneToolbar
+        fertilizerDayCount.inputAccessoryView = doneToolbar
+        
+        
         }
     @objc func doneButtonAction()
     {
         plantNameEditor.resignFirstResponder()
+        waterDayCount.resignFirstResponder()
+        fertilizerDayCount.resignFirstResponder()
     }
 }

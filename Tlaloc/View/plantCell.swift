@@ -27,7 +27,7 @@ class plantCell: UITableViewCell
             let timeUntilWater = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextWaterDate!).day! - 1
             if(timeUntilWater <= 0)
             {
-                
+                dayCount.text = String(0)
             }
             dayCount.text = (String(timeUntilWater))
         }
@@ -36,7 +36,7 @@ class plantCell: UITableViewCell
             let timeUntilFertilizer = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextFertilizerDate!).day! - 1
             if(timeUntilFertilizer <= 0)
             {
-                
+                dayCount.text = String(0)
             }
             dayCount.text = (String(timeUntilFertilizer))
         }

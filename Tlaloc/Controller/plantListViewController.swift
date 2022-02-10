@@ -109,30 +109,46 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     //this handles the telling of the core data system that the plant has been succesfully watered
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
+        let date = Date()
+        let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
+        let currentDate = Calendar.current.date(from: dateComponents)!
         if(tableDecision == true)
         {
-            let deleteAction = UIContextualAction(style: .destructive, title: "Water")
+            let resetAction = UIContextualAction(style: .normal, title: "Water")
             { (rowAction, view, completion: (Bool) -> Void) in
-                self.removePlant(atIndexPath: indexPath)
+                self.plants[indexPath.row].nextWaterDate = Calendar.current.date(byAdding: .day, value: Int(self.plants[indexPath.row].daysBetweenWater), to: currentDate)!
                 completion(true)
-                self.fetchCoreDataObjects()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                tableView.reloadData()
             }
-            deleteAction.backgroundColor = UIColor.blue
-            return UISwipeActionsConfiguration(actions: [deleteAction])
+            resetAction.backgroundColor = UIColor.blue
+            self.save { (complete) in
+                if complete
+                {
+                    return
+                }
+            }
+            return UISwipeActionsConfiguration(actions: [resetAction])
         }
         else
         {
-            let deleteAction = UIContextualAction(style: .destructive, title: "Fertilize")
+            let resetAction = UIContextualAction(style: .normal, title: "Fertilize")
             { (rowAction, view, completion: (Bool) -> Void) in
-                self.removePlant(atIndexPath: indexPath)
+                self.plants[indexPath.row].nextFertilizerDate = Calendar.current.date(byAdding: .day, value: Int(self.plants[indexPath.row].daysBetweenFertilizer), to: currentDate)!
                 completion(true)
                 self.fetchCoreDataObjects()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.reloadData()
             }
-            deleteAction.backgroundColor = UIColor.systemBrown
-            return UISwipeActionsConfiguration(actions: [deleteAction])
+            resetAction.backgroundColor = UIColor.systemBrown
+            self.save { (complete) in
+                if complete
+                {
+                    return
+                }
+            }
+            return UISwipeActionsConfiguration(actions: [resetAction])
         }
+        
     }
     
     //this handles the transition to the editing screen
@@ -174,6 +190,22 @@ extension plantListViewController
         catch
         {
             debugPrint("Could not fetch :( : \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    func save(completion: (_ finished: Bool) -> ())
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext
+        else { return }
+        
+        do
+        {
+            try managedContext.save()
+            completion(true)
+        }
+        catch
+        {
+            debugPrint("Could not save !: \(error.localizedDescription)")
             completion(false)
         }
     }

@@ -116,6 +116,7 @@ extension plantCreationViewController
         else { return }
         let plants = PlantInformation(context: managedContext)
         
+        //reassigns all of the core data values to the variables inputted into the screen
         plants.plantName = plantName.text
         plants.plantSpecies = plantSpecies.text
         plants.daysBetweenWater = Int16(waterDayCount.text!)!
@@ -123,7 +124,9 @@ extension plantCreationViewController
         let (futureFertilizerDate,futureWaterDate) = calculateNextDate(waterDayCount: plants.daysBetweenWater, fertilizerDayCount: plants.daysBetweenFertilizer)
         plants.nextWaterDate = futureWaterDate
         plants.nextFertilizerDate = futureFertilizerDate
+        plants.plantID = randomString(length: 8)
         
+        //attempts to save, throwing an error if there is a failure
         do
         {
             try managedContext.save()
@@ -134,6 +137,27 @@ extension plantCreationViewController
             debugPrint("Could not save !: \(error.localizedDescription)")
             completion(false)
         }
+        
+        //handles the future water notification by making a content, setting its values and converting it into a notification request
+        let waterContent = UNMutableNotificationContent()
+        waterContent.title = plants.plantName! + " needs water !"
+        waterContent.subtitle = "Log in now and water your plant"
+        waterContent.sound = UNNotificationSound.default
+        let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureWaterDate!), repeats: true)
+        
+        //handles the future fertilizer notification doing the same thing
+        let fertilizerContent = UNMutableNotificationContent()
+        fertilizerContent.title = plants.plantName! + " needs fertilizer !"
+        fertilizerContent.subtitle = "Log in now and fertilize your plant"
+        fertilizerContent.sound = UNNotificationSound.default
+        let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureFertilizerDate!), repeats: true)
+
+        //makes both request
+        let waterRequest = UNNotificationRequest(identifier: (plants.plantID! + "Water") , content: waterContent, trigger: waterTrigger)
+        let fertilizerRequest = UNNotificationRequest(identifier: (plants.plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
+        UNUserNotificationCenter.current().add(waterRequest)
+        UNUserNotificationCenter.current().add(fertilizerRequest)
+        
     }
     
     func addDoneButtonOnKeyboard(){
@@ -159,5 +183,10 @@ extension plantCreationViewController
             plantSpecies.resignFirstResponder()
             waterDayCount.resignFirstResponder()
             fertilizerDayCount.resignFirstResponder()
+        }
+    
+        func randomString(length: Int) -> String {
+          let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+          return String((0..<length).map{ _ in letters.randomElement()! })
         }
 }

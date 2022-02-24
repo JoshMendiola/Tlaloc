@@ -5,10 +5,11 @@
         <attribute name="daysBetweenWater" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nextFertilizerDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="nextWaterDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="plantID" optional="YES" attributeType="String"/>
         <attribute name="plantName" optional="YES" attributeType="String"/>
         <attribute name="plantSpecies" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

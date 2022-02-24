@@ -24,19 +24,19 @@ class plantCell: UITableViewCell
         let currentDate = Calendar.current.date(from: dateComponents)!
         if tableChoice == true
         {
-            let timeUntilWater = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextWaterDate!).day! - 1
+            let timeUntilWater = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextWaterDate!).day!
             if(timeUntilWater <= 0)
             {
-                dayCount.text = String(0)
+                dayCount.text = String("0")
             }
             dayCount.text = (String(timeUntilWater))
         }
         else
         {
-            let timeUntilFertilizer = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextFertilizerDate!).day! - 1
+            let timeUntilFertilizer = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextFertilizerDate!).day!
             if(timeUntilFertilizer <= 0)
             {
-                dayCount.text = String(0)
+                dayCount.text = String("0")
             }
             dayCount.text = (String(timeUntilFertilizer))
         }

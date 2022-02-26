@@ -102,6 +102,7 @@ class plantEditViewController: UIViewController
         dismissDetail()
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plants[dex].plantID! + "Water"])
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plants[dex].plantID! + "Fertilizer"])
+        removePlant(atIndexPath: [dex])
         debugPrint("Deleted !!!!")
     }
 }

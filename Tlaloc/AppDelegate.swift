@@ -12,15 +12,19 @@ import UserNotifications
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //request notification access when app starts up, only needing to be confirmed once
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                print("All set!")
+                print("Notifications Allowed")
             } else if let error = error {
                 print(error.localizedDescription)
             }
         }
+        
         return true
     }
 

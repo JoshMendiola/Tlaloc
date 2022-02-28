@@ -337,6 +337,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tlaloc/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used to set profile photos for your plants";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To upload photos of your plants";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to set profile photos for your plants";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -348,7 +349,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jmendiola.Tlaloc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -368,6 +369,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tlaloc/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used to set profile photos for your plants";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To upload photos of your plants";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to set profile photos for your plants";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -379,7 +381,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jmendiola.Tlaloc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

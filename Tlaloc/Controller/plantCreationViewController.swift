@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-
+import AVFoundation
 
 
 class plantCreationViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
@@ -17,7 +17,9 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     @IBOutlet weak var waterDayCount: UITextField!
     @IBOutlet weak var fertilizerDayCount: UITextField!
     @IBOutlet weak var plantCreationBtn: UIButton!
-    
+    @IBOutlet weak var plantImage: UIImageView!
+    @IBOutlet weak var chooseImgBtn: UIButton!
+    var currentImage: UIImage = UIImage(named: "pixelplant")!
     //handles viewcontroller presentation
     override func viewDidLoad()
     {
@@ -27,10 +29,19 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         plantSpecies.delegate = self
         waterDayCount.delegate = self
         fertilizerDayCount.delegate = self
-        waterDayCount.layer.cornerRadius = 5.0
-        fertilizerDayCount.layer.cornerRadius = 5.0
-        plantName.layer.cornerRadius = 8.0
-        plantSpecies.layer.cornerRadius = 8.0
+        waterDayCount.layer.cornerRadius = 10.0
+        fertilizerDayCount.layer.cornerRadius = 10.0
+        plantName.layer.cornerRadius = 10.0
+        plantSpecies.layer.cornerRadius = 10.0
+        plantImage.layer.cornerRadius = 10.0
+        currentImage = UIImage(named: "pixelplant")!
+        plantImage.image = currentImage
+        chooseImgBtn.layer.cornerRadius = 10.0
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
     }
     
     //checks if the current inputs into each spot is valid
@@ -101,8 +112,6 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         debugPrint(futureFertilizerDate, futureWaterDate)
         
         return (futureFertilizerDate, futureWaterDate)
-        
-        
     }
 }
 
@@ -188,5 +197,75 @@ extension plantCreationViewController
         func randomString(length: Int) -> String {
           let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
           return String((0..<length).map{ _ in letters.randomElement()! })
+        }
+}
+
+//handles the camera and photo library
+extension plantCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
+    //handles what happens if the choose image button is pressed
+    @IBAction func chooseImgBtnWasPressed(_ sender: Any)
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.camera)
+        {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .camera
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        else
+        {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            print("Camera not available so we will use photo library instead")
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    //sets the image with the new one taken
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+        {
+            let possibleImage = info[.editedImage] as? UIImage
+            currentImage = possibleImage!
+            debugPrint("setting image!")
+            plantImage.image = currentImage
+            self.dismiss(animated: true, completion: nil)
+        }
+    
+    func presentCameraSettings()
+    {
+        let alertController = UIAlertController(title: "Error",message: "Camera access is denied", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alertController.addAction(UIAlertAction(title: "Settings", style: .cancel) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { _ in
+                    // Handle
+                })
+            }
+        })
+        
+    }
+        func checkCameraAccess() {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .denied:
+                print("Denied, request permission from settings")
+                presentCameraSettings()
+            case .restricted:
+                print("Restricted, device owner must approve")
+            case .authorized:
+                print("Authorized, proceed")
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { success in
+                    if success {
+                        print("Permission granted, proceed")
+                    } else {
+                        print("Permission denied")
+                    }
+                }
+            @unknown default:
+                return
+            }
         }
 }

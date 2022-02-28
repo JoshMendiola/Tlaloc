@@ -29,11 +29,11 @@ class plantEditViewController: UIViewController
         super.viewDidLoad()
         self.addDoneButtonOnKeyboard()
         fetchCoreDataObjects()
-        plantNameEditor.layer.cornerRadius = 5.0
-        updateBtn.layer.cornerRadius = 5.0
-        deleteBtn.layer.cornerRadius = 5.0
-        waterDayCount.layer.cornerRadius = 5.0
-        fertilizerDayCount.layer.cornerRadius = 5.0
+        plantNameEditor.layer.cornerRadius = 10.0
+        updateBtn.layer.cornerRadius = 10.0
+        deleteBtn.layer.cornerRadius = 10.0
+        waterDayCount.layer.cornerRadius = 10.0
+        fertilizerDayCount.layer.cornerRadius = 10.0
         plantNameEditor.text = plants[dex].plantName
         waterDayCount.text = String(plants[dex].daysBetweenWater)
         fertilizerDayCount.text = String(plants[dex].daysBetweenFertilizer)
@@ -66,7 +66,7 @@ class plantEditViewController: UIViewController
         plants[dex].plantName = plantNameEditor.text
         plants[dex].daysBetweenWater = Int16(waterDayCount.text!)!
         plants[dex].daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
-        (plants[dex].nextWaterDate,plants[dex].nextFertilizerDate) = calculateNextDate(waterDayCount: plants[dex].daysBetweenWater, fertilizerDayCount: plants[dex].daysBetweenFertilizer)
+        (plants[dex].nextFertilizerDate, plants[dex].nextWaterDate) = calculateNextDate(waterDayCount: plants[dex].daysBetweenWater, fertilizerDayCount: plants[dex].daysBetweenFertilizer)
         
         let waterContent = UNMutableNotificationContent()
         waterContent.title = plants[dex].plantName! + " needs water !"

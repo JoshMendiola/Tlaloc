@@ -278,9 +278,6 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-jC-Hzs">
                                         <rect key="frame" x="125" y="58" width="164" height="50.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="bca-KL-LNr"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="36"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -345,6 +342,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1vz-5o-kT0">
                                                 <rect key="frame" x="25" y="300.5" width="100" height="34"/>
+                                                <color key="backgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="0tM-Bb-Ye5"/>
                                                 </constraints>
@@ -353,6 +351,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q2M-gU-Ety">
                                                 <rect key="frame" x="289" y="300.5" width="100" height="34"/>
+                                                <color key="backgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="vVm-Xb-YZ6"/>
                                                 </constraints>
@@ -404,6 +403,20 @@
                                                     <action selector="updateBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="aI3-uQ-cg9"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-BB-xJ6">
+                                                <rect key="frame" x="201" y="403" width="136.5" height="76"/>
+                                                <color key="backgroundColor" red="0.29411764709999999" green="0.5" blue="0.22122012869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="76" id="pHV-1s-Hhe"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Change Image">
+                                                    <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.29411764709999999" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -411,6 +424,9 @@
                                             <constraint firstItem="0S5-ZD-7xi" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="8gR-Kq-19u"/>
                                             <constraint firstItem="8RK-9p-GKG" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="Bxw-PG-RJ8"/>
                                             <constraint firstAttribute="trailing" secondItem="ohF-dz-Kvz" secondAttribute="trailing" constant="25" id="DRd-xJ-3tx"/>
+                                            <constraint firstItem="d8p-BB-xJ6" firstAttribute="top" secondItem="Q2M-gU-Ety" secondAttribute="bottom" constant="68.5" id="E4u-3p-avr"/>
+                                            <constraint firstItem="d8p-BB-xJ6" firstAttribute="leading" secondItem="elA-jh-oot" secondAttribute="trailing" constant="26" id="F00-Pz-eIB"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d8p-BB-xJ6" secondAttribute="trailing" constant="20" symbolic="YES" id="GHn-BX-eDJ"/>
                                             <constraint firstAttribute="bottom" secondItem="0S5-ZD-7xi" secondAttribute="bottom" constant="80" id="LZJ-yR-xy8"/>
                                             <constraint firstItem="8RK-9p-GKG" firstAttribute="top" secondItem="elA-jh-oot" secondAttribute="bottom" constant="124.5" id="Nh6-7y-CrX"/>
                                             <constraint firstItem="Ca6-8b-XNs" firstAttribute="top" secondItem="Peh-iO-YZh" secondAttribute="top" constant="40" id="T4w-Wx-zMR"/>
@@ -517,6 +533,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F1Y-d1-7Gs">
                                                 <rect key="frame" x="274" y="471" width="130" height="35"/>
+                                                <color key="backgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="Pfb-32-4dU"/>
                                                     <constraint firstAttribute="height" constant="35" id="xya-nN-s5n"/>
@@ -526,6 +543,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-kp-hu7">
                                                 <rect key="frame" x="10" y="471" width="130" height="35"/>
+                                                <color key="backgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="qUG-BE-gT9"/>
                                                     <constraint firstAttribute="width" constant="130" id="yx2-dV-PMr"/>
@@ -566,8 +584,8 @@
                                                     <constraint firstAttribute="height" constant="60" id="6vQ-Nq-eFg"/>
                                                 </constraints>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pixelplant" translatesAutoresizingMaskIntoConstraints="NO" id="vVQ-Vk-M7w">
-                                                <rect key="frame" x="142" y="556" width="130" height="141"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="plantImage" image="pencil.tip.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vVQ-Vk-M7w">
+                                                <rect key="frame" x="142" y="556.5" width="130" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="ANg-sr-Xz4"/>
                                                     <constraint firstAttribute="height" constant="141" id="soT-kb-BpJ"/>
@@ -583,6 +601,9 @@
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" red="0.72526999079999999" green="0.27350834870000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="chooseImgBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="dKM-jE-Zck"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96862745098039216" green="0.63921568627450975" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
@@ -709,8 +730,10 @@
                     </view>
                     <size key="freeformSize" width="414" height="933"/>
                     <connections>
+                        <outlet property="chooseImgBtn" destination="x6m-KI-64m" id="kf9-Rb-r6O"/>
                         <outlet property="fertilizerDayCount" destination="F1Y-d1-7Gs" id="MpB-x6-nXp"/>
                         <outlet property="plantCreationBtn" destination="RXD-Cj-c3t" id="1Ds-Gb-Dq5"/>
+                        <outlet property="plantImage" destination="vVQ-Vk-M7w" id="IHF-eL-mKP"/>
                         <outlet property="plantName" destination="vSr-j6-jIw" id="aHL-EP-wXH"/>
                         <outlet property="plantSpecies" destination="PQf-ep-Qbn" id="Kvk-kX-XkI"/>
                         <outlet property="waterDayCount" destination="JzT-kp-hu7" id="Ngb-J0-hbZ"/>
@@ -724,6 +747,7 @@
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
+        <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="pixelplant" width="1300" height="1300"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

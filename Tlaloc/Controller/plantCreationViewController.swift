@@ -208,6 +208,19 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
     @IBAction func chooseImgBtnWasPressed(_ sender: Any)
     {
         checkCameraAccess()
+    }
+    //sets the image with the new one taken
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+        {
+            let possibleImage = info[.editedImage] as? UIImage
+            currentImage = possibleImage!
+            debugPrint("setting image!")
+            plantImage.image = currentImage
+            self.dismiss(animated: true, completion: nil)
+        }
+    
+    func accessAllowed()
+    {
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             let imagePickerController = UIImagePickerController()
@@ -226,16 +239,6 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
             self.present(imagePickerController, animated: true, completion: nil)
         }
     }
-    //sets the image with the new one taken
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-        {
-            let possibleImage = info[.editedImage] as? UIImage
-            currentImage = possibleImage!
-            debugPrint("setting image!")
-            plantImage.image = currentImage
-            self.dismiss(animated: true, completion: nil)
-        }
-    
     //these functions make sure that their is valid camera access to avoid the app crashing in the case the user did not want to take pictures of their plants (for some reason >:( )
     func presentCameraSettings()
     {
@@ -244,14 +247,13 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
         alertController.addAction(UIAlertAction(title: "Settings", style: .cancel) { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: { _ in
-                    // Handle
                 })
             }
         })
-        
+        present(alertController, animated: true, completion: nil)
     }
     func checkCameraAccess() {
-            switch AVCaptureDevice.authorizationStatus(for: .video) {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .denied:
                 print("Denied, request permission from settings")
                 presentCameraSettings()
@@ -259,10 +261,12 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
                 print("Restricted, device owner must approve")
             case .authorized:
                 print("Authorized, proceed")
+                accessAllowed()
             case .notDetermined:
                 AVCaptureDevice.requestAccess(for: .video) { success in
                     if success {
                         print("Permission granted, proceed")
+                        self.accessAllowed()
                     } else {
                         print("Permission denied")
                     }

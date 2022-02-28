@@ -19,7 +19,16 @@ class plantCell: UITableViewCell
     {
         self.plantName.text = plant.plantName
         self.plantSpecies.text = plant.plantSpecies
-        self.plantImage.image = UIImage(data: plant.plantImage!)
+        var img: UIImage
+        if plant.plantImage == nil
+        {
+            img = UIImage(named: "pixelplant")!
+        }
+        else
+        {
+            img = UIImage(data: plant.plantImage!)!
+        }
+        self.plantImage.image = img
         //checks if table should show water count or fertilizer count
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)

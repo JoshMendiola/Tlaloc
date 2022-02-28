@@ -39,7 +39,16 @@ class plantEditViewController: UIViewController
         plantNameEditor.text = plants[dex].plantName
         waterDayCount.text = String(plants[dex].daysBetweenWater)
         fertilizerDayCount.text = String(plants[dex].daysBetweenFertilizer)
-        plantImage.image = UIImage(data: plants[dex].plantImage!)
+        var img: UIImage
+        if plants[dex].plantImage == nil
+        {
+            img = UIImage(named: "pixelplant")!
+        }
+        else
+        {
+            img = UIImage(data: plants[dex].plantImage!)!
+        }
+        self.plantImage.image = img
     }
     
     //grabs the data from the core data system
@@ -206,6 +215,16 @@ extension plantEditViewController: UIImagePickerControllerDelegate, UINavigation
     @IBAction func changeImgBtnWasPressed(_ sender: Any)
     {
         checkCameraAccess()
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+        {
+            let possibleImage = info[.editedImage] as? UIImage
+            plantImage.image = possibleImage!
+            debugPrint("setting image!")
+            self.dismiss(animated: true, completion: nil)
+        }
+    func accessAllowed()
+    {
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             let imagePickerController = UIImagePickerController()
@@ -224,14 +243,6 @@ extension plantEditViewController: UIImagePickerControllerDelegate, UINavigation
             self.present(imagePickerController, animated: true, completion: nil)
         }
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-        {
-            let possibleImage = info[.editedImage] as? UIImage
-            plantImage.image = possibleImage!
-            debugPrint("setting image!")
-            self.dismiss(animated: true, completion: nil)
-        }
-    
     //these functions make sure that their is valid camera access to avoid the app crashing in the case the user did not want to take pictures of their plants (for some reason >:( )
     func presentCameraSettings()
     {
@@ -244,7 +255,7 @@ extension plantEditViewController: UIImagePickerControllerDelegate, UINavigation
                 })
             }
         })
-        
+        present(alertController, animated: true, completion: nil)
     }
     func checkCameraAccess() {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -255,10 +266,12 @@ extension plantEditViewController: UIImagePickerControllerDelegate, UINavigation
                 print("Restricted, device owner must approve")
             case .authorized:
                 print("Authorized, proceed")
+                accessAllowed()
             case .notDetermined:
                 AVCaptureDevice.requestAccess(for: .video) { success in
                     if success {
                         print("Permission granted, proceed")
+                        self.accessAllowed()
                     } else {
                         print("Permission denied")
                     }

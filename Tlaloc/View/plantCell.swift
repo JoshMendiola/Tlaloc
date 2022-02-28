@@ -12,12 +12,14 @@ class plantCell: UITableViewCell
     @IBOutlet weak var plantName: UILabel!
     @IBOutlet weak var plantSpecies: UILabel!
     @IBOutlet weak var dayCount: UILabel!
+    @IBOutlet weak var plantImage: UIImageView!
     
     //configures the cell properly
     func configureCell(plant: PlantInformation, tableChoice: Bool)
     {
         self.plantName.text = plant.plantName
         self.plantSpecies.text = plant.plantSpecies
+        self.plantImage.image = UIImage(data: plant.plantImage!)
         //checks if table should show water count or fertilizer count
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)

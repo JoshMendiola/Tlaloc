@@ -134,6 +134,7 @@ extension plantCreationViewController
         plants.nextWaterDate = futureWaterDate
         plants.nextFertilizerDate = futureFertilizerDate
         plants.plantID = randomString(length: 8)
+        plants.plantImage = currentImage.pngData()
         
         //attempts to save, throwing an error if there is a failure
         do
@@ -206,6 +207,7 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
     //handles what happens if the choose image button is pressed
     @IBAction func chooseImgBtnWasPressed(_ sender: Any)
     {
+        checkCameraAccess()
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             let imagePickerController = UIImagePickerController()
@@ -234,6 +236,7 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
             self.dismiss(animated: true, completion: nil)
         }
     
+    //these functions make sure that their is valid camera access to avoid the app crashing in the case the user did not want to take pictures of their plants (for some reason >:( )
     func presentCameraSettings()
     {
         let alertController = UIAlertController(title: "Error",message: "Camera access is denied", preferredStyle: .alert)
@@ -247,7 +250,7 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
         })
         
     }
-        func checkCameraAccess() {
+    func checkCameraAccess() {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .denied:
                 print("Denied, request permission from settings")

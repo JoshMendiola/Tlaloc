@@ -145,7 +145,7 @@
                                                                 <constraint firstAttribute="width" constant="71" id="Oe9-R6-5VH"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pixelplant" translatesAutoresizingMaskIntoConstraints="NO" id="3OS-uW-d76">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pixelplant" translatesAutoresizingMaskIntoConstraints="NO" id="3OS-uW-d76">
                                                             <rect key="frame" x="20" y="11.5" width="65" height="83.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,6 +179,7 @@
                                                 <color key="backgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="dayCount" destination="0Fj-oU-jaS" id="X8Q-ge-xSn"/>
+                                                    <outlet property="plantImage" destination="3OS-uW-d76" id="UBq-fy-j5l"/>
                                                     <outlet property="plantName" destination="DLa-g2-Plv" id="zRY-CD-oKA"/>
                                                     <outlet property="plantSpecies" destination="ovg-pm-69l" id="enJ-4m-MEq"/>
                                                 </connections>
@@ -416,6 +417,9 @@
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="changeImgBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="TZW-bh-3aj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.29411764709999999" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -480,6 +484,7 @@
                     <connections>
                         <outlet property="deleteBtn" destination="0S5-ZD-7xi" id="JJX-HY-hRN"/>
                         <outlet property="fertilizerDayCount" destination="Q2M-gU-Ety" id="nPQ-IX-gGK"/>
+                        <outlet property="plantImage" destination="elA-jh-oot" id="9mN-tx-fRS"/>
                         <outlet property="plantNameEditor" destination="hsp-rT-qeZ" id="3h7-BG-GsI"/>
                         <outlet property="updateBtn" destination="8RK-9p-GKG" id="O34-Eo-9CK"/>
                         <outlet property="waterDayCount" destination="1vz-5o-kT0" id="qIf-Pp-mF5"/>

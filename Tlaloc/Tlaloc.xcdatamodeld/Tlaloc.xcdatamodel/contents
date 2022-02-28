@@ -3,6 +3,7 @@
     <entity name="PlantInformation" representedClassName="PlantInformation" syncable="YES" codeGenerationType="class">
         <attribute name="daysBetweenFertilizer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="daysBetweenWater" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="needsFertilizer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="nextFertilizerDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="nextWaterDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="plantID" optional="YES" attributeType="String"/>
@@ -11,6 +12,6 @@
         <attribute name="plantSpecies" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>

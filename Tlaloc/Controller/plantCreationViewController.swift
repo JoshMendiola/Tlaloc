@@ -19,7 +19,10 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     @IBOutlet weak var plantCreationBtn: UIButton!
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var chooseImgBtn: UIButton!
+    @IBOutlet weak var needsFertilizerBtn: UISwitch!
     var currentImage: UIImage = UIImage(named: "pixelplant")!
+    var fertilizerAllowed: Bool = true
+    
     //handles viewcontroller presentation
     override func viewDidLoad()
     {
@@ -35,6 +38,7 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         plantSpecies.layer.cornerRadius = 10.0
         plantImage.layer.cornerRadius = 10.0
         currentImage = UIImage(named: "pixelplant")!
+        fertilizerAllowed = true
         plantImage.image = currentImage
         chooseImgBtn.layer.cornerRadius = 10.0
     }
@@ -47,9 +51,16 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     //checks if the current inputs into each spot is valid
     func inputIsValid() -> Bool
     {
-        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && fertilizerDayCount.text != "" && fertilizerDayCount.text != "" && Int(waterDayCount.text!)! > 0 && Int(fertilizerDayCount.text!)! > 0
+        if plantName.text != "" && plantSpecies.text != "" && waterDayCount.text != "" && Int16(waterDayCount.text!)! > 0
         {
-            return true
+            if(fertilizerAllowed == false)
+            {
+                return true
+            }
+            else if fertilizerAllowed == true && fertilizerDayCount.text != "" && Int16(fertilizerDayCount.text!)! > 0
+            {
+                return true
+            }
         }
         plantCreationBtn.alpha = 0.5
         return false
@@ -98,6 +109,26 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
             }
         }
     }
+    @IBAction func needsFertilizerBtnWasPressed(_ sender: Any)
+    {
+        if needsFertilizerBtn.isOn
+        {
+            fertilizerDayCount.alpha = 1.0
+            fertilizerDayCount.isUserInteractionEnabled = true
+            fertilizerAllowed = true
+        }
+        else
+        {
+            fertilizerDayCount.alpha = 0.5
+            fertilizerDayCount.isUserInteractionEnabled = false
+            fertilizerDayCount.text = ""
+            fertilizerAllowed = false
+        }
+        if inputIsValid()
+        {
+            plantCreationBtn.alpha = 1.0
+        }
+    }
     
     //calculates the next date to be counted down to
     func calculateNextDate(waterDayCount: Int16, fertilizerDayCount: Int16) -> (Date?, Date?)
@@ -129,7 +160,19 @@ extension plantCreationViewController
         plants.plantName = plantName.text
         plants.plantSpecies = plantSpecies.text
         plants.daysBetweenWater = Int16(waterDayCount.text!)!
-        plants.daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
+        
+        //checks if plant needs fertilizer or not
+        if fertilizerDayCount.text != ""
+        {
+            plants.daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
+            plants.needsFertilizer = true
+        }
+        else
+        {
+            plants.needsFertilizer = false
+        }
+        
+        //continues inputting values further into coredata set
         let (futureFertilizerDate,futureWaterDate) = calculateNextDate(waterDayCount: plants.daysBetweenWater, fertilizerDayCount: plants.daysBetweenFertilizer)
         plants.nextWaterDate = futureWaterDate
         plants.nextFertilizerDate = futureFertilizerDate
@@ -155,19 +198,23 @@ extension plantCreationViewController
         waterContent.sound = UNNotificationSound.default
         let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureWaterDate!), repeats: true)
         
-        //handles the future fertilizer notification doing the same thing
-        let fertilizerContent = UNMutableNotificationContent()
-        fertilizerContent.title = plants.plantName! + " needs fertilizer !"
-        fertilizerContent.subtitle = "Log in now and fertilize your plant"
-        fertilizerContent.sound = UNNotificationSound.default
-        let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureFertilizerDate!), repeats: true)
-
-        //makes both request
+        //makes the water request
         let waterRequest = UNNotificationRequest(identifier: (plants.plantID! + "Water") , content: waterContent, trigger: waterTrigger)
-        let fertilizerRequest = UNNotificationRequest(identifier: (plants.plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
         UNUserNotificationCenter.current().add(waterRequest)
-        UNUserNotificationCenter.current().add(fertilizerRequest)
         
+        if(plants.needsFertilizer == true)
+        {
+            //handles the future fertilizer notification doing the same thing
+            let fertilizerContent = UNMutableNotificationContent()
+            fertilizerContent.title = plants.plantName! + " needs fertilizer !"
+            fertilizerContent.subtitle = "Log in now and fertilize your plant"
+            fertilizerContent.sound = UNNotificationSound.default
+            let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureFertilizerDate!), repeats: true)
+
+            //makes fertilizer request
+            let fertilizerRequest = UNNotificationRequest(identifier: (plants.plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
+            UNUserNotificationCenter.current().add(fertilizerRequest)
+        }
     }
     
     func addDoneButtonOnKeyboard(){

@@ -33,6 +33,7 @@ class plantCell: UITableViewCell
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let currentDate = Calendar.current.date(from: dateComponents)!
+        //checks if the user wants to see the watercount
         if tableChoice == true
         {
             let timeUntilWater = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextWaterDate!).day!
@@ -40,8 +41,17 @@ class plantCell: UITableViewCell
             {
                 dayCount.text = String("0")
             }
-            dayCount.text = (String(timeUntilWater))
+            else
+            {
+                dayCount.text = (String(timeUntilWater))
+            }
         }
+        //checks if the user wants to see fertilizer and the plant does not need to be fertilized
+        else if tableChoice == false && plant.needsFertilizer == false
+        {
+                dayCount.text = ("-")
+        }
+        //checks if the user wants to see fertilizer and the plant DOES need to be fertilized
         else
         {
             let timeUntilFertilizer = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextFertilizerDate!).day!
@@ -49,7 +59,10 @@ class plantCell: UITableViewCell
             {
                 dayCount.text = String("0")
             }
-            dayCount.text = (String(timeUntilFertilizer))
+            else
+            {
+                dayCount.text = (String(timeUntilFertilizer))
+            }
         }
     }
 }

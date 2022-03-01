@@ -423,6 +423,12 @@
                                                     <action selector="changeImgBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="TZW-bh-3aj"/>
                                                 </connections>
                                             </button>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9h-QT-g6t">
+                                                <rect key="frame" x="315" y="342" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="needsFertilizerBtnWasPressed:" destination="Tij-8d-csk" eventType="valueChanged" id="uzT-4u-Bnh"/>
+                                                </connections>
+                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" red="0.29411764709999999" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -433,6 +439,7 @@
                                             <constraint firstItem="d8p-BB-xJ6" firstAttribute="top" secondItem="Q2M-gU-Ety" secondAttribute="bottom" constant="68.5" id="E4u-3p-avr"/>
                                             <constraint firstItem="d8p-BB-xJ6" firstAttribute="leading" secondItem="elA-jh-oot" secondAttribute="trailing" constant="26" id="F00-Pz-eIB"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d8p-BB-xJ6" secondAttribute="trailing" constant="20" symbolic="YES" id="GHn-BX-eDJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="V9h-QT-g6t" secondAttribute="trailing" constant="50" id="HQQ-Lg-QHw"/>
                                             <constraint firstAttribute="bottom" secondItem="0S5-ZD-7xi" secondAttribute="bottom" constant="80" id="LZJ-yR-xy8"/>
                                             <constraint firstItem="8RK-9p-GKG" firstAttribute="top" secondItem="elA-jh-oot" secondAttribute="bottom" constant="124.5" id="Nh6-7y-CrX"/>
                                             <constraint firstItem="Ca6-8b-XNs" firstAttribute="top" secondItem="Peh-iO-YZh" secondAttribute="top" constant="40" id="T4w-Wx-zMR"/>
@@ -440,6 +447,7 @@
                                             <constraint firstItem="hsp-rT-qeZ" firstAttribute="top" secondItem="Ca6-8b-XNs" secondAttribute="bottom" constant="8" symbolic="YES" id="Uy5-Ks-zYg"/>
                                             <constraint firstItem="Q2M-gU-Ety" firstAttribute="top" secondItem="ohF-dz-Kvz" secondAttribute="bottom" constant="9" id="VYS-Jd-YjT"/>
                                             <constraint firstItem="ohF-dz-Kvz" firstAttribute="leading" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="25" id="Y8i-Dz-ukM"/>
+                                            <constraint firstItem="V9h-QT-g6t" firstAttribute="top" secondItem="Q2M-gU-Ety" secondAttribute="bottom" constant="7.5" id="ZB6-F3-ZIc"/>
                                             <constraint firstItem="Ca6-8b-XNs" firstAttribute="centerX" secondItem="Peh-iO-YZh" secondAttribute="centerX" id="daC-43-BHH"/>
                                             <constraint firstItem="elA-jh-oot" firstAttribute="leading" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="45" id="hv8-48-Isf"/>
                                             <constraint firstItem="hsp-rT-qeZ" firstAttribute="leading" secondItem="Peh-iO-YZh" secondAttribute="leading" constant="25" id="jdl-DL-k5v"/>
@@ -488,6 +496,7 @@
                         <outlet property="fertilizerDayCount" destination="Q2M-gU-Ety" id="nPQ-IX-gGK"/>
                         <outlet property="plantImage" destination="elA-jh-oot" id="9mN-tx-fRS"/>
                         <outlet property="plantNameEditor" destination="hsp-rT-qeZ" id="3h7-BG-GsI"/>
+                        <outlet property="plantNeedsFertilizerSwitch" destination="V9h-QT-g6t" id="0FR-fu-0qz"/>
                         <outlet property="updateBtn" destination="8RK-9p-GKG" id="O34-Eo-9CK"/>
                         <outlet property="waterDayCount" destination="1vz-5o-kT0" id="qIf-Pp-mF5"/>
                     </connections>

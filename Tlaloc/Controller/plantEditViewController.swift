@@ -14,12 +14,14 @@ class plantEditViewController: UIViewController
     var plantName: String!
     var plants: [PlantInformation] = []
     var dex: Int!
+    var needsFertilizer: Bool = true
     @IBOutlet weak var plantNameEditor: UITextView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var updateBtn: UIButton!
     @IBOutlet weak var waterDayCount: UITextField!
     @IBOutlet weak var fertilizerDayCount: UITextField!
     @IBOutlet weak var plantImage: UIImageView!
+    @IBOutlet weak var plantNeedsFertilizerSwitch: UISwitch!
     
     //initalizers and viewcontroller presentation
     func initdata(dex: Int)
@@ -40,6 +42,8 @@ class plantEditViewController: UIViewController
         waterDayCount.text = String(plants[dex].daysBetweenWater)
         fertilizerDayCount.text = String(plants[dex].daysBetweenFertilizer)
         var img: UIImage
+        
+        //checks what image to hold for the plant
         if plants[dex].plantImage == nil
         {
             img = UIImage(named: "pixelplant")!
@@ -48,6 +52,21 @@ class plantEditViewController: UIViewController
         {
             img = UIImage(data: plants[dex].plantImage!)!
         }
+        
+        //checks if plant needs fertilizer
+        if plants[dex].needsFertilizer == false
+        {
+            plantNeedsFertilizerSwitch.isOn = false
+            fertilizerDayCount.alpha = 0.5
+            fertilizerDayCount.isUserInteractionEnabled = false
+            fertilizerDayCount.text = ""
+            needsFertilizer = false
+        }
+        else
+        {
+            needsFertilizer = true
+        }
+        
         self.plantImage.image = img
     }
     
@@ -79,7 +98,15 @@ class plantEditViewController: UIViewController
         //resets the core data to the inputted values
         plants[dex].plantName = plantNameEditor.text
         plants[dex].daysBetweenWater = Int16(waterDayCount.text!)!
-        plants[dex].daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
+        plants[dex].needsFertilizer = needsFertilizer
+        if plants[dex].needsFertilizer == false
+        {
+            plants[dex].daysBetweenFertilizer = 500
+        }
+        else
+        {
+            plants[dex].daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
+        }
         (plants[dex].nextFertilizerDate, plants[dex].nextWaterDate) = calculateNextDate(waterDayCount: plants[dex].daysBetweenWater, fertilizerDayCount: plants[dex].daysBetweenFertilizer)
         plants[dex].plantImage = plantImage.image?.pngData()
         
@@ -89,19 +116,20 @@ class plantEditViewController: UIViewController
         waterContent.subtitle = "Log in now and water your plant"
         waterContent.sound = UNNotificationSound.default
         let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
+        let waterRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
+        UNUserNotificationCenter.current().add(waterRequest)
         
         //handles the future fertilizer notification doing the same thing
-        let fertilizerContent = UNMutableNotificationContent()
-        fertilizerContent.title = plants[dex].plantName! + " needs fertilizer !"
-        fertilizerContent.subtitle = "Log in now and fertilize your plant"
-        fertilizerContent.sound = UNNotificationSound.default
-        let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
-
-        //makes both request
-        let waterRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
-        let fertilizerRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
-        UNUserNotificationCenter.current().add(waterRequest)
-        UNUserNotificationCenter.current().add(fertilizerRequest)
+        if plants[dex].needsFertilizer
+        {
+            let fertilizerContent = UNMutableNotificationContent()
+            fertilizerContent.title = plants[dex].plantName! + " needs fertilizer !"
+            fertilizerContent.subtitle = "Log in now and fertilize your plant"
+            fertilizerContent.sound = UNNotificationSound.default
+            let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
+            let fertilizerRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
+            UNUserNotificationCenter.current().add(fertilizerRequest)
+        }
         
         //finally, saves the data
         self.save { (complete) in
@@ -112,6 +140,23 @@ class plantEditViewController: UIViewController
         }
     }
     
+    //handles what occurs when the needs fertilizer btn was switched
+    @IBAction func needsFertilizerBtnWasPressed(_ sender: Any)
+    {
+        if plantNeedsFertilizerSwitch.isOn
+        {
+            fertilizerDayCount.alpha = 1.0
+            fertilizerDayCount.isUserInteractionEnabled = true
+            needsFertilizer = true
+        }
+        else
+        {
+            fertilizerDayCount.alpha = 0.5
+            fertilizerDayCount.isUserInteractionEnabled = false
+            fertilizerDayCount.text = ""
+            needsFertilizer = false
+        }
+    }
     //handles deletion of the plant from the core data system
     @IBAction func deleteBtnWasPressed(_ sender: Any)
     {

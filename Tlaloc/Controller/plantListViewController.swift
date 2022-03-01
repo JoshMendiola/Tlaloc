@@ -164,17 +164,20 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
                 //deletes the previously planned notification
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [self.plants[indexPath.row].plantID! + "Fertilizer"])
                 
-                //schedules next fertilizer notification with the new nextfertilizer date
-                let fertilizerContent = UNMutableNotificationContent()
-                fertilizerContent.title = self.plants[indexPath.row].plantName! + " needs fertilizer !"
-                fertilizerContent.subtitle = "Log in now and fertilize your plant"
-                fertilizerContent.sound = UNNotificationSound.default
-                let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: self.plants[indexPath.row].nextWaterDate!), repeats: true)
-                
-                //makes the notification request
-                let fertilizerRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
-                UNUserNotificationCenter.current().add(fertilizerRequest)
-                
+                //checks if plant needs fertilizer
+                if self.plants[indexPath.row].needsFertilizer
+                {
+                    //schedules next fertilizer notification with the new nextfertilizer date
+                    let fertilizerContent = UNMutableNotificationContent()
+                    fertilizerContent.title = self.plants[indexPath.row].plantName! + " needs fertilizer !"
+                    fertilizerContent.subtitle = "Log in now and fertilize your plant"
+                    fertilizerContent.sound = UNNotificationSound.default
+                    let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: self.plants[indexPath.row].nextWaterDate!), repeats: true)
+                    
+                    //makes the notification request
+                    let fertilizerRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
+                    UNUserNotificationCenter.current().add(fertilizerRequest)
+                }
                 //reloads the table
                 self.fetchCoreDataObjects()
                 tableView.reloadData()
@@ -190,7 +193,6 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
             }
             return UISwipeActionsConfiguration(actions: [resetAction])
         }
-        
     }
     
     //this handles the transition to the editing screen

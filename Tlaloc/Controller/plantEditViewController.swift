@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import AVFoundation
 
-class plantEditViewController: UIViewController
+class plantEditViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
     var plantName: String!
     var plants: [PlantInformation] = []
@@ -32,6 +32,9 @@ class plantEditViewController: UIViewController
     {
         super.viewDidLoad()
         self.addDoneButtonOnKeyboard()
+        waterDayCount.delegate = self
+        fertilizerDayCount.delegate = self
+        plantNameEditor.delegate = self
         fetchCoreDataObjects()
         plantNameEditor.layer.cornerRadius = 10.0
         updateBtn.layer.cornerRadius = 10.0
@@ -91,51 +94,54 @@ class plantEditViewController: UIViewController
     //updates the plant name with the new name put in the name editor
     @IBAction func updateBtnWasPressed(_ sender: Any)
     {
-        //cancels any pending notifications
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plants[dex].plantID! + "Water"])
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plants[dex].plantID! + "Fertilizer"])
-        
-        //resets the core data to the inputted values
-        plants[dex].plantName = plantNameEditor.text
-        plants[dex].daysBetweenWater = Int16(waterDayCount.text!)!
-        plants[dex].needsFertilizer = needsFertilizer
-        if plants[dex].needsFertilizer == false
+        if inputIsValid()
         {
-            plants[dex].daysBetweenFertilizer = 500
-        }
-        else
-        {
-            plants[dex].daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
-        }
-        (plants[dex].nextFertilizerDate, plants[dex].nextWaterDate) = calculateNextDate(waterDayCount: plants[dex].daysBetweenWater, fertilizerDayCount: plants[dex].daysBetweenFertilizer)
-        plants[dex].plantImage = plantImage.image?.pngData()
-        
-        //handles the water notification, setting up for future notifications from this point
-        let waterContent = UNMutableNotificationContent()
-        waterContent.title = plants[dex].plantName! + " needs water !"
-        waterContent.subtitle = "Log in now and water your plant"
-        waterContent.sound = UNNotificationSound.default
-        let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
-        let waterRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
-        UNUserNotificationCenter.current().add(waterRequest)
-        
-        //handles the future fertilizer notification doing the same thing
-        if plants[dex].needsFertilizer
-        {
-            let fertilizerContent = UNMutableNotificationContent()
-            fertilizerContent.title = plants[dex].plantName! + " needs fertilizer !"
-            fertilizerContent.subtitle = "Log in now and fertilize your plant"
-            fertilizerContent.sound = UNNotificationSound.default
-            let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
-            let fertilizerRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
-            UNUserNotificationCenter.current().add(fertilizerRequest)
-        }
-        
-        //finally, saves the data
-        self.save { (complete) in
-            if complete
+            //cancels any pending notifications
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plants[dex].plantID! + "Water"])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [plants[dex].plantID! + "Fertilizer"])
+            
+            //resets the core data to the inputted values
+            plants[dex].plantName = plantNameEditor.text
+            plants[dex].daysBetweenWater = Int16(waterDayCount.text!)!
+            plants[dex].needsFertilizer = needsFertilizer
+            if plants[dex].needsFertilizer == false
             {
-                dismissDetail()
+                plants[dex].daysBetweenFertilizer = 500
+            }
+            else
+            {
+                plants[dex].daysBetweenFertilizer = Int16(fertilizerDayCount.text!)!
+            }
+            (plants[dex].nextFertilizerDate, plants[dex].nextWaterDate) = calculateNextDate(waterDayCount: plants[dex].daysBetweenWater, fertilizerDayCount: plants[dex].daysBetweenFertilizer)
+            plants[dex].plantImage = plantImage.image?.pngData()
+            
+            //handles the water notification, setting up for future notifications from this point
+            let waterContent = UNMutableNotificationContent()
+            waterContent.title = plants[dex].plantName! + " needs water !"
+            waterContent.subtitle = "Log in now and water your plant"
+            waterContent.sound = UNNotificationSound.default
+            let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
+            let waterRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
+            UNUserNotificationCenter.current().add(waterRequest)
+            
+            //handles the future fertilizer notification doing the same thing
+            if plants[dex].needsFertilizer
+            {
+                let fertilizerContent = UNMutableNotificationContent()
+                fertilizerContent.title = plants[dex].plantName! + " needs fertilizer !"
+                fertilizerContent.subtitle = "Log in now and fertilize your plant"
+                fertilizerContent.sound = UNNotificationSound.default
+                let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
+                let fertilizerRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
+                UNUserNotificationCenter.current().add(fertilizerRequest)
+            }
+            
+            //finally, saves the data
+            self.save { (complete) in
+                if complete
+                {
+                    dismissDetail()
+                }
             }
         }
     }
@@ -147,6 +153,7 @@ class plantEditViewController: UIViewController
         {
             fertilizerDayCount.alpha = 1.0
             fertilizerDayCount.isUserInteractionEnabled = true
+            fertilizerDayCount.text = "30"
             needsFertilizer = true
         }
         else
@@ -155,6 +162,11 @@ class plantEditViewController: UIViewController
             fertilizerDayCount.isUserInteractionEnabled = false
             fertilizerDayCount.text = ""
             needsFertilizer = false
+        }
+        
+        if inputIsValid()
+        {
+           updateBtn.alpha = 1.0
         }
     }
     //handles deletion of the plant from the core data system
@@ -166,7 +178,38 @@ class plantEditViewController: UIViewController
         removePlant(atIndexPath: [dex])
         debugPrint("Deleted !!!!")
     }
+    
+    
+    //these check to make sure no null inputs are inserted into the system
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if inputIsValid()
+        {
+            updateBtn.alpha = 1.0
+        }
+        else
+        {
+            updateBtn.alpha = 0.5
+        }
+    }
+    //changes button alpha to let user know if they can update their plant
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        if inputIsValid()
+        {
+            updateBtn.alpha = 1.0
+        }
+        else
+        {
+            updateBtn.alpha = 0.5
+        }
+    }
 }
+
+
+
+
+
 extension plantEditViewController
 {
     func removePlant(atIndexPath indexPath: IndexPath)
@@ -251,7 +294,30 @@ extension plantEditViewController
         waterDayCount.resignFirstResponder()
         fertilizerDayCount.resignFirstResponder()
     }
+    
+    func inputIsValid() -> Bool
+    {
+        if plantNameEditor.text != "" && waterDayCount.text != "" && Int16(waterDayCount.text!)! > 0
+        {
+            if(needsFertilizer == false)
+            {
+                return true
+            }
+            else if needsFertilizer == true && fertilizerDayCount.text != "" && Int16(fertilizerDayCount.text!)! > 0
+            {
+                return true
+            }
+        }
+        updateBtn.alpha = 0.5
+        return false
+    }
 }
+
+
+
+
+
+
 
 //handles the camera and photo library
 

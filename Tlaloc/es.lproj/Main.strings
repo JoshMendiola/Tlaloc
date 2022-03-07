@@ -1,0 +1,108 @@
+
+/* Class = "UILabel"; text = "14"; ObjectID = "0Fj-oU-jaS"; */
+"0Fj-oU-jaS.text" = "14";
+
+/* Class = "UIButton"; configuration.title = "Delete Plant"; ObjectID = "0S5-ZD-7xi"; */
+"0S5-ZD-7xi.configuration.title" = "Borra tu planta";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0S5-ZD-7xi"; */
+"0S5-ZD-7xi.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "TLALOC"; ObjectID = "1HE-jC-Hzs"; */
+"1HE-jC-Hzs.text" = "TLALOC";
+
+/* Class = "UILabel"; text = "Days between fertilizing"; ObjectID = "2c0-dI-w6l"; */
+"2c0-dI-w6l.text" = "Días entre fertilizaciónes";
+
+/* Class = "UISegmentedControl"; 38D-u6-e73.segmentTitles[0] = "Water"; ObjectID = "38D-u6-e73"; */
+"38D-u6-e73.segmentTitles[0]" = "Aqua";
+
+/* Class = "UISegmentedControl"; 38D-u6-e73.segmentTitles[1] = "Fertilizer"; ObjectID = "38D-u6-e73"; */
+"38D-u6-e73.segmentTitles[1]" = "Fertilizante";
+
+/* Class = "UILabel"; text = "Days between Waterings"; ObjectID = "3Ts-0P-b9C"; */
+"3Ts-0P-b9C.text" = "Días entre riegos";
+
+/* Class = "UIButton"; configuration.title = "Update"; ObjectID = "8RK-9p-GKG"; */
+"8RK-9p-GKG.configuration.title" = "Actualizer";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8RK-9p-GKG"; */
+"8RK-9p-GKG.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Days between fertilizer"; ObjectID = "9Hs-fm-z7x"; */
+"9Hs-fm-z7x.text" = "Días entre fertilizaciónes";
+
+/* Class = "UILabel"; text = "Plant name"; ObjectID = "Ca6-8b-XNs"; */
+"Ca6-8b-XNs.text" = "Nombre de planta";
+
+/* Class = "UILabel"; text = "Luis"; ObjectID = "DLa-g2-Plv"; */
+"DLa-g2-Plv.text" = "Luis";
+
+/* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "IE2-8d-yAi"; */
+"IE2-8d-yAi.text" = "Horarios de la planta";
+
+/* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "Ieo-jD-GeJ"; */
+"Ieo-jD-GeJ.text" = "Horarios de la planta";
+
+/* Class = "UILabel"; text = "What is your plants name ?"; ObjectID = "Jae-2B-nMR"; */
+"Jae-2B-nMR.text" = " ¿Como se llama tu planta?";
+
+/* Class = "UILabel"; text = "What is your plants species ?"; ObjectID = "KFN-bP-FSy"; */
+"KFN-bP-FSy.text" = "¿Cual es la especie de tu planta?";
+
+/* Class = "UILabel"; text = "TLALOC"; ObjectID = "LTx-p3-gSm"; */
+"LTx-p3-gSm.text" = "TLALOC";
+
+/* Class = "UILabel"; text = "Species:"; ObjectID = "Mcy-1b-F2p"; */
+"Mcy-1b-F2p.text" = "Especies:";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "OWD-Gc-2R7"; */
+"OWD-Gc-2R7.text" = "Nombre:";
+
+/* Class = "UITextView"; text = "Plant Species"; ObjectID = "PQf-ep-Qbn"; */
+"PQf-ep-Qbn.text" = "Especies de planta";
+
+/* Class = "UIButton"; configuration.title = "Add Plant"; ObjectID = "RXD-Cj-c3t"; */
+"RXD-Cj-c3t.configuration.title" = "Añadir";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RXD-Cj-c3t"; */
+"RXD-Cj-c3t.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "TLALOC"; ObjectID = "SZ9-V0-3yK"; */
+"SZ9-V0-3yK.text" = "TLALOC";
+
+/* Class = "UIButton"; configuration.title = "Change Image"; ObjectID = "d8p-BB-xJ6"; */
+"d8p-BB-xJ6.configuration.title" = "Cambiar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "d8p-BB-xJ6"; */
+"d8p-BB-xJ6.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Days between water"; ObjectID = "eHI-o8-jv5"; */
+"eHI-o8-jv5.text" = "Días entre riegos";
+
+/* Class = "UILabel"; text = "You have no plants registered"; ObjectID = "fRI-ti-DOP"; */
+"fRI-ti-DOP.text" = "No tienes plantas registradas";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gBR-KD-Tah"; */
+"gBR-KD-Tah.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "j3N-sv-8YT"; */
+"j3N-sv-8YT.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "mlM-JS-axS"; */
+"mlM-JS-axS.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Desert Gem Cacti"; ObjectID = "ovg-pm-69l"; */
+"ovg-pm-69l.text" = "Desert Gem Cacti";
+
+/* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "rOH-Ix-O2d"; */
+"rOH-Ix-O2d.text" = "Horarios de planta";
+
+/* Class = "UITextView"; text = "Plant Name"; ObjectID = "vSr-j6-jIw"; */
+"vSr-j6-jIw.text" = "Nombre de planta";
+
+/* Class = "UIButton"; configuration.title = "Choose Image"; ObjectID = "x6m-KI-64m"; */
+"x6m-KI-64m.configuration.title" = "Cambiar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "x6m-KI-64m"; */
+"x6m-KI-64m.normalTitle" = "Button";

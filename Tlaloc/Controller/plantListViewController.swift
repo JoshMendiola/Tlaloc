@@ -18,6 +18,7 @@ class plantListViewController: UIViewController
     private var tableDecision: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedController: segmentedControllerExt!
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -25,7 +26,7 @@ class plantListViewController: UIViewController
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = false
-        
+        segmentedController.defaultConfiguration()
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool)
@@ -117,6 +118,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let currentDate = Calendar.current.date(from: dateComponents)!
+        
         //true equaling the water choice, this calculates the amount of days until the upcoming water date and resets the day counter to the distance to the upcoming date
         if(tableDecision == true)
         {
@@ -138,6 +140,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
                 //makes the notification request
                 let waterRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
                 UNUserNotificationCenter.current().add(waterRequest)
+                
                 //reloads the table
                 self.fetchCoreDataObjects()
                 tableView.reloadData()

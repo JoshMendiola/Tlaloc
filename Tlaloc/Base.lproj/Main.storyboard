@@ -91,7 +91,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-Go-6J1">
-                                                            <rect key="frame" x="105" y="25" width="171" height="62.5"/>
+                                                            <rect key="frame" x="105" y="25" width="199" height="62.5"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleAspectFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="EJ7-8L-Lua">
                                                                     <rect key="frame" x="0.0" y="0.0" width="97.5" height="24.5"/>
@@ -115,7 +115,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleAspectFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="k9f-91-nfR">
-                                                                    <rect key="frame" x="0.0" y="38.5" width="171" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="38.5" width="199" height="24"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Species:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcy-1b-F2p">
                                                                             <rect key="frame" x="0.0" y="0.0" width="55" height="24"/>
@@ -124,8 +124,8 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desert Gem Cacti" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-pm-69l">
-                                                                            <rect key="frame" x="66" y="0.0" width="105" height="24"/>
-                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="15"/>
+                                                                            <rect key="frame" x="66" y="0.0" width="133" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="19"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -186,7 +186,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38D-u6-e73">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" restorationIdentifier="segmentedController" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38D-u6-e73" customClass="segmentedControllerExt" customModule="Tlaloc" customModuleProvider="target">
                                         <rect key="frame" x="10" y="20" width="394" height="32"/>
                                         <segments>
                                             <segment title="Water"/>
@@ -232,6 +232,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="segmentedController" destination="38D-u6-e73" id="p9d-tX-X32"/>
                         <outlet property="tableView" destination="DGO-IT-ydu" id="Qdt-R3-Q9i"/>
                     </connections>
                 </viewController>
@@ -369,7 +370,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="unJ-cT-gv3"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="25"/>
+                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="28"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -378,7 +379,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="4pB-T5-HGS"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="25"/>
+                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="27"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -584,7 +585,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days between Waterings" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ts-0P-b9C">
                                                         <rect key="frame" x="0.0" y="0.0" width="192" height="60"/>
-                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -593,7 +594,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="lso-rW-sw4"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -683,15 +684,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-Cj-c3t">
-                                        <rect key="frame" x="319.5" y="133" width="86.5" height="31"/>
+                                        <rect key="frame" x="319.5" y="116" width="87.5" height="48"/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="RXD-Cj-c3t" secondAttribute="height" multiplier="86:31" id="Ydx-Ws-FPK"/>
+                                            <constraint firstAttribute="width" secondItem="RXD-Cj-c3t" secondAttribute="height" multiplier="86:31" constant="-46.161290322580669" id="Ydx-Ws-FPK"/>
                                         </constraints>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add Plant">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.97254908080000002" green="0.83529412749999998" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
@@ -736,7 +737,7 @@
                                     <constraint firstItem="gBR-KD-Tah" firstAttribute="leading" secondItem="mZu-fB-wjd" secondAttribute="leading" constant="8" id="WNb-YD-ddG"/>
                                     <constraint firstAttribute="bottom" secondItem="Ieo-jD-GeJ" secondAttribute="bottom" constant="5" id="pjj-qa-5Rp"/>
                                     <constraint firstAttribute="bottom" secondItem="gBR-KD-Tah" secondAttribute="bottom" constant="8" id="sDz-25-Hzv"/>
-                                    <constraint firstAttribute="trailing" secondItem="RXD-Cj-c3t" secondAttribute="trailing" constant="8" id="xlT-0M-Eo8"/>
+                                    <constraint firstAttribute="trailing" secondItem="RXD-Cj-c3t" secondAttribute="trailing" constant="7" id="xlT-0M-Eo8"/>
                                     <constraint firstItem="Ieo-jD-GeJ" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="xov-Lu-sZ5"/>
                                 </constraints>
                             </view>

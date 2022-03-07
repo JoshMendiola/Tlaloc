@@ -30,8 +30,6 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         self.addDoneButtonOnKeyboard()
         plantName.delegate = self
         plantSpecies.delegate = self
-        plantName.text = String(localized: "Plant Name")
-        plantSpecies.text = String(localized: "Plant Species")
         waterDayCount.delegate = self
         fertilizerDayCount.delegate = self
         waterDayCount.layer.cornerRadius = 10.0

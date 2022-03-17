@@ -25,7 +25,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="TcC-pm-tBf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -329,14 +329,14 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-ZD-7xi">
                                                 <rect key="frame" x="60" y="727" width="294" height="60"/>
+                                                <color key="backgroundColor" red="0.72526999079999999" green="0.27350834870000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="TEG-DB-LSe"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Delete Plant">
+                                                <buttonConfiguration key="configuration" style="plain" title="Delete Plant">
                                                     <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="29"/>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.72526999080882348" green="0.27350834865196078" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="deleteBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="gQS-ve-MIc"/>
@@ -425,16 +425,15 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-BB-xJ6">
                                                 <rect key="frame" x="201" y="403" width="136.5" height="76"/>
-                                                <color key="backgroundColor" red="0.29411764709999999" green="0.5" blue="0.22122012869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.92156863209999995" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="76" id="pHV-1s-Hhe"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Change Image">
+                                                <buttonConfiguration key="configuration" style="plain" title="Change Image">
                                                     <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="changeImgBtnWasPressed:" destination="Tij-8d-csk" eventType="touchUpInside" id="TZW-bh-3aj"/>
@@ -508,6 +507,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeImgBtn" destination="d8p-BB-xJ6" id="d0R-vI-vB0"/>
                         <outlet property="deleteBtn" destination="0S5-ZD-7xi" id="JJX-HY-hRN"/>
                         <outlet property="fertilizerDayCount" destination="Q2M-gU-Ety" id="nPQ-IX-gGK"/>
                         <outlet property="plantImage" destination="elA-jh-oot" id="9mN-tx-fRS"/>
@@ -700,17 +700,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-Cj-c3t">
-                                        <rect key="frame" x="310" y="105" width="97" height="59"/>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="297" y="102" width="111" height="62"/>
+                                        <color key="backgroundColor" red="0.72526999079999999" green="0.27350834870000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="RXD-Cj-c3t" secondAttribute="height" multiplier="86:31" constant="-66.677419354838719" id="Ydx-Ws-FPK"/>
+                                            <constraint firstAttribute="width" secondItem="RXD-Cj-c3t" secondAttribute="height" multiplier="86:31" constant="-61" id="Ydx-Ws-FPK"/>
                                         </constraints>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Add Plant" cornerStyle="fixed">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Add Plant" cornerStyle="fixed">
+                                            <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="22"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="createPlantBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="fGE-v0-sVb"/>
@@ -746,14 +745,14 @@
                                 <constraints>
                                     <constraint firstItem="Ieo-jD-GeJ" firstAttribute="top" secondItem="LTx-p3-gSm" secondAttribute="bottom" constant="4.5" id="66T-cz-5Tr"/>
                                     <constraint firstItem="LTx-p3-gSm" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="8Kf-nX-sgS"/>
-                                    <constraint firstItem="RXD-Cj-c3t" firstAttribute="leading" secondItem="Ieo-jD-GeJ" secondAttribute="trailing" constant="26.5" id="C1F-E5-Oxx"/>
+                                    <constraint firstItem="RXD-Cj-c3t" firstAttribute="leading" secondItem="Ieo-jD-GeJ" secondAttribute="trailing" constant="13.5" id="C1F-E5-Oxx"/>
                                     <constraint firstAttribute="bottom" secondItem="RXD-Cj-c3t" secondAttribute="bottom" constant="20" symbolic="YES" id="C5D-eL-3be"/>
                                     <constraint firstItem="LTx-p3-gSm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gBR-KD-Tah" secondAttribute="trailing" constant="8" symbolic="YES" id="N0G-O9-AOQ"/>
                                     <constraint firstItem="gBR-KD-Tah" firstAttribute="width" secondItem="gBR-KD-Tah" secondAttribute="height" multiplier="1:1" id="Ps7-OX-eUI"/>
                                     <constraint firstItem="gBR-KD-Tah" firstAttribute="leading" secondItem="mZu-fB-wjd" secondAttribute="leading" constant="8" id="WNb-YD-ddG"/>
                                     <constraint firstAttribute="bottom" secondItem="Ieo-jD-GeJ" secondAttribute="bottom" constant="5" id="pjj-qa-5Rp"/>
                                     <constraint firstAttribute="bottom" secondItem="gBR-KD-Tah" secondAttribute="bottom" constant="8" id="sDz-25-Hzv"/>
-                                    <constraint firstAttribute="trailing" secondItem="RXD-Cj-c3t" secondAttribute="trailing" constant="7" id="xlT-0M-Eo8"/>
+                                    <constraint firstAttribute="trailing" secondItem="RXD-Cj-c3t" secondAttribute="trailing" constant="6" id="xlT-0M-Eo8"/>
                                     <constraint firstItem="Ieo-jD-GeJ" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="xov-Lu-sZ5"/>
                                 </constraints>
                             </view>
@@ -784,46 +783,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1j-ur-Rsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="63"/>
+            <point key="canvasLocation" x="702.89855072463774" y="62.946428571428569"/>
         </scene>
         <!--Plant About View Controller-->
         <scene sceneID="B1b-aX-5z4">
             <objects>
                 <viewController storyboardIdentifier="plantAboutViewController" id="C6z-ph-Vmz" customClass="plantAboutViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ws-yR-MLM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhO-Vl-eyR">
-                                <rect key="frame" x="0.0" y="161" width="414" height="1139"/>
+                                <rect key="frame" x="0.0" y="161" width="414" height="835"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-4E-cmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Indigenous people need your help !" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q8C-Y3-kCY">
-                                                <rect key="frame" x="14" y="15" width="386" height="585"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8C-Y3-kCY">
+                                                <rect key="frame" x="14" y="15" width="386" height="685"/>
+                                                <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <mutableString key="text">Rated a 92.82 on CharityNavigator.org, PlantWithPurpose serves impoverished indigenous communities in Mexico, empowering them to send thier children to schools, pay for healthcare, and allowing them to live without fear of having to leave to find better work opportunities. Over 75% of indigenous communtiies in mexico struggle with poverty, and a donation to an organization such as this would mean a lot to me, the developer. This app is free and will always remain free, I only ask for you to click the link at the bottom and consider giving any sum, big or small, to a cause as noble and humanitarian as this.</mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMf-PT-CLH">
-                                                <rect key="frame" x="30" y="618" width="354" height="42"/>
+                                                <rect key="frame" x="30" y="718" width="354" height="42"/>
                                                 <color key="backgroundColor" red="0.92156863209999995" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Donate Now">
                                                     <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="23"/>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="donateBtnWasPressed:" destination="C6z-ph-Vmz" eventType="touchUpInside" id="UhI-3S-nep"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App created by: Joshua Mendiola" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJd-hJ-FRi">
-                                                <rect key="frame" x="14" y="691" width="317.5" height="19.5"/>
+                                                <rect key="frame" x="14" y="791" width="317.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art by: Maddi Cybuski" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-uA-mHG">
-                                                <rect key="frame" x="14" y="718" width="212" height="20"/>
+                                                <rect key="frame" x="14" y="818" width="212" height="20"/>
+                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special thanks to: Illeana Montejano, Jenny Doan, Magnolia Westfall, and Yvonne Mendiola" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-CE-3uV">
+                                                <rect key="frame" x="14" y="838" width="386" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="wpp-dy-Op6"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -833,19 +845,23 @@
                                         <constraints>
                                             <constraint firstItem="8PX-uA-mHG" firstAttribute="top" secondItem="AJd-hJ-FRi" secondAttribute="bottom" constant="7.5" id="1tf-P9-YX0"/>
                                             <constraint firstItem="8PX-uA-mHG" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="3GR-Cq-OAt"/>
+                                            <constraint firstItem="L8N-CE-3uV" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="9Z2-AT-aYD"/>
                                             <constraint firstAttribute="trailing" secondItem="vMf-PT-CLH" secondAttribute="trailing" constant="30" id="9j9-Rx-eRP"/>
                                             <constraint firstItem="AJd-hJ-FRi" firstAttribute="top" secondItem="vMf-PT-CLH" secondAttribute="bottom" constant="31" id="Bel-On-lTq"/>
+                                            <constraint firstAttribute="trailing" secondItem="L8N-CE-3uV" secondAttribute="trailing" constant="14" id="C4k-iY-BD0"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8PX-uA-mHG" secondAttribute="trailing" constant="20" symbolic="YES" id="CdX-xF-t6j"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AJd-hJ-FRi" secondAttribute="trailing" constant="20" symbolic="YES" id="E1P-MY-HUL"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="top" secondItem="yqK-4E-cmP" secondAttribute="top" constant="15" id="IEn-wG-j35"/>
+                                            <constraint firstItem="L8N-CE-3uV" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="NIL-e1-z92"/>
                                             <constraint firstAttribute="bottom" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="400" id="VTQ-U8-74p"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="XL5-s0-YyC"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="YAV-jU-lTi"/>
                                             <constraint firstAttribute="trailing" secondItem="Q8C-Y3-kCY" secondAttribute="trailing" constant="14" id="YEO-zd-Yh6"/>
                                             <constraint firstItem="vMf-PT-CLH" firstAttribute="top" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="18" id="dtR-hn-3qd"/>
+                                            <constraint firstItem="L8N-CE-3uV" firstAttribute="top" secondItem="8PX-uA-mHG" secondAttribute="bottom" id="rPK-ZS-wVB"/>
                                             <constraint firstItem="AJd-hJ-FRi" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="reO-5X-YkG"/>
                                             <constraint firstItem="vMf-PT-CLH" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="tjA-jA-LH9"/>
-                                            <constraint firstAttribute="height" constant="1000" id="zOz-pv-lPx"/>
+                                            <constraint firstAttribute="height" constant="1100" id="zOz-pv-lPx"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -917,7 +933,10 @@
                             <constraint firstAttribute="bottom" secondItem="hhO-Vl-eyR" secondAttribute="bottom" constant="-100" id="whP-Zc-z0o"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <connections>
+                        <outlet property="donateBtn" destination="vMf-PT-CLH" id="T2E-Mc-gNN"/>
+                        <outlet property="donationTextView" destination="Q8C-Y3-kCY" id="GVt-U4-wFE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9O-4g-6Wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

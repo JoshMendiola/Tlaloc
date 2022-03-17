@@ -22,6 +22,7 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
     @IBOutlet weak var fertilizerDayCount: UITextField!
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var plantNeedsFertilizerSwitch: UISwitch!
+    @IBOutlet weak var changeImgBtn: UIButton!
     
     //initalizers and viewcontroller presentation
     func initdata(dex: Int)
@@ -37,10 +38,11 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
         plantNameEditor.delegate = self
         fetchCoreDataObjects()
         plantNameEditor.layer.cornerRadius = 10.0
-        updateBtn.layer.cornerRadius = 10.0
-        deleteBtn.layer.cornerRadius = 10.0
+        updateBtn.layer.cornerRadius = 25.0
+        deleteBtn.layer.cornerRadius = 25.0
         waterDayCount.layer.cornerRadius = 10.0
         fertilizerDayCount.layer.cornerRadius = 10.0
+        changeImgBtn.layer.cornerRadius = 25.0
         plantNameEditor.text = plants[dex].plantName
         waterDayCount.text = String(plants[dex].daysBetweenWater)
         fertilizerDayCount.text = String(plants[dex].daysBetweenFertilizer)

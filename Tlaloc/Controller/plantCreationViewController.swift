@@ -40,7 +40,10 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         currentImage = UIImage(named: "pixelplant")!
         fertilizerAllowed = true
         plantImage.image = currentImage
-        chooseImgBtn.layer.cornerRadius = 10.0
+        chooseImgBtn.layer.cornerRadius = 25.0
+        plantCreationBtn.layer.cornerRadius = 15.0
+        plantCreationBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        plantCreationBtn.titleLabel?.minimumScaleFactor = 0.5
     }
     
     override func viewWillAppear(_ animated: Bool)

@@ -53,9 +53,24 @@
                                             <action selector="addPlantBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YA5-gV-jrT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vse-Lk-Lav">
+                                        <rect key="frame" x="19" y="108" width="73" height="38"/>
+                                        <color key="backgroundColor" red="0.92156863209999995" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="About">
+                                            <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="aboutBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pMz-Hu-XJE"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.28627450980392155" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="j3N-sv-8YT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vse-Lk-Lav" secondAttribute="trailing" constant="8" symbolic="YES" id="9P4-Tw-1Pk"/>
+                                    <constraint firstItem="vse-Lk-Lav" firstAttribute="leading" secondItem="9ZO-Q6-Vji" secondAttribute="leading" constant="19" id="9ed-eQ-eiT"/>
+                                    <constraint firstAttribute="bottom" secondItem="vse-Lk-Lav" secondAttribute="bottom" constant="13" id="Ke7-Qp-S99"/>
                                     <constraint firstAttribute="trailing" secondItem="j3N-sv-8YT" secondAttribute="trailing" constant="18" id="Kxm-Ot-wNN"/>
                                     <constraint firstItem="j3N-sv-8YT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IE2-8d-yAi" secondAttribute="trailing" constant="3" id="Loz-CB-j84"/>
                                     <constraint firstItem="IE2-8d-yAi" firstAttribute="top" secondItem="SZ9-V0-3yK" secondAttribute="bottom" constant="4.5" id="OPc-u2-4hm"/>
@@ -232,6 +247,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aboutBtn" destination="vse-Lk-Lav" id="BSM-ac-LKK"/>
                         <outlet property="segmentedController" destination="38D-u6-e73" id="p9d-tX-X32"/>
                         <outlet property="tableView" destination="DGO-IT-ydu" id="Qdt-R3-Q9i"/>
                     </connections>
@@ -239,14 +255,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="t8T-QK-UxA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="16.800000000000001" y="64.285714285714292"/>
+            <point key="canvasLocation" x="15.942028985507248" y="64.285714285714278"/>
         </scene>
         <!--Plant Edit View Controller-->
         <scene sceneID="hra-JQ-Xn7">
             <objects>
                 <viewController storyboardIdentifier="plantEditViewController" id="Tij-8d-csk" customClass="plantEditViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4sK-zi-PKt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1071"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2U-Ei-vQ1">
@@ -306,7 +322,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGH-Aj-iey">
-                                <rect key="frame" x="0.0" y="179" width="414" height="892"/>
+                                <rect key="frame" x="0.0" y="179" width="414" height="717"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Peh-iO-YZh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="867"/>
@@ -491,7 +507,6 @@
                             <constraint firstItem="N2U-Ei-vQ1" firstAttribute="trailing" secondItem="pcf-nN-P1D" secondAttribute="trailing" id="ubZ-jG-ztV"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="1071"/>
                     <connections>
                         <outlet property="deleteBtn" destination="0S5-ZD-7xi" id="JJX-HY-hRN"/>
                         <outlet property="fertilizerDayCount" destination="Q2M-gU-Ety" id="nPQ-IX-gGK"/>
@@ -511,11 +526,11 @@
             <objects>
                 <viewController storyboardIdentifier="plantCreationViewController" id="A0h-SC-sMI" customClass="plantCreationViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Pl-Dl-51g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="933"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43Q-az-8oy">
-                                <rect key="frame" x="0.0" y="184" width="414" height="789"/>
+                                <rect key="frame" x="0.0" y="184" width="414" height="752"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzp-lD-z0J">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="917"/>
@@ -756,7 +771,6 @@
                             <constraint firstItem="43Q-az-8oy" firstAttribute="top" secondItem="Ay3-el-dg8" secondAttribute="top" constant="140" id="UTH-yL-7Ln"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="933"/>
                     <connections>
                         <outlet property="chooseImgBtn" destination="x6m-KI-64m" id="kf9-Rb-r6O"/>
                         <outlet property="fertilizerDayCount" destination="F1Y-d1-7Gs" id="MpB-x6-nXp"/>
@@ -770,29 +784,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1j-ur-Rsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813" y="75"/>
+            <point key="canvasLocation" x="703" y="63"/>
         </scene>
-        <!--View Controller-->
+        <!--Plant About View Controller-->
         <scene sceneID="B1b-aX-5z4">
             <objects>
-                <viewController id="C6z-ph-Vmz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="plantAboutViewController" id="C6z-ph-Vmz" customClass="plantAboutViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ws-yR-MLM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhO-Vl-eyR">
-                                <rect key="frame" x="0.0" y="161" width="414" height="735"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhO-Vl-eyR">
+                                <rect key="frame" x="0.0" y="161" width="414" height="1032"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-4E-cmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="735"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="968"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Indigenous people need your help !" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q8C-Y3-kCY">
+                                                <rect key="frame" x="14" y="15" width="386" height="853"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
                                         <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Q8C-Y3-kCY" firstAttribute="top" secondItem="yqK-4E-cmP" secondAttribute="top" constant="15" id="IEn-wG-j35"/>
+                                            <constraint firstAttribute="bottom" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="100" id="VTQ-U8-74p"/>
+                                            <constraint firstItem="Q8C-Y3-kCY" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="XL5-s0-YyC"/>
+                                            <constraint firstItem="Q8C-Y3-kCY" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="YAV-jU-lTi"/>
+                                            <constraint firstAttribute="trailing" secondItem="Q8C-Y3-kCY" secondAttribute="trailing" constant="14" id="YEO-zd-Yh6"/>
+                                            <constraint firstAttribute="height" constant="968" id="zOz-pv-lPx"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yqK-4E-cmP" secondAttribute="trailing" id="3FB-wl-PFp"/>
                                     <constraint firstItem="yqK-4E-cmP" firstAttribute="leading" secondItem="szb-ce-M0n" secondAttribute="leading" id="6jf-Qt-53u"/>
-                                    <constraint firstItem="szb-ce-M0n" firstAttribute="bottom" secondItem="yqK-4E-cmP" secondAttribute="bottom" id="Auk-94-aRa"/>
-                                    <constraint firstItem="yqK-4E-cmP" firstAttribute="top" secondItem="szb-ce-M0n" secondAttribute="top" id="KA8-C0-xhx"/>
                                     <constraint firstItem="szb-ce-M0n" firstAttribute="trailing" secondItem="yqK-4E-cmP" secondAttribute="trailing" id="TZK-K1-uex"/>
+                                    <constraint firstAttribute="bottom" secondItem="yqK-4E-cmP" secondAttribute="bottom" id="UQK-UL-7Dp"/>
+                                    <constraint firstItem="yqK-4E-cmP" firstAttribute="top" secondItem="hhO-Vl-eyR" secondAttribute="top" id="Ygr-kT-tqf"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="VYp-Tc-sdR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="szb-ce-M0n"/>
@@ -801,12 +833,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkA-Vk-lWG">
-                                        <rect key="frame" x="355" y="95" width="37" height="45"/>
+                                        <rect key="frame" x="362" y="106" width="37" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="7su-Ui-bdF"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                        <connections>
+                                            <action selector="backBtnWasPressed:" destination="C6z-ph-Vmz" eventType="touchUpInside" id="uSg-mg-wio"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="FWY-dc-jkP">
                                         <rect key="frame" x="125" y="59" width="164" height="43.5"/>
@@ -829,9 +864,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.28627450980000002" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="zkA-Vk-lWG" secondAttribute="trailing" constant="22" id="9OI-F4-Nh0"/>
+                                    <constraint firstAttribute="trailing" secondItem="zkA-Vk-lWG" secondAttribute="trailing" constant="15" id="9OI-F4-Nh0"/>
                                     <constraint firstItem="FWY-dc-jkP" firstAttribute="centerX" secondItem="9Ze-L8-gJF" secondAttribute="centerX" id="BDg-Ve-Wg2"/>
-                                    <constraint firstAttribute="bottom" secondItem="zkA-Vk-lWG" secondAttribute="bottom" constant="21" id="EF6-bX-x5A"/>
+                                    <constraint firstAttribute="bottom" secondItem="zkA-Vk-lWG" secondAttribute="bottom" constant="10" id="EF6-bX-x5A"/>
                                     <constraint firstItem="93j-Oc-eu9" firstAttribute="centerX" secondItem="9Ze-L8-gJF" secondAttribute="centerX" id="Rhc-Ea-tvP"/>
                                     <constraint firstItem="zkA-Vk-lWG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Ze-L8-gJF" secondAttribute="leading" constant="20" symbolic="YES" id="Sps-6P-EOC"/>
                                     <constraint firstAttribute="bottom" secondItem="93j-Oc-eu9" secondAttribute="bottom" constant="5" id="XWT-ms-zj7"/>
@@ -841,17 +876,19 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A3B-Cd-uOa"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hhO-Vl-eyR" firstAttribute="top" secondItem="A3B-Cd-uOa" secondAttribute="top" constant="117" id="Gqg-Nf-52P"/>
                             <constraint firstItem="hhO-Vl-eyR" firstAttribute="top" secondItem="9Ze-L8-gJF" secondAttribute="bottom" id="GwP-He-tdw"/>
                             <constraint firstItem="9Ze-L8-gJF" firstAttribute="leading" secondItem="9ws-yR-MLM" secondAttribute="leading" id="IOI-fR-MBo"/>
                             <constraint firstItem="hhO-Vl-eyR" firstAttribute="leading" secondItem="A3B-Cd-uOa" secondAttribute="leading" id="KJX-mx-xI3"/>
                             <constraint firstItem="hhO-Vl-eyR" firstAttribute="trailing" secondItem="A3B-Cd-uOa" secondAttribute="trailing" id="PWu-xI-P1u"/>
                             <constraint firstItem="9Ze-L8-gJF" firstAttribute="top" secondItem="9ws-yR-MLM" secondAttribute="top" id="Q1i-FO-RVi"/>
                             <constraint firstItem="9Ze-L8-gJF" firstAttribute="trailing" secondItem="A3B-Cd-uOa" secondAttribute="trailing" id="gXu-X9-4IS"/>
-                            <constraint firstAttribute="bottom" secondItem="hhO-Vl-eyR" secondAttribute="bottom" id="ziy-gQ-7os"/>
+                            <constraint firstAttribute="bottom" secondItem="hhO-Vl-eyR" secondAttribute="bottom" constant="-93" id="whP-Zc-z0o"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="414" height="1100"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9O-4g-6Wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -865,6 +902,9 @@
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="pixelplant" width="1300" height="1300"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -17,6 +17,7 @@
 		9B20D7BF2797E3BB00C69825 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7BD2797E3BB00C69825 /* LaunchScreen.storyboard */; };
 		9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */; };
 		9B8973C22799B8EC00CE4BD0 /* plantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8973C12799B8EC00CE4BD0 /* plantCell.swift */; };
+		9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */; };
 		9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BABF33427A9BF3D00471037 /* plantEditViewController.swift */; };
 		9BB2DE4927A1F7C200F98B8C /* plantCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2DE4827A1F7C200F98B8C /* plantCreationViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		9B3D2FAC27D55619007AE7C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewControllerPresentExt.swift; sourceTree = "<group>"; };
 		9B8973C12799B8EC00CE4BD0 /* plantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantCell.swift; sourceTree = "<group>"; };
+		9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantAboutViewController.swift; sourceTree = "<group>"; };
 		9BABF33427A9BF3D00471037 /* plantEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantEditViewController.swift; sourceTree = "<group>"; };
 		9BB2DE4827A1F7C200F98B8C /* plantCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantCreationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				9B20D7B32797E3BA00C69825 /* plantListViewController.swift */,
 				9BB2DE4827A1F7C200F98B8C /* plantCreationViewController.swift */,
 				9BABF33427A9BF3D00471037 /* plantEditViewController.swift */,
+				9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */,
 				9B20D7BA2797E3BA00C69825 /* Tlaloc.xcdatamodeld in Sources */,
 				9B20D7B22797E3BA00C69825 /* SceneDelegate.swift in Sources */,
+				9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */,
 				9BB2DE4927A1F7C200F98B8C /* plantCreationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

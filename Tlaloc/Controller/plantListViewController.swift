@@ -19,6 +19,7 @@ class plantListViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedController: segmentedControllerExt!
+    @IBOutlet weak var aboutBtn: UIButton!
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -27,6 +28,7 @@ class plantListViewController: UIViewController
         tableView.dataSource = self
         tableView.isHidden = false
         segmentedController.defaultConfiguration()
+        aboutBtn.layer.cornerRadius = 10.0
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool)
@@ -78,6 +80,11 @@ class plantListViewController: UIViewController
     {
         guard let plantCreationViewController = storyboard?.instantiateViewController(withIdentifier: "plantCreationViewController") else {return}
         presentDetail(plantCreationViewController)
+    }
+    @IBAction func aboutBtnWasPressed(_ sender: Any)
+    {
+        guard let plantAboutViewController = storyboard?.instantiateViewController(withIdentifier: "plantAboutViewController") else {return}
+        presentDetailFromLeft(plantAboutViewController)
     }
 }
 

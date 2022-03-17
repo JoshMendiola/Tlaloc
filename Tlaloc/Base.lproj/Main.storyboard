@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -791,31 +791,61 @@
             <objects>
                 <viewController storyboardIdentifier="plantAboutViewController" id="C6z-ph-Vmz" customClass="plantAboutViewController" customModule="Tlaloc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ws-yR-MLM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhO-Vl-eyR">
-                                <rect key="frame" x="0.0" y="161" width="414" height="1032"/>
+                                <rect key="frame" x="0.0" y="161" width="414" height="1139"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-4E-cmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="968"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Indigenous people need your help !" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q8C-Y3-kCY">
-                                                <rect key="frame" x="14" y="15" width="386" height="853"/>
+                                                <rect key="frame" x="14" y="15" width="386" height="585"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMf-PT-CLH">
+                                                <rect key="frame" x="30" y="618" width="354" height="42"/>
+                                                <color key="backgroundColor" red="0.92156863209999995" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Donate Now">
+                                                    <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="23"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App created by: Joshua Mendiola" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJd-hJ-FRi">
+                                                <rect key="frame" x="14" y="691" width="317.5" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art by: Maddi Cybuski" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-uA-mHG">
+                                                <rect key="frame" x="14" y="718" width="212" height="20"/>
+                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="8PX-uA-mHG" firstAttribute="top" secondItem="AJd-hJ-FRi" secondAttribute="bottom" constant="7.5" id="1tf-P9-YX0"/>
+                                            <constraint firstItem="8PX-uA-mHG" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="3GR-Cq-OAt"/>
+                                            <constraint firstAttribute="trailing" secondItem="vMf-PT-CLH" secondAttribute="trailing" constant="30" id="9j9-Rx-eRP"/>
+                                            <constraint firstItem="AJd-hJ-FRi" firstAttribute="top" secondItem="vMf-PT-CLH" secondAttribute="bottom" constant="31" id="Bel-On-lTq"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8PX-uA-mHG" secondAttribute="trailing" constant="20" symbolic="YES" id="CdX-xF-t6j"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AJd-hJ-FRi" secondAttribute="trailing" constant="20" symbolic="YES" id="E1P-MY-HUL"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="top" secondItem="yqK-4E-cmP" secondAttribute="top" constant="15" id="IEn-wG-j35"/>
-                                            <constraint firstAttribute="bottom" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="100" id="VTQ-U8-74p"/>
+                                            <constraint firstAttribute="bottom" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="400" id="VTQ-U8-74p"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="XL5-s0-YyC"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="YAV-jU-lTi"/>
                                             <constraint firstAttribute="trailing" secondItem="Q8C-Y3-kCY" secondAttribute="trailing" constant="14" id="YEO-zd-Yh6"/>
-                                            <constraint firstAttribute="height" constant="968" id="zOz-pv-lPx"/>
+                                            <constraint firstItem="vMf-PT-CLH" firstAttribute="top" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="18" id="dtR-hn-3qd"/>
+                                            <constraint firstItem="AJd-hJ-FRi" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="reO-5X-YkG"/>
+                                            <constraint firstItem="vMf-PT-CLH" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="tjA-jA-LH9"/>
+                                            <constraint firstAttribute="height" constant="1000" id="zOz-pv-lPx"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -870,7 +900,6 @@
                                     <constraint firstItem="93j-Oc-eu9" firstAttribute="centerX" secondItem="9Ze-L8-gJF" secondAttribute="centerX" id="Rhc-Ea-tvP"/>
                                     <constraint firstItem="zkA-Vk-lWG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Ze-L8-gJF" secondAttribute="leading" constant="20" symbolic="YES" id="Sps-6P-EOC"/>
                                     <constraint firstAttribute="bottom" secondItem="93j-Oc-eu9" secondAttribute="bottom" constant="5" id="XWT-ms-zj7"/>
-                                    <constraint firstAttribute="height" constant="161" id="ZyB-yp-7CH"/>
                                     <constraint firstAttribute="bottom" secondItem="FWY-dc-jkP" secondAttribute="bottom" constant="58.5" id="n3d-H8-NGl"/>
                                 </constraints>
                             </view>
@@ -885,10 +914,10 @@
                             <constraint firstItem="hhO-Vl-eyR" firstAttribute="trailing" secondItem="A3B-Cd-uOa" secondAttribute="trailing" id="PWu-xI-P1u"/>
                             <constraint firstItem="9Ze-L8-gJF" firstAttribute="top" secondItem="9ws-yR-MLM" secondAttribute="top" id="Q1i-FO-RVi"/>
                             <constraint firstItem="9Ze-L8-gJF" firstAttribute="trailing" secondItem="A3B-Cd-uOa" secondAttribute="trailing" id="gXu-X9-4IS"/>
-                            <constraint firstAttribute="bottom" secondItem="hhO-Vl-eyR" secondAttribute="bottom" constant="-93" id="whP-Zc-z0o"/>
+                            <constraint firstAttribute="bottom" secondItem="hhO-Vl-eyR" secondAttribute="bottom" constant="-100" id="whP-Zc-z0o"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="1100"/>
+                    <size key="freeformSize" width="414" height="1200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9O-4g-6Wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -268,22 +268,25 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
     
     func accessAllowed()
     {
-        if UIImagePickerController.isSourceTypeAvailable(.camera)
+        DispatchQueue.main.async
         {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .camera
-            imagePickerController.allowsEditing = true
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
-        else
-        {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            print("Camera not available so we will use photo library instead")
-            imagePickerController.sourceType = .photoLibrary
-            imagePickerController.allowsEditing = true
-            self.present(imagePickerController, animated: true, completion: nil)
+            if UIImagePickerController.isSourceTypeAvailable(.camera)
+            {
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                imagePickerController.sourceType = .camera
+                imagePickerController.allowsEditing = true
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+            else
+            {
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                print("Camera not available so we will use photo library instead")
+                imagePickerController.sourceType = .photoLibrary
+                imagePickerController.allowsEditing = true
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
         }
     }
     //these functions make sure that their is valid camera access to avoid the app crashing in the case the user did not want to take pictures of their plants (for some reason >:( )

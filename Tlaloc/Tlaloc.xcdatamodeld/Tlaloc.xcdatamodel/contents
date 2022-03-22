@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="PlantInformation" representedClassName="PlantInformation" syncable="YES" codeGenerationType="class">
         <attribute name="daysBetweenFertilizer" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="daysBetweenWater" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -11,7 +11,11 @@
         <attribute name="plantName" optional="YES" attributeType="String"/>
         <attribute name="plantSpecies" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="TimeData" representedClassName="TimeData" syncable="YES" codeGenerationType="class">
+        <attribute name="notifTime" optional="YES" attributeType="Date" defaultDateTimeInterval="669618000" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="TimeData" positionX="75.703125" positionY="-16.9609375" width="128" height="58"/>
     </elements>
 </model>

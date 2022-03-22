@@ -20,6 +20,8 @@ class plantListViewController: UIViewController
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedController: segmentedControllerExt!
     @IBOutlet weak var aboutBtn: UIButton!
+    var preferredNotifTime: Date = Date()
+    let timeKeeper = UserDefaults.standard
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -29,6 +31,19 @@ class plantListViewController: UIViewController
         tableView.isHidden = false
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
+        
+        if timeKeeper.object(forKey: "desiredTime") != nil
+        {
+            preferredNotifTime = (timeKeeper.object(forKey: "desiredTime") as? Date)!
+        }
+        else
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            let someDateTime = formatter.date(from: "00:00:00")
+            preferredNotifTime = someDateTime!
+        }
+        
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool)
@@ -130,7 +145,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         if(tableDecision == true)
         {
             let resetAction = UIContextualAction(style: .normal, title: "Water")
-            { (rowAction, view, completion: (Bool) -> Void) in
+            { [self] (rowAction, view, completion: (Bool) -> Void) in
                 self.plants[indexPath.row].nextWaterDate = Calendar.current.date(byAdding: .day, value: Int(self.plants[indexPath.row].daysBetweenWater), to: currentDate)!
                 completion(true)
                 
@@ -142,9 +157,9 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
                 waterContent.title = self.plants[indexPath.row].plantName! + " needs water !"
                 waterContent.subtitle = "Log in now and water your plant"
                 waterContent.sound = UNNotificationSound.default
-                let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: self.plants[indexPath.row].nextWaterDate!), repeats: true)
-                
+                let futureWaterNotifDate = self.combineDateWithTime(date: self.plants[indexPath.row].nextWaterDate!, time: self.preferredNotifTime)
                 //makes the notification request
+                let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureWaterNotifDate!), repeats: true)
                 let waterRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
                 UNUserNotificationCenter.current().add(waterRequest)
                 
@@ -167,7 +182,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         else
         {
             let resetAction = UIContextualAction(style: .normal, title: "Fertilize")
-            { (rowAction, view, completion: (Bool) -> Void) in
+            { [self] (rowAction, view, completion: (Bool) -> Void) in
                 self.plants[indexPath.row].nextFertilizerDate = Calendar.current.date(byAdding: .day, value: Int(self.plants[indexPath.row].daysBetweenFertilizer), to: currentDate)!
                 completion(true)
                 
@@ -182,7 +197,8 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
                     fertilizerContent.title = self.plants[indexPath.row].plantName! + " needs fertilizer !"
                     fertilizerContent.subtitle = "Log in now and fertilize your plant"
                     fertilizerContent.sound = UNNotificationSound.default
-                    let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: self.plants[indexPath.row].nextWaterDate!), repeats: true)
+                    let futureFertilizerNotifDate = self.combineDateWithTime(date: self.plants[indexPath.row].nextFertilizerDate!, time: self.preferredNotifTime)
+                    let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureFertilizerNotifDate!), repeats: true)
                     
                     //makes the notification request
                     let fertilizerRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
@@ -262,5 +278,22 @@ extension plantListViewController
             debugPrint("Could not save !: \(error.localizedDescription)")
             completion(false)
         }
+    }
+    func combineDateWithTime(date: Date, time: Date) -> Date?
+    {
+        let calendar = NSCalendar.current
+        
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+
+        var mergedComponments = DateComponents()
+        mergedComponments.year = dateComponents.year!
+        mergedComponments.month = dateComponents.month!
+        mergedComponments.day = dateComponents.day!
+        mergedComponments.hour = timeComponents.hour!
+        mergedComponments.minute = timeComponents.minute!
+        mergedComponments.second = timeComponents.second!
+    
+        return calendar.date(from: mergedComponments)
     }
 }

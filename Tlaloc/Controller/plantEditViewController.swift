@@ -23,11 +23,24 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var plantNeedsFertilizerSwitch: UISwitch!
     @IBOutlet weak var changeImgBtn: UIButton!
+    var preferredNotifTime: Date = Date()
+    let timeKeeper = UserDefaults.standard
     
     //initalizers and viewcontroller presentation
     func initdata(dex: Int)
     {
         self.dex = dex
+        if timeKeeper.object(forKey: "desiredTime") != nil
+        {
+            preferredNotifTime = (timeKeeper.object(forKey: "desiredTime") as? Date)!
+        }
+        else
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            let someDateTime = formatter.date(from: "00:00:00")
+            preferredNotifTime = someDateTime!
+        }
     }
     override func viewDidLoad()
     {
@@ -122,7 +135,8 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
             waterContent.title = plants[dex].plantName! + " needs water !"
             waterContent.subtitle = "Log in now and water your plant"
             waterContent.sound = UNNotificationSound.default
-            let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
+            let futureWaterNotifTime = combineDateWithTime(date: plants[dex].nextWaterDate!, time: preferredNotifTime)
+            let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureWaterNotifTime!), repeats: true)
             let waterRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
             UNUserNotificationCenter.current().add(waterRequest)
             
@@ -133,7 +147,8 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
                 fertilizerContent.title = plants[dex].plantName! + " needs fertilizer !"
                 fertilizerContent.subtitle = "Log in now and fertilize your plant"
                 fertilizerContent.sound = UNNotificationSound.default
-                let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: plants[dex].nextWaterDate!), repeats: true)
+                let futureFertilizerNotifTime = combineDateWithTime(date: plants[dex].nextFertilizerDate!, time: preferredNotifTime)
+                let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureFertilizerNotifTime!), repeats: true)
                 let fertilizerRequest = UNNotificationRequest(identifier: (plants[dex].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
                 UNUserNotificationCenter.current().add(fertilizerRequest)
             }
@@ -260,7 +275,23 @@ extension plantEditViewController
             completion(false)
         }
     }
+    func combineDateWithTime(date: Date, time: Date) -> Date?
+    {
+        let calendar = NSCalendar.current
+        
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+
+        var mergedComponments = DateComponents()
+        mergedComponments.year = dateComponents.year!
+        mergedComponments.month = dateComponents.month!
+        mergedComponments.day = dateComponents.day!
+        mergedComponments.hour = timeComponents.hour!
+        mergedComponments.minute = timeComponents.minute!
+        mergedComponments.second = timeComponents.second!
     
+        return calendar.date(from: mergedComponments)
+    }
     func calculateNextDate(waterDayCount: Int16, fertilizerDayCount: Int16) -> (Date?, Date?)
     {
         let date = Date()

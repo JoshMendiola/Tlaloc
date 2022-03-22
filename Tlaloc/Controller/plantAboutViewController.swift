@@ -7,20 +7,32 @@
 
 import UIKit
 import SafariServices
-import CoreData
 
-class plantAboutViewController: UIViewController {
-
-    var TimeData: [TimeData] = []
+class plantAboutViewController: UIViewController
+{
     @IBOutlet weak var donationTextView: UITextView!
     @IBOutlet weak var donateBtn: UIButton!
+    @IBOutlet weak var notifTimePicker: UIDatePicker!
     @IBOutlet weak var confirmTimeBtn: UIButton!
+    let timeKeeper = UserDefaults.standard
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         donateBtn.layer.cornerRadius = 25.0
         donationTextView.layer.cornerRadius = 15.0
         confirmTimeBtn.layer.cornerRadius = 15.0
+        if timeKeeper.object(forKey: "desiredTime") != nil
+        {
+            notifTimePicker.date = (timeKeeper.object(forKey: "desiredTime") as? Date)!
+        }
+        else
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            let someDateTime = formatter.date(from: "00:00:00")
+            notifTimePicker.date = someDateTime!
+        }
     }
     @IBAction func backBtnWasPressed(_ sender: Any)
     {
@@ -34,44 +46,8 @@ class plantAboutViewController: UIViewController {
     }
     @IBAction func confirmTimeBtnWasPressed(_ sender: Any)
     {
-        
+        timeKeeper.set(notifTimePicker.date, forKey: "desiredTime")
+        dismissDetailFromRight()
     }
     
-}
-
-extension plantAboutViewController
-{
-    func fetch(completion: (_ complete: Bool) -> ())
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
-        
-        let fetchRequest = NSFetchRequest<TimeData>(entityName: "TimeData")
-        
-        do
-        {
-            TimeData = try managedContext.fetch(fetchRequest)
-            completion(true)
-        }
-        catch
-        {
-            debugPrint("Could not fetch :( : \(error.localizedDescription)")
-            completion(false)
-        }
-    }
-    func save(completion: (_ finished: Bool) -> ())
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext
-        else { return }
-        
-        do
-        {
-            try managedContext.save()
-            completion(true)
-        }
-        catch
-        {
-            debugPrint("Could not save !: \(error.localizedDescription)")
-            completion(false)
-        }
-    }
 }

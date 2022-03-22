@@ -22,7 +22,8 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     @IBOutlet weak var needsFertilizerBtn: UISwitch!
     var currentImage: UIImage = UIImage(named: "pixelplant")!
     var fertilizerAllowed: Bool = true
-    
+    var preferredNotifTime: Date = Date()
+    let timeKeeper = UserDefaults.standard
     //handles viewcontroller presentation
     override func viewDidLoad()
     {
@@ -44,6 +45,20 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         plantCreationBtn.layer.cornerRadius = 15.0
         plantCreationBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         plantCreationBtn.titleLabel?.minimumScaleFactor = 0.5
+        
+        
+        //handles the desired time of notifications
+        if timeKeeper.object(forKey: "desiredTime") != nil
+        {
+           preferredNotifTime = (timeKeeper.object(forKey: "desiredTime") as? Date)!
+        }
+        else
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            let someDateTime = formatter.date(from: "00:00:00")
+            preferredNotifTime = someDateTime!
+        }
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -199,9 +214,12 @@ extension plantCreationViewController
         waterContent.title = plants.plantName! + " needs water !"
         waterContent.subtitle = "Log in now and water your plant"
         waterContent.sound = UNNotificationSound.default
-        let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureWaterDate!), repeats: true)
+        
+        //adds the desired time and desired date together
+        let futureWaterNotifTime = combineDateWithTime(date: futureWaterDate!, time: preferredNotifTime)
         
         //makes the water request
+        let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureWaterNotifTime!), repeats: true)
         let waterRequest = UNNotificationRequest(identifier: (plants.plantID! + "Water") , content: waterContent, trigger: waterTrigger)
         UNUserNotificationCenter.current().add(waterRequest)
         
@@ -212,9 +230,12 @@ extension plantCreationViewController
             fertilizerContent.title = plants.plantName! + " needs fertilizer !"
             fertilizerContent.subtitle = "Log in now and fertilize your plant"
             fertilizerContent.sound = UNNotificationSound.default
-            let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day], from: futureFertilizerDate!), repeats: true)
+            
+            //adds the desired time and desired date together
+            let futureFertilizerNotifTime = combineDateWithTime(date: futureFertilizerDate!, time: preferredNotifTime)
 
             //makes fertilizer request
+            let fertilizerTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureFertilizerNotifTime!), repeats: true)
             let fertilizerRequest = UNNotificationRequest(identifier: (plants.plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
             UNUserNotificationCenter.current().add(fertilizerRequest)
         }
@@ -245,9 +266,28 @@ extension plantCreationViewController
             fertilizerDayCount.resignFirstResponder()
         }
     
-        func randomString(length: Int) -> String {
+        func randomString(length: Int) -> String
+        {
           let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
           return String((0..<length).map{ _ in letters.randomElement()! })
+        }
+    
+        func combineDateWithTime(date: Date, time: Date) -> Date?
+        {
+            let calendar = NSCalendar.current
+            
+            let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+            let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+
+            var mergedComponments = DateComponents()
+            mergedComponments.year = dateComponents.year!
+            mergedComponments.month = dateComponents.month!
+            mergedComponments.day = dateComponents.day!
+            mergedComponments.hour = timeComponents.hour!
+            mergedComponments.minute = timeComponents.minute!
+            mergedComponments.second = timeComponents.second!
+        
+            return calendar.date(from: mergedComponments)
         }
 }
 

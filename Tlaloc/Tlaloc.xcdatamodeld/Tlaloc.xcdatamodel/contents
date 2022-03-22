@@ -11,11 +11,7 @@
         <attribute name="plantName" optional="YES" attributeType="String"/>
         <attribute name="plantSpecies" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="TimeData" representedClassName="TimeData" syncable="YES" codeGenerationType="class">
-        <attribute name="notifTime" optional="YES" attributeType="Date" defaultDateTimeInterval="669618000" usesScalarValueType="NO"/>
-    </entity>
     <elements>
         <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="164"/>
-        <element name="TimeData" positionX="75.703125" positionY="-16.9609375" width="128" height="58"/>
     </elements>
 </model>

@@ -126,6 +126,7 @@
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="DLa-g2-Plv" secondAttribute="trailing" id="UPS-a9-hv9"/>
+                                                                        <constraint firstItem="DLa-g2-Plv" firstAttribute="leading" secondItem="OWD-Gc-2R7" secondAttribute="trailing" constant="18" id="xXo-z8-kUg"/>
                                                                         <constraint firstItem="OWD-Gc-2R7" firstAttribute="leading" secondItem="EJ7-8L-Lua" secondAttribute="leading" id="zsG-SX-UZb"/>
                                                                     </constraints>
                                                                 </stackView>
@@ -716,7 +717,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBR-KD-Tah">
-                                        <rect key="frame" x="8" y="114" width="50" height="50"/>
+                                        <rect key="frame" x="8" y="109" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="DSS-x2-H1L"/>
                                             <constraint firstAttribute="width" secondItem="gBR-KD-Tah" secondAttribute="height" multiplier="1:1" id="Oib-WD-GST"/>
@@ -751,7 +752,7 @@
                                     <constraint firstItem="gBR-KD-Tah" firstAttribute="width" secondItem="gBR-KD-Tah" secondAttribute="height" multiplier="1:1" id="Ps7-OX-eUI"/>
                                     <constraint firstItem="gBR-KD-Tah" firstAttribute="leading" secondItem="mZu-fB-wjd" secondAttribute="leading" constant="8" id="WNb-YD-ddG"/>
                                     <constraint firstAttribute="bottom" secondItem="Ieo-jD-GeJ" secondAttribute="bottom" constant="-5" id="pjj-qa-5Rp"/>
-                                    <constraint firstAttribute="bottom" secondItem="gBR-KD-Tah" secondAttribute="bottom" constant="-5" id="sDz-25-Hzv"/>
+                                    <constraint firstAttribute="bottom" secondItem="gBR-KD-Tah" secondAttribute="bottom" id="sDz-25-Hzv"/>
                                     <constraint firstAttribute="trailing" secondItem="RXD-Cj-c3t" secondAttribute="trailing" constant="6" id="xlT-0M-Eo8"/>
                                     <constraint firstItem="Ieo-jD-GeJ" firstAttribute="centerX" secondItem="mZu-fB-wjd" secondAttribute="centerX" id="xov-Lu-sZ5"/>
                                 </constraints>
@@ -797,7 +798,7 @@
                                 <rect key="frame" x="0.0" y="159" width="414" height="837"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-4E-cmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8C-Y3-kCY">
                                                 <rect key="frame" x="14" y="15" width="386" height="685"/>
@@ -855,8 +856,8 @@
                                                     <constraint firstAttribute="width" constant="150" id="NCg-dv-fDx"/>
                                                     <constraint firstAttribute="height" constant="50" id="iSB-or-drL"/>
                                                 </constraints>
-                                                <date key="date" timeIntervalSinceReferenceDate="669618000.19958103">
-                                                    <!--2022-03-22 05:00:00 +0000-->
+                                                <date key="date" timeIntervalSinceReferenceDate="669661200.19958103">
+                                                    <!--2022-03-22 17:00:00 +0000-->
                                                 </date>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S26-wL-NL2">
@@ -890,7 +891,7 @@
                                             <constraint firstItem="L8N-CE-3uV" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="NIL-e1-z92"/>
                                             <constraint firstItem="eqh-S2-KIl" firstAttribute="top" secondItem="L8N-CE-3uV" secondAttribute="bottom" constant="40" id="QrF-RC-wxd"/>
                                             <constraint firstItem="S26-wL-NL2" firstAttribute="top" secondItem="eqh-S2-KIl" secondAttribute="bottom" constant="37" id="R67-uN-kV0"/>
-                                            <constraint firstAttribute="bottom" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="700" id="VTQ-U8-74p"/>
+                                            <constraint firstAttribute="bottom" secondItem="Q8C-Y3-kCY" secondAttribute="bottom" constant="650" id="VTQ-U8-74p"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="XL5-s0-YyC"/>
                                             <constraint firstItem="Q8C-Y3-kCY" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="YAV-jU-lTi"/>
                                             <constraint firstAttribute="trailing" secondItem="Q8C-Y3-kCY" secondAttribute="trailing" constant="14" id="YEO-zd-Yh6"/>
@@ -900,7 +901,7 @@
                                             <constraint firstItem="L8N-CE-3uV" firstAttribute="top" secondItem="8PX-uA-mHG" secondAttribute="bottom" id="rPK-ZS-wVB"/>
                                             <constraint firstItem="AJd-hJ-FRi" firstAttribute="leading" secondItem="yqK-4E-cmP" secondAttribute="leading" constant="14" id="reO-5X-YkG"/>
                                             <constraint firstItem="vMf-PT-CLH" firstAttribute="centerX" secondItem="yqK-4E-cmP" secondAttribute="centerX" id="tjA-jA-LH9"/>
-                                            <constraint firstAttribute="height" constant="1400" id="zOz-pv-lPx"/>
+                                            <constraint firstAttribute="height" constant="1350" id="zOz-pv-lPx"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -976,6 +977,7 @@
                         <outlet property="confirmTimeBtn" destination="S26-wL-NL2" id="NlO-Ub-4Jp"/>
                         <outlet property="donateBtn" destination="vMf-PT-CLH" id="T2E-Mc-gNN"/>
                         <outlet property="donationTextView" destination="Q8C-Y3-kCY" id="GVt-U4-wFE"/>
+                        <outlet property="notifTimePicker" destination="WYD-uR-Xv3" id="f3k-8G-f6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9O-4g-6Wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

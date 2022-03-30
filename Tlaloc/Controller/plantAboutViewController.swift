@@ -22,6 +22,9 @@ class plantAboutViewController: UIViewController
         donateBtn.layer.cornerRadius = 25.0
         donationTextView.layer.cornerRadius = 15.0
         confirmTimeBtn.layer.cornerRadius = 15.0
+        notifTimePicker.setValue(UIColor.black, forKey: "textColor")
+        
+        //calculates the proper date and time with the new set notification time
         if timeKeeper.object(forKey: "desiredTime") != nil
         {
             notifTimePicker.date = (timeKeeper.object(forKey: "desiredTime") as? Date)!
@@ -38,12 +41,14 @@ class plantAboutViewController: UIViewController
     {
         dismissDetailFromRight()
     }
+    //url leading to the plantwithaprupose page
     @IBAction func donateBtnWasPressed(_ sender: Any)
     {
         let url = URL(string: "https://plantwithpurpose.org/what-we-do/mexico/?location=mx")
         let svc = SFSafariViewController(url: url!)
         present(svc, animated: true, completion: nil)
     }
+    //sets the time specificed in the scroller
     @IBAction func confirmTimeBtnWasPressed(_ sender: Any)
     {
         timeKeeper.set(notifTimePicker.date, forKey: "desiredTime")

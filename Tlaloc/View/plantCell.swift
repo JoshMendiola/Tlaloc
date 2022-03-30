@@ -15,7 +15,7 @@ class plantCell: UITableViewCell
     @IBOutlet weak var plantImage: UIImageView!
     
     //configures the cell properly
-    func configureCell(plant: PlantInformation, tableChoice: Bool)
+    func configureCell(plant: PlantInformation, tableChoice: Int)
     {
         self.plantName.text = plant.plantName
         self.plantSpecies.text = plant.plantSpecies
@@ -34,7 +34,7 @@ class plantCell: UITableViewCell
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let currentDate = Calendar.current.date(from: dateComponents)!
         //checks if the user wants to see the watercount
-        if tableChoice == true
+        if tableChoice == 0
         {
             let timeUntilWater = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextWaterDate!).day!
             if(timeUntilWater <= 0)
@@ -47,12 +47,12 @@ class plantCell: UITableViewCell
             }
         }
         //checks if the user wants to see fertilizer and the plant does not need to be fertilized
-        else if tableChoice == false && plant.needsFertilizer == false
+        else if tableChoice == 1 && plant.needsFertilizer == false
         {
                 dayCount.text = ("-")
         }
         //checks if the user wants to see fertilizer and the plant DOES need to be fertilized
-        else
+        else if tableChoice == 1 && plant.needsFertilizer == true
         {
             let timeUntilFertilizer = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextFertilizerDate!).day!
             if(timeUntilFertilizer <= 0)

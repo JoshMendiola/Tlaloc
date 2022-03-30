@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//platListViewController.swift
 //  Tlaloc
 //
 //  Created by Joshua Mendiola on 1/19/22.
@@ -14,9 +14,9 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class plantListViewController: UIViewController
 {
     
+    //intializes the variables including the segmented controlm, the tableview, and time and date keepers
     var plants: [PlantInformation] = []
-    private var tableDecision: Bool = true
-    
+    private var tableDecision: Int = 0
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedController: segmentedControllerExt!
     @IBOutlet weak var aboutBtn: UIButton!
@@ -32,6 +32,7 @@ class plantListViewController: UIViewController
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
         
+        //formats the dates to set the preferred time for the user to see notifications for when the swipe action is used
         if timeKeeper.object(forKey: "desiredTime") != nil
         {
             preferredNotifTime = (timeKeeper.object(forKey: "desiredTime") as? Date)!
@@ -43,7 +44,6 @@ class plantListViewController: UIViewController
             let someDateTime = formatter.date(from: "00:00:00")
             preferredNotifTime = someDateTime!
         }
-        
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool)
@@ -76,14 +76,25 @@ class plantListViewController: UIViewController
         //water being chosen represents case 0, fertilizer being chosen represents case 1, with a failsafe for any possible edgecases, returning true for water, and false for fertilizer
         switch sender.selectedSegmentIndex
         {
+            //if user wants to see the watering schedule
             case 0:
-                tableDecision = true
+                tableDecision = 0
+                tableView.isHidden = false
                 tableView.reloadData()
                 break
+            //if user wants to see the fertilizer schedule
             case 1:
-                tableDecision = false
+                tableDecision = 1
+                tableView.isHidden = false
                 tableView.reloadData()
                 break
+            //if user wants to see the calender
+            case 2:
+                tableDecision = 2
+                tableView.isHidden = true
+                tableView.reloadData()
+                break
+            //breakpoint here
             default:
                 debugPrint("ERROR: Segmented Control not operating correctly")
                 break
@@ -96,6 +107,7 @@ class plantListViewController: UIViewController
         guard let plantCreationViewController = storyboard?.instantiateViewController(withIdentifier: "plantCreationViewController") else {return}
         presentDetail(plantCreationViewController)
     }
+    //segues into the about section
     @IBAction func aboutBtnWasPressed(_ sender: Any)
     {
         guard let plantAboutViewController = storyboard?.instantiateViewController(withIdentifier: "plantAboutViewController") else {return}
@@ -142,7 +154,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         let currentDate = Calendar.current.date(from: dateComponents)!
         
         //true equaling the water choice, this calculates the amount of days until the upcoming water date and resets the day counter to the distance to the upcoming date
-        if(tableDecision == true)
+        if(tableDecision == 0)
         {
             let resetAction = UIContextualAction(style: .normal, title: "Water")
             { [self] (rowAction, view, completion: (Bool) -> Void) in
@@ -158,6 +170,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
                 waterContent.subtitle = "Log in now and water your plant"
                 waterContent.sound = UNNotificationSound.default
                 let futureWaterNotifDate = self.combineDateWithTime(date: self.plants[indexPath.row].nextWaterDate!, time: self.preferredNotifTime)
+                
                 //makes the notification request
                 let waterTrigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.day,.hour,.minute], from: futureWaterNotifDate!), repeats: true)
                 let waterRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Water") , content: waterContent, trigger: waterTrigger)
@@ -279,6 +292,8 @@ extension plantListViewController
             completion(false)
         }
     }
+    
+    //this handles the calculations of combining both the dates and time, to create one mega date
     func combineDateWithTime(date: Date, time: Date) -> Date?
     {
         let calendar = NSCalendar.current

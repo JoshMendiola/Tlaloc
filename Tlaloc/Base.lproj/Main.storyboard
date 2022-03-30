@@ -207,6 +207,7 @@
                                         <segments>
                                             <segment title="Water"/>
                                             <segment title="Fertilizer"/>
+                                            <segment title="Calender"/>
                                         </segments>
                                         <connections>
                                             <action selector="tableChoice:" destination="t8T-QK-UxA" eventType="valueChanged" id="N5V-R0-MOe"/>
@@ -852,6 +853,7 @@
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-uR-Xv3">
                                                 <rect key="frame" x="30" y="1078" width="150" height="50"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="NCg-dv-fDx"/>
                                                     <constraint firstAttribute="height" constant="50" id="iSB-or-drL"/>

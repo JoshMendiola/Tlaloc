@@ -79,13 +79,13 @@ class plantListViewController: UIViewController
             //if user wants to see the watering schedule
             case 0:
                 tableDecision = 0
-                tableView.isHidden = false
+                fetchCoreDataObjects()
                 tableView.reloadData()
                 break
             //if user wants to see the fertilizer schedule
             case 1:
                 tableDecision = 1
-                tableView.isHidden = false
+                fetchCoreDataObjects()
                 tableView.reloadData()
                 break
             //if user wants to see the calender

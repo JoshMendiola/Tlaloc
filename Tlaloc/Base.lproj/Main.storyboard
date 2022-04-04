@@ -276,6 +276,9 @@
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="127" height="128"/>
+                                                <connections>
+                                                    <outlet property="dayLabel" destination="cdd-0D-vp0" id="GMz-XQ-LAT"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -376,6 +379,9 @@
                     </view>
                     <connections>
                         <outlet property="aboutBtn" destination="vse-Lk-Lav" id="BSM-ac-LKK"/>
+                        <outlet property="calenderCollectionView" destination="yIw-3g-RJv" id="hSx-cA-LHz"/>
+                        <outlet property="calenderView" destination="o4G-me-CXA" id="bNB-SJ-tOU"/>
+                        <outlet property="monthLabel" destination="LY1-cm-YG7" id="XIg-oW-Pim"/>
                         <outlet property="segmentedController" destination="38D-u6-e73" id="p9d-tX-X32"/>
                         <outlet property="tableView" destination="DGO-IT-ydu" id="Qdt-R3-Q9i"/>
                     </connections>

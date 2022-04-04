@@ -9,5 +9,5 @@ import UIKit
 
 class CalenderCell: UICollectionViewCell
 {
-    
+    @IBOutlet weak var dayLabel: UILabel!
 }

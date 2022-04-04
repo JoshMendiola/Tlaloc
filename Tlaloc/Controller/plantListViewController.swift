@@ -22,6 +22,9 @@ class plantListViewController: UIViewController
     @IBOutlet weak var aboutBtn: UIButton!
     var preferredNotifTime: Date = Date()
     let timeKeeper = UserDefaults.standard
+    @IBOutlet weak var calenderView: UIView!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var calenderCollectionView: UICollectionView!
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -31,6 +34,7 @@ class plantListViewController: UIViewController
         tableView.isHidden = false
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
+        calenderView.isHidden = true
         
         //formats the dates to set the preferred time for the user to see notifications for when the swipe action is used
         if timeKeeper.object(forKey: "desiredTime") != nil
@@ -81,18 +85,21 @@ class plantListViewController: UIViewController
                 tableDecision = 0
                 fetchCoreDataObjects()
                 tableView.reloadData()
+                calenderView.isHidden = true
                 break
             //if user wants to see the fertilizer schedule
             case 1:
                 tableDecision = 1
                 fetchCoreDataObjects()
                 tableView.reloadData()
+                calenderView.isHidden = true
                 break
             //if user wants to see the calender
             case 2:
                 tableDecision = 2
                 tableView.isHidden = true
                 tableView.reloadData()
+                calenderView.isHidden = false
                 break
             //breakpoint here
             default:
@@ -311,4 +318,19 @@ extension plantListViewController
     
         return calendar.date(from: mergedComponments)
     }
+}
+
+extension plantListViewController: UICollectionViewDelegate, UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        <#code#>
+    }
+    
+    
 }

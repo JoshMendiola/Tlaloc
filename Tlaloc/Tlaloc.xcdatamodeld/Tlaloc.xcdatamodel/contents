@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="PlantCalender" representedClassName="PlantCalender" syncable="YES" codeGenerationType="class">
+    <entity name="PlantCalendar" representedClassName="PlantCalendar" syncable="YES" codeGenerationType="class">
         <attribute name="activeDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="plantsCaredFor" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="plantCaredFor" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="wasWatered" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="PlantInformation" representedClassName="PlantInformation" syncable="YES" codeGenerationType="class">
@@ -17,7 +17,7 @@
         <attribute name="plantSpecies" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="PlantCalendar" positionX="-63" positionY="54" width="128" height="74"/>
         <element name="PlantInformation" positionX="-63" positionY="-18" width="128" height="164"/>
-        <element name="PlantCalender" positionX="-63" positionY="54" width="128" height="74"/>
     </elements>
 </model>

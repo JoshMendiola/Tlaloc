@@ -274,34 +274,28 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CtM-1u-02p">
-                                                            <rect key="frame" x="10" y="20" width="107" height="88"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKx-Oi-dS0">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="107" height="88"/>
-                                                                    <color key="backgroundColor" red="0.37055760269999999" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" cornerStyle="small"/>
-                                                                </button>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKx-Oi-dS0">
+                                                            <rect key="frame" x="10" y="24.5" width="107" height="83.5"/>
+                                                            <color key="backgroundColor" red="0.37055760269999999" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" cornerStyle="small"/>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="CtM-1u-02p" firstAttribute="leading" secondItem="JKL-uA-fXq" secondAttribute="leading" constant="10" id="2a6-83-JNH"/>
-                                                        <constraint firstItem="CtM-1u-02p" firstAttribute="centerX" secondItem="JKL-uA-fXq" secondAttribute="centerX" id="4As-ZZ-m2b"/>
-                                                        <constraint firstItem="CtM-1u-02p" firstAttribute="top" relation="lessThanOrEqual" secondItem="JKL-uA-fXq" secondAttribute="top" constant="20" id="B1D-W0-cJS"/>
+                                                        <constraint firstItem="gKx-Oi-dS0" firstAttribute="leading" secondItem="JKL-uA-fXq" secondAttribute="leading" constant="10" id="87r-bx-nRs"/>
                                                         <constraint firstItem="cdd-0D-vp0" firstAttribute="centerX" secondItem="JKL-uA-fXq" secondAttribute="centerX" id="BV6-7a-yt1"/>
-                                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="CtM-1u-02p" secondAttribute="bottom" constant="20" id="JVs-To-rmP"/>
-                                                        <constraint firstItem="CtM-1u-02p" firstAttribute="centerY" secondItem="JKL-uA-fXq" secondAttribute="centerY" id="PXB-XT-E3T"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gKx-Oi-dS0" secondAttribute="trailing" constant="10" id="OYE-vB-Uol"/>
                                                         <constraint firstItem="cdd-0D-vp0" firstAttribute="leading" secondItem="JKL-uA-fXq" secondAttribute="leading" id="ZcY-q1-99Q"/>
                                                         <constraint firstItem="cdd-0D-vp0" firstAttribute="top" secondItem="JKL-uA-fXq" secondAttribute="top" id="awJ-jH-uH8"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gKx-Oi-dS0" secondAttribute="bottom" constant="20" id="cCn-L7-7K6"/>
+                                                        <constraint firstItem="gKx-Oi-dS0" firstAttribute="top" secondItem="cdd-0D-vp0" secondAttribute="bottom" constant="5" id="xDT-a4-CB8"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <color key="backgroundColor" red="0.92156863209999995" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <size key="customSize" width="127" height="128"/>
                                                 <connections>
                                                     <outlet property="dayLabel" destination="cdd-0D-vp0" id="GMz-XQ-LAT"/>
-                                                    <outlet property="plantsCaredForList" destination="CtM-1u-02p" id="D8J-v9-vYv"/>
+                                                    <outlet property="plantWasCaredForThatDayBtn" destination="gKx-Oi-dS0" id="kEz-3x-R8u"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

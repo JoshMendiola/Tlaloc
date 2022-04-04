@@ -12,7 +12,7 @@ class calendarCell: UICollectionViewCell
 {
     var plantCalendar: [PlantCalendar] = []
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var plantsCaredForList: UIStackView!
+    @IBOutlet weak var plantWasCaredForThatDayBtn: UIButton!
     var wasAnActiveDay: Bool = false
 }
 

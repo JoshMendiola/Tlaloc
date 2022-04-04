@@ -357,12 +357,13 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         if(totalSquares[indexPath.item] == "")
         {
             cell.backgroundColor = UIColor(displayP3Red: 247/256, green: 204/256, blue: 134/256, alpha: 1.0)
-            cell.plantsCaredForList.isHidden = true
+            cell.plantWasCaredForThatDayBtn.isHidden = true
         }
         else
         {
             cell.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
-            cell.plantsCaredForList.isHidden = false
+            cell.plantWasCaredForThatDayBtn.isHidden = false
+            cell.plantWasCaredForThatDayBtn.layer.cornerRadius = 15.0
         }
         
         return cell

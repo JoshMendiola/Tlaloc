@@ -239,23 +239,29 @@
                                         <rect key="frame" x="60" y="17" width="46.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.backward.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="previousMonthBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4PL-Qy-YcU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTq-jE-Zzk">
                                         <rect key="frame" x="307.5" y="17" width="46.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.forward.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="nextMonthBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ffJ-VU-F1h"/>
+                                        </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIw-3g-RJv">
                                         <rect key="frame" x="0.0" y="73" width="414" height="604"/>
                                         <color key="backgroundColor" red="0.96862745289999996" green="0.80000001190000003" blue="0.52549022440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NYi-jd-z0Y">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="2" id="NYi-jd-z0Y">
                                             <size key="itemSize" width="127" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calenderCell" id="E0f-eM-pUN" customClass="CalenderCell" customModule="Tlaloc" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="E0f-eM-pUN" customClass="calendarCell" customModule="Tlaloc" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JKL-uA-fXq">
@@ -281,6 +287,10 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="RMt-lD-lJu"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="2RN-Sw-4en"/>
+                                        </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VOx-SS-KoE">
                                         <rect key="frame" x="0.0" y="49" width="414" height="24"/>
@@ -379,8 +389,8 @@
                     </view>
                     <connections>
                         <outlet property="aboutBtn" destination="vse-Lk-Lav" id="BSM-ac-LKK"/>
-                        <outlet property="calenderCollectionView" destination="yIw-3g-RJv" id="hSx-cA-LHz"/>
-                        <outlet property="calenderView" destination="o4G-me-CXA" id="bNB-SJ-tOU"/>
+                        <outlet property="calendarCollectionView" destination="yIw-3g-RJv" id="6qy-T8-nDm"/>
+                        <outlet property="calendarView" destination="o4G-me-CXA" id="Y0g-A0-h95"/>
                         <outlet property="monthLabel" destination="LY1-cm-YG7" id="XIg-oW-Pim"/>
                         <outlet property="segmentedController" destination="38D-u6-e73" id="p9d-tX-X32"/>
                         <outlet property="tableView" destination="DGO-IT-ydu" id="Qdt-R3-Q9i"/>

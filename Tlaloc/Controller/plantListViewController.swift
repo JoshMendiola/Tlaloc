@@ -22,9 +22,11 @@ class plantListViewController: UIViewController
     @IBOutlet weak var aboutBtn: UIButton!
     var preferredNotifTime: Date = Date()
     let timeKeeper = UserDefaults.standard
-    @IBOutlet weak var calenderView: UIView!
+    @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var calenderCollectionView: UICollectionView!
+    @IBOutlet weak var calendarCollectionView: UICollectionView!
+    var selectedDate = Date()
+    var totalSquares = [String]()
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -34,8 +36,9 @@ class plantListViewController: UIViewController
         tableView.isHidden = false
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
-        calenderView.isHidden = true
-        
+        calendarView.isHidden = true
+        setCellView()
+        setMonthView()
         //formats the dates to set the preferred time for the user to see notifications for when the swipe action is used
         if timeKeeper.object(forKey: "desiredTime") != nil
         {
@@ -85,21 +88,23 @@ class plantListViewController: UIViewController
                 tableDecision = 0
                 fetchCoreDataObjects()
                 tableView.reloadData()
-                calenderView.isHidden = true
+                calendarView.isHidden = true
                 break
             //if user wants to see the fertilizer schedule
             case 1:
                 tableDecision = 1
                 fetchCoreDataObjects()
                 tableView.reloadData()
-                calenderView.isHidden = true
+                calendarView.isHidden = true
                 break
             //if user wants to see the calender
             case 2:
                 tableDecision = 2
                 tableView.isHidden = true
                 tableView.reloadData()
-                calenderView.isHidden = false
+                calendarView.isHidden = false
+                setMonthView()
+                setCellView()
                 break
             //breakpoint here
             default:
@@ -119,6 +124,21 @@ class plantListViewController: UIViewController
     {
         guard let plantAboutViewController = storyboard?.instantiateViewController(withIdentifier: "plantAboutViewController") else {return}
         presentDetailFromLeft(plantAboutViewController)
+    }
+    @IBAction func previousMonthBtnWasPressed(_ sender: Any)
+    {
+        selectedDate = calendarExt().minusMonth(date: selectedDate)
+        setMonthView()
+    }
+    @IBAction func nextMonthBtnWasPressed(_ sender: Any)
+    {
+        selectedDate = calendarExt().plusMonth(date: selectedDate)
+        setMonthView()
+    }
+    
+    override open var shouldAutorotate: Bool
+    {
+        return false
     }
 }
 
@@ -324,13 +344,52 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        <#code#>
+        totalSquares.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! calendarCell
+        
+        cell.dayLabel.text = totalSquares[indexPath.item]
+        
+        return cell
     }
     
+    func setCellView()
+    {
+        let width = (calendarCollectionView.frame.size.width - 2) / 8
+        let height = (calendarCollectionView.frame.size.height - 2) / 8
+        
+        let flowLayout = calendarCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.itemSize = CGSize(width: width, height: height)
+    }
+    
+    func setMonthView()
+    {
+        totalSquares.removeAll()
+        
+        let daysInMonth = calendarExt().daysInMonth(date: selectedDate)
+        let firstDayOfMonth = calendarExt().firstOfMonth(date: selectedDate)
+        let startingSpaces = calendarExt().weekDay(date: firstDayOfMonth)
+        
+        var count: Int = 1
+        
+        while(count <= 42)
+        {
+            if(count <= startingSpaces || count - startingSpaces > daysInMonth)
+            {
+                totalSquares.append("")
+            }
+            else
+            {
+                totalSquares.append(String(count - startingSpaces))
+            }
+            count += 1
+        }
+        
+        monthLabel.text = calendarExt().monthString(date: selectedDate) + " " + calendarExt().yearString(date: selectedDate)
+        calendarCollectionView.reloadData()
+    }
     
 }

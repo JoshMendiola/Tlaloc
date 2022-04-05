@@ -138,10 +138,6 @@ class plantListViewController: UIViewController
     }
     @IBAction func plantsCaredForThatDayBtn(_ sender: Any)
     {
-        if(fetchCalenderInfo(dateToCheck: selectedDate))
-        {
-            
-        }
         
     }
     
@@ -319,7 +315,7 @@ extension plantListViewController
         
         let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
     
-        let pred = NSPredicate(format: "activeDay LIKE %@", argumentArray: [dateToCheck])
+        let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
         
         fetchRequest.predicate = pred
         
@@ -389,16 +385,16 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         
         cell.dayLabel.text = totalSquares[indexPath.item]
         cell.layer.cornerRadius = 5.0
-        if(totalSquares[indexPath.item] == "")
-        {
-            cell.backgroundColor = UIColor(displayP3Red: 247/256, green: 204/256, blue: 134/256, alpha: 1.0)
-            cell.plantWasCaredForThatDayBtn.isHidden = true
-        }
-        else
+        if(fetchCalenderInfo(dateToCheck: selectedDate))
         {
             cell.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
             cell.plantWasCaredForThatDayBtn.isHidden = false
             cell.plantWasCaredForThatDayBtn.layer.cornerRadius = 15.0
+        }
+        else
+        {
+            cell.backgroundColor = UIColor(displayP3Red: 247/256, green: 204/256, blue: 134/256, alpha: 1.0)
+            cell.plantWasCaredForThatDayBtn.isHidden = true
         }
         
         return cell

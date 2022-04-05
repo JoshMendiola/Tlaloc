@@ -10,57 +10,22 @@ import CoreData
 
 class calendarCell: UICollectionViewCell
 {
-    var plantCalendar: [PlantCalendar] = []
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var plantWasCaredForThatDayBtn: UIButton!
     var wasAnActiveDay: Bool = false
-}
+    var selectedDate: Date = Date.init()
 
-
-
-//this handles the core data aspect of the calendar cell
-extension calendarCell
-{
-    func fetch(completion: (_ complete: Bool) -> ())
+    func configureCell(selectedDate: Date, wasAnActiveDay: Bool)
     {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
-        
-        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
-        
-        do
+        self.wasAnActiveDay = wasAnActiveDay
+        self.selectedDate = selectedDate
+        if(wasAnActiveDay)
         {
-            plantCalendar = try managedContext.fetch(fetchRequest)
-            completion(true)
+            plantWasCaredForThatDayBtn.isHidden = false
         }
-        catch
+        else
         {
-            debugPrint("Could not fetch plantcalender :( : \(error.localizedDescription)")
-            completion(false)
-        }
-    }
-    func save(completion: (_ finished: Bool) -> ())
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext
-        else { return }
-        
-        do
-        {
-            try managedContext.save()
-            completion(true)
-        }
-        catch
-        {
-            debugPrint("Could not save !: \(error.localizedDescription)")
-            completion(false)
-        }
-    }
-    func fetchCoreDataObjects()
-    {
-        self.fetch { (complete) in
-            if complete
-            {
-                
-            }
+            plantWasCaredForThatDayBtn.isHidden = true
         }
     }
 }

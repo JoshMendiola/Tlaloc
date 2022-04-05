@@ -16,6 +16,7 @@ class plantListViewController: UIViewController
     
     //intializes the variables including the segmented controlm, the tableview, and time and date keepers
     var plants: [PlantInformation] = []
+    var plantCalendarInfo: [PlantCalendar] = []
     private var tableDecision: Int = 0
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedController: segmentedControllerExt!
@@ -134,6 +135,14 @@ class plantListViewController: UIViewController
     {
         selectedDate = calendarExt().plusMonth(date: selectedDate)
         setMonthView()
+    }
+    @IBAction func plantsCaredForThatDayBtn(_ sender: Any)
+    {
+        if(fetchCalenderInfo(dateToCheck: selectedDate))
+        {
+            
+        }
+        
     }
     
     override open var shouldAutorotate: Bool
@@ -303,6 +312,33 @@ extension plantListViewController
             completion(false)
         }
     }
+    
+    func fetchCalenderInfo(dateToCheck: Date) -> Bool
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return false}
+        
+        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
+    
+        let pred = NSPredicate(format: "activeDay LIKE %@", argumentArray: [dateToCheck])
+        
+        fetchRequest.predicate = pred
+        
+        do
+        {
+            plantCalendarInfo = try managedContext.fetch(fetchRequest)
+            if (plantCalendarInfo != [])
+            {
+                return true
+            }
+            return false
+        }
+        catch
+        {
+            debugPrint("Could not fetch :( : \(error.localizedDescription)")
+        }
+        return false
+    }
+    
     func save(completion: (_ finished: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext
@@ -352,7 +388,6 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! calendarCell
         
         cell.dayLabel.text = totalSquares[indexPath.item]
-        debugPrint(String(totalSquares[indexPath.item]))
         cell.layer.cornerRadius = 5.0
         if(totalSquares[indexPath.item] == "")
         {

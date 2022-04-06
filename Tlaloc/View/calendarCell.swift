@@ -22,10 +22,19 @@ class calendarCell: UICollectionViewCell
         if(wasAnActiveDay)
         {
             plantWasCaredForThatDayBtn.isHidden = false
+            self.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
+            self.plantWasCaredForThatDayBtn.layer.cornerRadius = 15.0
         }
         else
         {
             plantWasCaredForThatDayBtn.isHidden = true
+            self.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
         }
+    }
+    
+    func configureNonDateCell()
+    {
+        plantWasCaredForThatDayBtn.isHidden = true
+        self.backgroundColor = UIColor(displayP3Red: 247/256, green: 204/256, blue: 134/256, alpha: 1.0)
     }
 }

@@ -28,6 +28,8 @@ class plantListViewController: UIViewController
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     var selectedDate = Date()
     var totalSquares = [String]()
+    var plantNameHolder: String = "placeholder"
+    var plantWasWatered: Bool = true
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -126,11 +128,15 @@ class plantListViewController: UIViewController
         guard let plantAboutViewController = storyboard?.instantiateViewController(withIdentifier: "plantAboutViewController") else {return}
         presentDetailFromLeft(plantAboutViewController)
     }
+    
+    //handles in the case the user wants to switch the calendar to the previous monht
     @IBAction func previousMonthBtnWasPressed(_ sender: Any)
     {
         selectedDate = calendarExt().minusMonth(date: selectedDate)
         setMonthView()
     }
+    
+    //handles in the case the user wants to switch the calendar to the next month
     @IBAction func nextMonthBtnWasPressed(_ sender: Any)
     {
         selectedDate = calendarExt().plusMonth(date: selectedDate)
@@ -184,10 +190,13 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         let date = Date()
         let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let currentDate = Calendar.current.date(from: dateComponents)!
+        selectedDate = currentDate
+        plantNameHolder = self.plants[indexPath.row].plantName!
         
         //true equaling the water choice, this calculates the amount of days until the upcoming water date and resets the day counter to the distance to the upcoming date
         if(tableDecision == 0)
         {
+            plantWasWatered = true
             let resetAction = UIContextualAction(style: .normal, title: "Water")
             { [self] (rowAction, view, completion: (Bool) -> Void) in
                 self.plants[indexPath.row].nextWaterDate = Calendar.current.date(byAdding: .day, value: Int(self.plants[indexPath.row].daysBetweenWater), to: currentDate)!
@@ -226,6 +235,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         //does the same in the case that the fertilizer screen is being looked at
         else
         {
+            plantWasWatered = false
             let resetAction = UIContextualAction(style: .normal, title: "Fertilize")
             { [self] (rowAction, view, completion: (Bool) -> Void) in
                 self.plants[indexPath.row].nextFertilizerDate = Calendar.current.date(byAdding: .day, value: Int(self.plants[indexPath.row].daysBetweenFertilizer), to: currentDate)!
@@ -317,6 +327,7 @@ extension plantListViewController
     
         let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
         
+        
         fetchRequest.predicate = pred
         
         do
@@ -339,6 +350,16 @@ extension plantListViewController
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext
         else { return }
+        
+        let plantCalandarList = PlantCalendar(context: managedContext)
+        
+        plantCalandarList.activeDay = selectedDate
+        plantCalandarList.plantCaredFor = plantNameHolder
+        plantCalandarList.wasWatered = plantWasWatered
+        
+        debugPrint(selectedDate)
+        debugPrint(plantNameHolder)
+        debugPrint(plantWasWatered)
         
         do
         {
@@ -382,20 +403,18 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! calendarCell
-        
         cell.dayLabel.text = totalSquares[indexPath.item]
-        cell.layer.cornerRadius = 5.0
-        if(fetchCalenderInfo(dateToCheck: selectedDate))
+        if(totalSquares[indexPath.item] != "")
         {
-            cell.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
-            cell.plantWasCaredForThatDayBtn.isHidden = false
-            cell.plantWasCaredForThatDayBtn.layer.cornerRadius = 15.0
+            let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!, dateToCombine: selectedDate)
+            debugPrint(newDate)
+            cell.configureCell(selectedDate: newDate, wasAnActiveDay: fetchCalenderInfo(dateToCheck: newDate))
         }
         else
         {
-            cell.backgroundColor = UIColor(displayP3Red: 247/256, green: 204/256, blue: 134/256, alpha: 1.0)
-            cell.plantWasCaredForThatDayBtn.isHidden = true
+            cell.configureNonDateCell()
         }
+        cell.layer.cornerRadius = 5.0
         
         return cell
     }
@@ -436,4 +455,8 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         calendarCollectionView.reloadData()
     }
     
+    func combineDateWithDay(_ dayValue: Int, dateToCombine: Date) -> Date
+    {
+        return Calendar.current.date(bySetting: .day, value: dayValue, of: dateToCombine)!
+    }
 }

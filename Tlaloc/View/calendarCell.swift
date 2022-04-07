@@ -24,6 +24,8 @@ class calendarCell: UICollectionViewCell
             plantWasCaredForThatDayBtn.isHidden = false
             self.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
             self.plantWasCaredForThatDayBtn.layer.cornerRadius = 15.0
+            debugPrint("This is the date that the cell took in")
+            debugPrint(selectedDate)
         }
         else
         {

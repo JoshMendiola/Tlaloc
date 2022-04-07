@@ -40,6 +40,7 @@ class plantListViewController: UIViewController
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
         calendarView.isHidden = true
+        fetchCoreDataObjects()
         setCellView()
         setMonthView()
         //formats the dates to set the preferred time for the user to see notifications for when the swipe action is used
@@ -61,6 +62,7 @@ class plantListViewController: UIViewController
         super.viewWillAppear(animated)
         fetchCoreDataObjects()
         tableView.reloadData()
+        calendarCollectionView.reloadData()
     }
     
     //fetches core data and checks to see if the table should be visible or not
@@ -103,11 +105,12 @@ class plantListViewController: UIViewController
             //if user wants to see the calender
             case 2:
                 tableDecision = 2
+                fetchCoreDataObjects()
                 tableView.isHidden = true
-                tableView.reloadData()
                 calendarView.isHidden = false
                 setMonthView()
                 setCellView()
+                calendarCollectionView.reloadData()
                 break
             //breakpoint here
             default:
@@ -306,10 +309,12 @@ extension plantListViewController
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
         
         let fetchRequest = NSFetchRequest<PlantInformation>(entityName: "PlantInformation")
+        let calendarFetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
         
         do
         {
             plants = try managedContext.fetch(fetchRequest)
+            plantCalendarInfo = try managedContext.fetch(calendarFetchRequest)
             completion(true)
         }
         catch
@@ -325,6 +330,9 @@ extension plantListViewController
         
         let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
     
+        debugPrint("This is the date we are searching for")
+        debugPrint(dateToCheck)
+        
         let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
         
         
@@ -335,6 +343,8 @@ extension plantListViewController
             plantCalendarInfo = try managedContext.fetch(fetchRequest)
             if (plantCalendarInfo != [])
             {
+                debugPrint("FOUND DATE:")
+                debugPrint(dateToCheck)
                 return true
             }
             return false
@@ -353,7 +363,10 @@ extension plantListViewController
         
         let plantCalandarList = PlantCalendar(context: managedContext)
         
-        plantCalandarList.activeDay = selectedDate
+        let saveDate = Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: selectedDate)
+        plantCalandarList.activeDay = saveDate
+        debugPrint("THIS IS THE DATE GETTING SAVED")
+        debugPrint(saveDate!)
         plantCalandarList.plantCaredFor = plantNameHolder
         plantCalandarList.wasWatered = plantWasWatered
         
@@ -364,6 +377,7 @@ extension plantListViewController
         do
         {
             try managedContext.save()
+            debugPrint("plantCalendar info was saved!")
             completion(true)
         }
         catch
@@ -395,11 +409,14 @@ extension plantListViewController
 
 extension plantListViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
+    
+    //determines size of the collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         totalSquares.count
     }
     
+    //this determines the interior setup for each cell as it is loaded
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! calendarCell
@@ -407,7 +424,6 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         if(totalSquares[indexPath.item] != "")
         {
             let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!, dateToCombine: selectedDate)
-            debugPrint(newDate)
             cell.configureCell(selectedDate: newDate, wasAnActiveDay: fetchCalenderInfo(dateToCheck: newDate))
         }
         else
@@ -419,6 +435,7 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
+    //this determines how the cells interact with eachother
     func setCellView()
     {
         let width = (calendarCollectionView.frame.size.width - 2) / 8
@@ -428,6 +445,7 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         flowLayout.itemSize = CGSize(width: width, height: height)
     }
     
+    //this sets up the calendar in the correct orientation for the whole month
     func setMonthView()
     {
         totalSquares.removeAll()
@@ -455,8 +473,10 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         calendarCollectionView.reloadData()
     }
     
+    //this combines a specifc day and a specific date to pass to the cell itself
     func combineDateWithDay(_ dayValue: Int, dateToCombine: Date) -> Date
     {
-        return Calendar.current.date(bySetting: .day, value: dayValue, of: dateToCombine)!
+        let newDate = Calendar.current.date(bySetting: .day, value: dayValue, of: dateToCombine)!
+        return Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: newDate)!
     }
 }

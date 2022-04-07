@@ -329,9 +329,6 @@ extension plantListViewController
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return false}
         
         let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
-    
-        debugPrint("This is the date we are searching for")
-        debugPrint(dateToCheck)
         
         let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
         

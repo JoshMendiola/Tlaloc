@@ -279,9 +279,6 @@
                                                             <color key="backgroundColor" red="0.37055760269999999" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" cornerStyle="small"/>
-                                                            <connections>
-                                                                <action selector="plantsCaredForThatDayBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uRD-JI-OIP"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -298,7 +295,7 @@
                                                 <size key="customSize" width="127" height="128"/>
                                                 <connections>
                                                     <outlet property="dayLabel" destination="cdd-0D-vp0" id="GMz-XQ-LAT"/>
-                                                    <outlet property="plantWasCaredForThatDayBtn" destination="gKx-Oi-dS0" id="kEz-3x-R8u"/>
+                                                    <outlet property="plantWasCaredForThatDayBtn" destination="gKx-Oi-dS0" id="Fky-hA-4ZC"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -381,6 +378,53 @@
                                     <constraint firstAttribute="trailing" secondItem="yIw-3g-RJv" secondAttribute="trailing" id="wkh-KT-4aN"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH5-MV-kQi">
+                                <rect key="frame" x="87" y="323" width="240" height="250"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-5p-bz3">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-Jv-y8r">
+                                                <rect key="frame" x="38" y="25" width="41.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-X9-EW7">
+                                                <rect key="frame" x="160.5" y="25" width="41.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdB-Sq-h9G">
+                                                <rect key="frame" x="99.5" y="25" width="41.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="LHN-X9-EW7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jdB-Sq-h9G" secondAttribute="trailing" constant="8" symbolic="YES" id="1Eq-9L-Xpi"/>
+                                            <constraint firstItem="jdB-Sq-h9G" firstAttribute="centerX" secondItem="oc7-5p-bz3" secondAttribute="centerX" id="7Rw-EK-svC"/>
+                                            <constraint firstAttribute="height" constant="70" id="8HY-9n-HG6"/>
+                                            <constraint firstItem="LMz-Jv-y8r" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="KY9-tr-Mt1"/>
+                                            <constraint firstItem="jdB-Sq-h9G" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="RzI-XN-sXi"/>
+                                            <constraint firstItem="LHN-X9-EW7" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="d6X-z4-88X"/>
+                                            <constraint firstAttribute="trailing" secondItem="LHN-X9-EW7" secondAttribute="trailing" constant="38" id="lxr-h9-DSc"/>
+                                            <constraint firstItem="jdB-Sq-h9G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LMz-Jv-y8r" secondAttribute="trailing" constant="8" symbolic="YES" id="s7V-iY-6Qa"/>
+                                            <constraint firstItem="LMz-Jv-y8r" firstAttribute="leading" secondItem="oc7-5p-bz3" secondAttribute="leading" constant="38" id="skU-SO-2Sj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="47S-Dq-1X7"/>
+                                    <constraint firstItem="oc7-5p-bz3" firstAttribute="top" secondItem="pH5-MV-kQi" secondAttribute="top" id="FmR-tq-JSJ"/>
+                                    <constraint firstItem="oc7-5p-bz3" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" id="mf0-0J-aLy"/>
+                                    <constraint firstAttribute="trailing" secondItem="oc7-5p-bz3" secondAttribute="trailing" id="uwI-E2-LSA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -390,10 +434,13 @@
                             <constraint firstAttribute="bottom" secondItem="bnH-g2-v6a" secondAttribute="bottom" id="8LQ-j3-J43"/>
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8OB-BS-H2o"/>
                             <constraint firstItem="9ZO-Q6-Vji" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8a4-Kd-RAN"/>
+                            <constraint firstItem="pH5-MV-kQi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="A7G-3J-F1U"/>
+                            <constraint firstItem="pH5-MV-kQi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Foh-85-JSG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o4G-me-CXA" secondAttribute="trailing" id="SaS-NB-uci"/>
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TVH-Lg-GmB"/>
                             <constraint firstAttribute="bottom" secondItem="o4G-me-CXA" secondAttribute="bottom" id="X2e-dD-Jn0"/>
                             <constraint firstAttribute="bottom" secondItem="bnH-g2-v6a" secondAttribute="bottom" id="ZRL-r1-xpv"/>
+                            <constraint firstItem="pH5-MV-kQi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cuF-Jv-fGf"/>
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eAy-JH-9bh"/>
                             <constraint firstItem="o4G-me-CXA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gc2-vK-A8S"/>
                             <constraint firstItem="o4G-me-CXA" firstAttribute="top" secondItem="9ZO-Q6-Vji" secondAttribute="bottom" constant="60" id="kZZ-wX-lPz"/>
@@ -407,6 +454,8 @@
                         <outlet property="calendarCollectionView" destination="yIw-3g-RJv" id="6qy-T8-nDm"/>
                         <outlet property="calendarView" destination="o4G-me-CXA" id="Y0g-A0-h95"/>
                         <outlet property="monthLabel" destination="LY1-cm-YG7" id="XIg-oW-Pim"/>
+                        <outlet property="plantsCaredForDateView" destination="oc7-5p-bz3" id="Oid-ER-Eae"/>
+                        <outlet property="plantsCaredForListView" destination="pH5-MV-kQi" id="UUd-ns-BtZ"/>
                         <outlet property="segmentedController" destination="38D-u6-e73" id="p9d-tX-X32"/>
                         <outlet property="tableView" destination="DGO-IT-ydu" id="Qdt-R3-Q9i"/>
                     </connections>

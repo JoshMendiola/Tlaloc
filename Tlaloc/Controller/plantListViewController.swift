@@ -30,6 +30,8 @@ class plantListViewController: UIViewController
     var totalSquares = [String]()
     var plantNameHolder: String = "placeholder"
     var plantWasWatered: Bool = true
+    @IBOutlet weak var plantsCaredForListView: UIView!
+    @IBOutlet weak var plantsCaredForDateView: UIView!
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -39,6 +41,9 @@ class plantListViewController: UIViewController
         tableView.isHidden = false
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
+        plantsCaredForDateView.layer.cornerRadius = 15.0
+        plantsCaredForListView.layer.cornerRadius = 15.0
+        plantsCaredForListView.isHidden = true
         calendarView.isHidden = true
         fetchCoreDataObjects()
         setCellView()
@@ -94,6 +99,7 @@ class plantListViewController: UIViewController
                 fetchCoreDataObjects()
                 tableView.reloadData()
                 calendarView.isHidden = true
+                plantsCaredForListView.isHidden = true
                 break
             //if user wants to see the fertilizer schedule
             case 1:
@@ -101,6 +107,7 @@ class plantListViewController: UIViewController
                 fetchCoreDataObjects()
                 tableView.reloadData()
                 calendarView.isHidden = true
+                plantsCaredForListView.isHidden = true
                 break
             //if user wants to see the calender
             case 2:
@@ -144,10 +151,6 @@ class plantListViewController: UIViewController
     {
         selectedDate = calendarExt().plusMonth(date: selectedDate)
         setMonthView()
-    }
-    @IBAction func plantsCaredForThatDayBtn(_ sender: Any)
-    {
-        
     }
     
     override open var shouldAutorotate: Bool
@@ -340,8 +343,6 @@ extension plantListViewController
             plantCalendarInfo = try managedContext.fetch(fetchRequest)
             if (plantCalendarInfo != [])
             {
-                debugPrint("FOUND DATE:")
-                debugPrint(dateToCheck)
                 return true
             }
             return false

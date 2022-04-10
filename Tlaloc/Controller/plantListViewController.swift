@@ -419,9 +419,25 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! calendarCell
         cell.dayLabel.text = totalSquares[indexPath.item]
+        debugPrint(totalSquares[indexPath.item])
         if(totalSquares[indexPath.item] != "")
         {
-            let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!, dateToCombine: selectedDate)
+            debugPrint("this is the selected date")
+            debugPrint(selectedDate)
+            
+            //grabs desired month value
+            let monthValue = Calendar.current.dateComponents([.month], from: selectedDate).month
+            debugPrint("this is the month value vvvv")
+            debugPrint(monthValue!)
+            
+            //grabs desired year value
+            let yearValue = Calendar.current.dateComponents([.year], from: selectedDate).year
+            debugPrint("this is the year value vvvv")
+            debugPrint(yearValue!)
+            
+            let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!,monthValue: monthValue!, yearValue: yearValue!, dateToCombine: selectedDate)
+            debugPrint("this is the final result of addition")
+            debugPrint(newDate)
             cell.configureCell(selectedDate: newDate, wasAnActiveDay: fetchCalenderInfo(dateToCheck: newDate))
         }
         else
@@ -472,9 +488,13 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     //this combines a specifc day and a specific date to pass to the cell itself
-    func combineDateWithDay(_ dayValue: Int, dateToCombine: Date) -> Date
+    func combineDateWithDay(_ dayValue: Int, monthValue: Int, yearValue: Int, dateToCombine: Date) -> Date
     {
-        let newDate = Calendar.current.date(bySetting: .day, value: dayValue, of: dateToCombine)!
+        debugPrint("this is the day value being added")
+        debugPrint(dayValue)
+        var newDate = Calendar.current.date(bySetting: .day, value: dayValue, of: dateToCombine)!
+        newDate = Calendar.current.date(bySetting: .month, value: monthValue, of: newDate)!
+        newDate = Calendar.current.date(bySetting: .year, value: yearValue, of: newDate)!
         return Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: newDate)!
     }
 }

@@ -12,6 +12,7 @@ class calendarCell: UICollectionViewCell
 {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var plantWasCaredForThatDayBtn: UIButton!
+    weak var delegate: calendarCellDelegate?
     var wasAnActiveDay: Bool = false
     var selectedDate: Date = Date.init()
 
@@ -39,4 +40,21 @@ class calendarCell: UICollectionViewCell
         plantWasCaredForThatDayBtn.isHidden = true
         self.backgroundColor = UIColor(displayP3Red: 247/256, green: 204/256, blue: 134/256, alpha: 1.0)
     }
+    
+    func getSelectedDate() -> Date
+    {
+        return self.selectedDate
+    }
+    
+    @IBAction func plantActivityBtnWasPressed(_ sender: Any)
+    {
+        delegate?.plantActivityBtnWasPressed(delegatedFrom: self)
+        
+    }
+    
+}
+
+protocol calendarCellDelegate: AnyObject
+{
+    func plantActivityBtnWasPressed(delegatedFrom cell: calendarCell)
 }

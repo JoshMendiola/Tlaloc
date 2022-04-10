@@ -14,7 +14,7 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class plantListViewController: UIViewController
 {
     
-    //intializes the variables including the segmented controlm, the tableview, and time and date keepers
+    //intializes the variables including the segmented control, the tableview, and time and date keepers
     var plants: [PlantInformation] = []
     var plantCalendarInfo: [PlantCalendar] = []
     private var tableDecision: Int = 0
@@ -32,6 +32,9 @@ class plantListViewController: UIViewController
     var plantWasWatered: Bool = true
     @IBOutlet weak var plantsCaredForListView: UIView!
     @IBOutlet weak var plantsCaredForDateView: UIView!
+    @IBOutlet weak var plantActivityDayLabel: UILabel!
+    @IBOutlet weak var plantActivityMonthLabel: UILabel!
+    @IBOutlet weak var plantActivityYearLabel: UILabel!
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -117,6 +120,7 @@ class plantListViewController: UIViewController
                 calendarView.isHidden = false
                 setMonthView()
                 setCellView()
+                plantsCaredForListView.isHidden = false
                 calendarCollectionView.reloadData()
                 break
             //breakpoint here
@@ -427,14 +431,17 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
             
             //grabs desired month value
             let monthValue = Calendar.current.dateComponents([.month], from: selectedDate).month
+            plantActivityMonthLabel.text = calendarExt().monthString(date: selectedDate)
             debugPrint("this is the month value vvvv")
             debugPrint(monthValue!)
             
             //grabs desired year value
             let yearValue = Calendar.current.dateComponents([.year], from: selectedDate).year
+            plantActivityYearLabel.text = calendarExt().yearString(date: selectedDate)
             debugPrint("this is the year value vvvv")
             debugPrint(yearValue!)
             
+            plantActivityDayLabel.text = totalSquares[indexPath.item]
             let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!,monthValue: monthValue!, yearValue: yearValue!)
             debugPrint("this is the final result of addition")
             debugPrint(newDate)

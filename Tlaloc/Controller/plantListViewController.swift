@@ -435,7 +435,7 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
             debugPrint("this is the year value vvvv")
             debugPrint(yearValue!)
             
-            let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!,monthValue: monthValue!, yearValue: yearValue!, dateToCombine: selectedDate)
+            let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!,monthValue: monthValue!, yearValue: yearValue!)
             debugPrint("this is the final result of addition")
             debugPrint(newDate)
             cell.configureCell(selectedDate: newDate, wasAnActiveDay: fetchCalenderInfo(dateToCheck: newDate))
@@ -488,13 +488,17 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     //this combines a specifc day and a specific date to pass to the cell itself
-    func combineDateWithDay(_ dayValue: Int, monthValue: Int, yearValue: Int, dateToCombine: Date) -> Date
+    func combineDateWithDay(_ dayValue: Int, monthValue: Int, yearValue: Int) -> Date
     {
-        debugPrint("this is the day value being added")
-        debugPrint(dayValue)
-        var newDate = Calendar.current.date(bySetting: .day, value: dayValue, of: dateToCombine)!
-        newDate = Calendar.current.date(bySetting: .month, value: monthValue, of: newDate)!
-        newDate = Calendar.current.date(bySetting: .year, value: yearValue, of: newDate)!
-        return Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: newDate)!
+        var components = DateComponents()
+        components.day = dayValue
+        components.month = monthValue
+        components.year = yearValue
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        let newDate = Calendar.current.date(from: components)
+        
+        return newDate!
     }
 }

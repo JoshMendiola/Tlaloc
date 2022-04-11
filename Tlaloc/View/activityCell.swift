@@ -7,22 +7,13 @@
 
 import UIKit
 
-class activityCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-        
-    }
+class activityCell: UITableViewCell
+{
+    @IBOutlet weak var plantName: UILabel!
     
     func configureCell(plantActivity: PlantCalendar)
     {
-        
+        plantName.text = plantActivity.plantCaredFor
     }
 
 }

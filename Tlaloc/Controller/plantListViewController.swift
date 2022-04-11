@@ -43,11 +43,14 @@ class plantListViewController: UIViewController
     {
         tableView.delegate = self
         tableView.dataSource = self
+        plantActivityTableView.delegate = self
+        plantActivityTableView.dataSource = self
         tableView.isHidden = false
         segmentedController.defaultConfiguration()
         aboutBtn.layer.cornerRadius = 10.0
         plantsCaredForDateView.layer.cornerRadius = 15.0
         plantsCaredForListView.layer.cornerRadius = 15.0
+        plantActivityTableView.layer.cornerRadius = 15.0
         plantsCaredForListView.isHidden = true
         calendarView.isHidden = true
         closedPlantActivityBtn.layer.cornerRadius = 15.0
@@ -73,6 +76,7 @@ class plantListViewController: UIViewController
         super.viewWillAppear(animated)
         fetchCoreDataObjects()
         tableView.reloadData()
+        plantActivityTableView.reloadData()
         calendarCollectionView.reloadData()
     }
     
@@ -181,8 +185,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         }
         else
         {
-            //TODO: replace this with the return from getting all of the plant activity associated with that day
-            return 2
+            return plantActivityInfo.count
         }
     }
     
@@ -199,6 +202,7 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         }
         else
         {
+            debugPrint("LOADING CELLS")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell") as? activityCell
             else {return UITableViewCell()}
             let plantActivity = plantActivityInfo[indexPath.row]
@@ -384,6 +388,33 @@ extension plantListViewController
         return false
     }
     
+    func fetchPlantActivityInfo(dateToCheck: Date) -> [PlantCalendar]
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return []}
+        
+        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
+        
+        let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
+        
+        
+        fetchRequest.predicate = pred
+        
+        do
+        {
+            plantCalendarInfo = try managedContext.fetch(fetchRequest)
+            if (plantCalendarInfo != [])
+            {
+                return plantCalendarInfo
+            }
+            return plantCalendarInfo
+        }
+        catch
+        {
+            debugPrint("Could not fetch :( : \(error.localizedDescription)")
+        }
+        return []
+    }
+    
     func save(completion: (_ finished: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext
@@ -537,14 +568,11 @@ extension plantListViewController: calendarCellDelegate
 {
     func plantActivityBtnWasPressed(dateToShow: Date)
     {
+        plantActivityInfo = fetchPlantActivityInfo(dateToCheck: dateToShow)
+        self.plantActivityTableView.reloadData()
         plantsCaredForListView.isHidden = false
         plantActivityDayLabel.text = String(calendarExt().dayString(date: dateToShow))
         plantActivityMonthLabel.text = calendarExt().monthString(date: dateToShow)
         plantActivityYearLabel.text = calendarExt().yearString(date: dateToShow)
-    }
-    
-    func configurePlantActivityList()
-    {
-        
     }
 }

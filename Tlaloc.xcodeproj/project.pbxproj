@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B0FA8DA27FA82060081D474 /* calendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA8D927FA82060081D474 /* calendarCell.swift */; };
 		9B0FA8DC27FA8E370081D474 /* calendarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA8DB27FA8E370081D474 /* calendarExt.swift */; };
 		9B20AEE827D0056E00C3C915 /* segmentedControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20AEE727D0056E00C3C915 /* segmentedControllerExt.swift */; };
 		9B20D7B02797E3BA00C69825 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20D7AF2797E3BA00C69825 /* AppDelegate.swift */; };
@@ -18,6 +17,7 @@
 		9B20D7BC2797E3BB00C69825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7BB2797E3BB00C69825 /* Assets.xcassets */; };
 		9B20D7BF2797E3BB00C69825 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7BD2797E3BB00C69825 /* LaunchScreen.storyboard */; };
 		9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */; };
+		9B8038212803B81C003E5454 /* calendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8038202803B81C003E5454 /* calendarCell.swift */; };
 		9B8973C22799B8EC00CE4BD0 /* plantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8973C12799B8EC00CE4BD0 /* plantCell.swift */; };
 		9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */; };
 		9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BABF33427A9BF3D00471037 /* plantEditViewController.swift */; };
@@ -25,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B0FA8D927FA82060081D474 /* calendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarCell.swift; sourceTree = "<group>"; };
 		9B0FA8DB27FA8E370081D474 /* calendarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarExt.swift; sourceTree = "<group>"; };
 		9B20AEE727D0056E00C3C915 /* segmentedControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segmentedControllerExt.swift; sourceTree = "<group>"; };
 		9B20D7AC2797E3BA00C69825 /* Tlaloc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tlaloc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +39,7 @@
 		9B3D2FAB27D55619007AE7C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		9B3D2FAC27D55619007AE7C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewControllerPresentExt.swift; sourceTree = "<group>"; };
+		9B8038202803B81C003E5454 /* calendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendarCell.swift; sourceTree = "<group>"; };
 		9B8973C12799B8EC00CE4BD0 /* plantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantCell.swift; sourceTree = "<group>"; };
 		9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantAboutViewController.swift; sourceTree = "<group>"; };
 		9BABF33427A9BF3D00471037 /* plantEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantEditViewController.swift; sourceTree = "<group>"; };
@@ -103,8 +103,8 @@
 		9B8973BF2799B89F00CE4BD0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B8038202803B81C003E5454 /* calendarCell.swift */,
 				9B8973C12799B8EC00CE4BD0 /* plantCell.swift */,
-				9B0FA8D927FA82060081D474 /* calendarCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,11 +199,11 @@
 				9B20D7B02797E3BA00C69825 /* AppDelegate.swift in Sources */,
 				9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */,
 				9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */,
-				9B0FA8DA27FA82060081D474 /* calendarCell.swift in Sources */,
 				9B20D7BA2797E3BA00C69825 /* Tlaloc.xcdatamodeld in Sources */,
 				9B20D7B22797E3BA00C69825 /* SceneDelegate.swift in Sources */,
 				9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */,
 				9BB2DE4927A1F7C200F98B8C /* plantCreationViewController.swift in Sources */,
+				9B8038212803B81C003E5454 /* calendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

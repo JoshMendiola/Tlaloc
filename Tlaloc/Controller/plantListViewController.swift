@@ -13,7 +13,6 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class plantListViewController: UIViewController
 {
-    
     //intializes the variables including the segmented control, the tableview, and time and date keepers
     var plants: [PlantInformation] = []
     var plantCalendarInfo: [PlantCalendar] = []
@@ -26,6 +25,7 @@ class plantListViewController: UIViewController
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var closedPlantActivityBtn: UIButton!
     var selectedDate = Date()
     var totalSquares = [String]()
     var plantNameHolder: String = "placeholder"
@@ -48,6 +48,7 @@ class plantListViewController: UIViewController
         plantsCaredForListView.layer.cornerRadius = 15.0
         plantsCaredForListView.isHidden = true
         calendarView.isHidden = true
+        closedPlantActivityBtn.layer.cornerRadius = 15.0
         fetchCoreDataObjects()
         setCellView()
         setMonthView()
@@ -120,7 +121,6 @@ class plantListViewController: UIViewController
                 calendarView.isHidden = false
                 setMonthView()
                 setCellView()
-                plantsCaredForListView.isHidden = false
                 calendarCollectionView.reloadData()
                 break
             //breakpoint here
@@ -155,6 +155,10 @@ class plantListViewController: UIViewController
     {
         selectedDate = calendarExt().plusMonth(date: selectedDate)
         setMonthView()
+    }
+    @IBAction func closePlantActivityBtnWasPressed(_ sender: Any)
+    {
+        plantsCaredForListView.isHidden = true
     }
     
     override open var shouldAutorotate: Bool
@@ -431,17 +435,14 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
             
             //grabs desired month value
             let monthValue = Calendar.current.dateComponents([.month], from: selectedDate).month
-            plantActivityMonthLabel.text = calendarExt().monthString(date: selectedDate)
             debugPrint("this is the month value vvvv")
             debugPrint(monthValue!)
             
             //grabs desired year value
             let yearValue = Calendar.current.dateComponents([.year], from: selectedDate).year
-            plantActivityYearLabel.text = calendarExt().yearString(date: selectedDate)
             debugPrint("this is the year value vvvv")
             debugPrint(yearValue!)
             
-            plantActivityDayLabel.text = totalSquares[indexPath.item]
             let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!,monthValue: monthValue!, yearValue: yearValue!)
             debugPrint("this is the final result of addition")
             debugPrint(newDate)
@@ -452,7 +453,7 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.configureNonDateCell()
         }
         cell.layer.cornerRadius = 5.0
-        
+        cell.delegate = self
         return cell
     }
     
@@ -507,5 +508,16 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
         let newDate = Calendar.current.date(from: components)
         
         return newDate!
+    }
+}
+
+extension plantListViewController: calendarCellDelegate
+{
+    func plantActivityBtnWasPressed(dateToShow: Date)
+    {
+        plantsCaredForListView.isHidden = false
+        plantActivityDayLabel.text = String(calendarExt().dayString(date: dateToShow))
+        plantActivityMonthLabel.text = calendarExt().monthString(date: dateToShow)
+        plantActivityYearLabel.text = calendarExt().yearString(date: dateToShow)
     }
 }

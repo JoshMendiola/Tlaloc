@@ -22,6 +22,13 @@ class calendarExt
         return calendar.date(byAdding: .month, value: -1, to: date)!
     }
     
+    func dayString(date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        return dateFormatter.string(from: date)
+    }
+    
     func monthString(date: Date) -> String
     {
         let dateFormatter = DateFormatter()

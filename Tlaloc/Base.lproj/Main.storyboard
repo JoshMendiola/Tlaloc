@@ -388,20 +388,20 @@
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-Jv-y8r">
-                                                <rect key="frame" x="38" y="22.5" width="47.5" height="25.5"/>
+                                                <rect key="frame" x="20" y="22.5" width="47.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-X9-EW7">
-                                                <rect key="frame" x="154.5" y="22.5" width="47.5" height="25.5"/>
+                                                <rect key="frame" x="172.5" y="22.5" width="47.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdB-Sq-h9G">
-                                                <rect key="frame" x="96.5" y="22.5" width="47.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
+                                                <rect key="frame" x="92" y="20" width="56.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="25"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -414,16 +414,32 @@
                                             <constraint firstItem="LMz-Jv-y8r" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="KY9-tr-Mt1"/>
                                             <constraint firstItem="jdB-Sq-h9G" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="RzI-XN-sXi"/>
                                             <constraint firstItem="LHN-X9-EW7" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="d6X-z4-88X"/>
-                                            <constraint firstAttribute="trailing" secondItem="LHN-X9-EW7" secondAttribute="trailing" constant="38" id="lxr-h9-DSc"/>
+                                            <constraint firstAttribute="trailing" secondItem="LHN-X9-EW7" secondAttribute="trailing" constant="20" id="lxr-h9-DSc"/>
                                             <constraint firstItem="jdB-Sq-h9G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LMz-Jv-y8r" secondAttribute="trailing" constant="8" symbolic="YES" id="s7V-iY-6Qa"/>
-                                            <constraint firstItem="LMz-Jv-y8r" firstAttribute="leading" secondItem="oc7-5p-bz3" secondAttribute="leading" constant="38" id="skU-SO-2Sj"/>
+                                            <constraint firstItem="LMz-Jv-y8r" firstAttribute="leading" secondItem="oc7-5p-bz3" secondAttribute="leading" constant="20" id="skU-SO-2Sj"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAF-3O-5Bx">
+                                        <rect key="frame" x="30" y="202.5" width="180" height="39.5"/>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.37753906250000002" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Close">
+                                            <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closePlantActivityBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bll-94-vOm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="47S-Dq-1X7"/>
                                     <constraint firstItem="oc7-5p-bz3" firstAttribute="top" secondItem="pH5-MV-kQi" secondAttribute="top" id="FmR-tq-JSJ"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rAF-3O-5Bx" secondAttribute="trailing" constant="20" symbolic="YES" id="RvX-nh-YRB"/>
+                                    <constraint firstItem="rAF-3O-5Bx" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" constant="30" id="X7L-fE-NuO"/>
+                                    <constraint firstItem="rAF-3O-5Bx" firstAttribute="centerX" secondItem="pH5-MV-kQi" secondAttribute="centerX" id="db2-nS-eDN"/>
+                                    <constraint firstAttribute="bottom" secondItem="rAF-3O-5Bx" secondAttribute="bottom" constant="8" id="mRS-0g-yUR"/>
                                     <constraint firstItem="oc7-5p-bz3" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" id="mf0-0J-aLy"/>
                                     <constraint firstAttribute="trailing" secondItem="oc7-5p-bz3" secondAttribute="trailing" id="uwI-E2-LSA"/>
                                 </constraints>
@@ -456,6 +472,7 @@
                         <outlet property="aboutBtn" destination="vse-Lk-Lav" id="BSM-ac-LKK"/>
                         <outlet property="calendarCollectionView" destination="yIw-3g-RJv" id="6qy-T8-nDm"/>
                         <outlet property="calendarView" destination="o4G-me-CXA" id="Y0g-A0-h95"/>
+                        <outlet property="closedPlantActivityBtn" destination="rAF-3O-5Bx" id="gzq-ch-6Cp"/>
                         <outlet property="monthLabel" destination="LY1-cm-YG7" id="XIg-oW-Pim"/>
                         <outlet property="plantActivityDayLabel" destination="jdB-Sq-h9G" id="7iO-pa-oEA"/>
                         <outlet property="plantActivityMonthLabel" destination="LMz-Jv-y8r" id="L3b-Kx-dhM"/>

@@ -15,11 +15,17 @@ class calendarCell: UICollectionViewCell
     weak var delegate: calendarCellDelegate?
     var wasAnActiveDay: Bool = false
     var selectedDate: Date = Date.init()
+    var selectedDateDay: Int = 0
+    var selectedDateMonth: Int = 0
+    var selectedDateYear: Int = 0
 
     func configureCell(selectedDate: Date, wasAnActiveDay: Bool)
     {
         self.wasAnActiveDay = wasAnActiveDay
         self.selectedDate = selectedDate
+        self.selectedDateDay = Calendar.current.dateComponents([.day], from: selectedDate).day!
+        self.selectedDateMonth = Calendar.current.dateComponents([.month], from: selectedDate).month!
+        self.selectedDateYear = Calendar.current.dateComponents([.year], from: selectedDate).year!
         if(wasAnActiveDay)
         {
             plantWasCaredForThatDayBtn.isHidden = false
@@ -48,13 +54,12 @@ class calendarCell: UICollectionViewCell
     
     @IBAction func plantActivityBtnWasPressed(_ sender: Any)
     {
-        delegate?.plantActivityBtnWasPressed(delegatedFrom: self)
-        
+        delegate?.plantActivityBtnWasPressed(dateToShow: selectedDate)
     }
     
 }
 
 protocol calendarCellDelegate: AnyObject
 {
-    func plantActivityBtnWasPressed(delegatedFrom cell: calendarCell)
+    func plantActivityBtnWasPressed(dateToShow: Date)
 }

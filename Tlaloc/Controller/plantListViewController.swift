@@ -16,8 +16,10 @@ class plantListViewController: UIViewController
     //intializes the variables including the segmented control, the tableview, and time and date keepers
     var plants: [PlantInformation] = []
     var plantCalendarInfo: [PlantCalendar] = []
+    var plantActivityInfo: [PlantCalendar] = []
     private var tableDecision: Int = 0
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var plantActivityTableView: UITableView!
     @IBOutlet weak var segmentedController: segmentedControllerExt!
     @IBOutlet weak var aboutBtn: UIButton!
     var preferredNotifTime: Date = Date()
@@ -171,18 +173,38 @@ class plantListViewController: UIViewController
 extension plantListViewController: UITableViewDelegate, UITableViewDataSource
 {
     //basic tableview information allowing for proper presentation of tableview details
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return plants.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if(tableView == self.tableView)
+        {
+            return plants.count
+        }
+        else
+        {
+            //TODO: replace this with the return from getting all of the plant activity associated with that day
+            return 2
+        }
     }
     
     //calls upon the plant cell class
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell") as? plantCell
-        else {return UITableViewCell()}
-        let plant = plants[indexPath.row]
-        cell.configureCell(plant: plant, tableChoice: tableDecision)
-        return cell
+        if(tableView == self.tableView)
+        {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "plantCell") as? plantCell
+            else {return UITableViewCell()}
+            let plant = plants[indexPath.row]
+            cell.configureCell(plant: plant, tableChoice: tableDecision)
+            return cell
+        }
+        else
+        {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell") as? activityCell
+            else {return UITableViewCell()}
+            let plantActivity = plantActivityInfo[indexPath.row]
+            cell.configureCell(plantActivity: plantActivity)
+            return cell
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -519,5 +541,10 @@ extension plantListViewController: calendarCellDelegate
         plantActivityDayLabel.text = String(calendarExt().dayString(date: dateToShow))
         plantActivityMonthLabel.text = calendarExt().monthString(date: dateToShow)
         plantActivityYearLabel.text = calendarExt().yearString(date: dateToShow)
+    }
+    
+    func configurePlantActivityList()
+    {
+        
     }
 }

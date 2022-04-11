@@ -17,6 +17,7 @@
 		9B20D7BC2797E3BB00C69825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7BB2797E3BB00C69825 /* Assets.xcassets */; };
 		9B20D7BF2797E3BB00C69825 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B20D7BD2797E3BB00C69825 /* LaunchScreen.storyboard */; };
 		9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */; };
+		9B7012E92804A75F008EE793 /* activityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7012E82804A75F008EE793 /* activityCell.swift */; };
 		9B8038212803B81C003E5454 /* calendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8038202803B81C003E5454 /* calendarCell.swift */; };
 		9B8973C22799B8EC00CE4BD0 /* plantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8973C12799B8EC00CE4BD0 /* plantCell.swift */; };
 		9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */; };
@@ -39,6 +40,7 @@
 		9B3D2FAB27D55619007AE7C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		9B3D2FAC27D55619007AE7C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewControllerPresentExt.swift; sourceTree = "<group>"; };
+		9B7012E82804A75F008EE793 /* activityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityCell.swift; sourceTree = "<group>"; };
 		9B8038202803B81C003E5454 /* calendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendarCell.swift; sourceTree = "<group>"; };
 		9B8973C12799B8EC00CE4BD0 /* plantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantCell.swift; sourceTree = "<group>"; };
 		9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantAboutViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				9B8038202803B81C003E5454 /* calendarCell.swift */,
 				9B8973C12799B8EC00CE4BD0 /* plantCell.swift */,
+				9B7012E82804A75F008EE793 /* activityCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				9B20D7B42797E3BA00C69825 /* plantListViewController.swift in Sources */,
 				9B20AEE827D0056E00C3C915 /* segmentedControllerExt.swift in Sources */,
 				9B0FA8DC27FA8E370081D474 /* calendarExt.swift in Sources */,
+				9B7012E92804A75F008EE793 /* activityCell.swift in Sources */,
 				9B20D7B02797E3BA00C69825 /* AppDelegate.swift in Sources */,
 				9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */,
 				9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */,

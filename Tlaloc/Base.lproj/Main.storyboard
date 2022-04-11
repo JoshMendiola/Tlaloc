@@ -384,23 +384,51 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH5-MV-kQi">
                                 <rect key="frame" x="87" y="323" width="240" height="250"/>
                                 <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yih-h0-dsz">
+                                        <rect key="frame" x="0.0" y="71.5" width="240" height="178.5"/>
+                                        <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="sectionIndexBackgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="50" id="cbt-QI-6cS">
+                                                <rect key="frame" x="0.0" y="44.5" width="240" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cbt-QI-6cS" id="oRy-Du-8Xs" customClass="activityCell" customModule="Tlaloc" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="k1b-ry-mmo">
+                                                            <rect key="frame" x="46" y="10.5" width="148" height="29"/>
+                                                            <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="k1b-ry-mmo" firstAttribute="centerY" secondItem="oRy-Du-8Xs" secondAttribute="centerY" id="VR1-3f-si4"/>
+                                                        <constraint firstItem="k1b-ry-mmo" firstAttribute="centerX" secondItem="oRy-Du-8Xs" secondAttribute="centerX" id="hSb-pi-zcD"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="k1b-ry-mmo" secondAttribute="trailing" constant="30" id="nfg-ft-ZaK"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-5p-bz3">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="71.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-Jv-y8r">
-                                                <rect key="frame" x="20" y="22.5" width="47.5" height="25.5"/>
+                                                <rect key="frame" x="20" y="23" width="47.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-X9-EW7">
-                                                <rect key="frame" x="172.5" y="22.5" width="47.5" height="25.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-X9-EW7">
+                                                <rect key="frame" x="172.5" y="23" width="47.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdB-Sq-h9G">
-                                                <rect key="frame" x="92" y="20" width="56.5" height="30"/>
+                                                <rect key="frame" x="92" y="20.5" width="56.5" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="25"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -409,11 +437,14 @@
                                         <color key="backgroundColor" red="0.0" green="0.49803921569999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="LHN-X9-EW7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jdB-Sq-h9G" secondAttribute="trailing" constant="8" symbolic="YES" id="1Eq-9L-Xpi"/>
+                                            <constraint firstItem="LHN-X9-EW7" firstAttribute="leading" secondItem="jdB-Sq-h9G" secondAttribute="trailing" constant="24" id="6FA-3B-NQU"/>
+                                            <constraint firstItem="LMz-Jv-y8r" firstAttribute="top" secondItem="oc7-5p-bz3" secondAttribute="top" constant="23" id="7EZ-Sn-yox"/>
                                             <constraint firstItem="jdB-Sq-h9G" firstAttribute="centerX" secondItem="oc7-5p-bz3" secondAttribute="centerX" id="7Rw-EK-svC"/>
-                                            <constraint firstAttribute="height" constant="70" id="8HY-9n-HG6"/>
                                             <constraint firstItem="LMz-Jv-y8r" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="KY9-tr-Mt1"/>
+                                            <constraint firstItem="jdB-Sq-h9G" firstAttribute="leading" secondItem="LMz-Jv-y8r" secondAttribute="trailing" constant="24.5" id="QY1-v9-ZNH"/>
                                             <constraint firstItem="jdB-Sq-h9G" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="RzI-XN-sXi"/>
                                             <constraint firstItem="LHN-X9-EW7" firstAttribute="centerY" secondItem="oc7-5p-bz3" secondAttribute="centerY" id="d6X-z4-88X"/>
+                                            <constraint firstItem="jdB-Sq-h9G" firstAttribute="top" secondItem="oc7-5p-bz3" secondAttribute="top" constant="20.5" id="daz-ol-Mgk"/>
                                             <constraint firstAttribute="trailing" secondItem="LHN-X9-EW7" secondAttribute="trailing" constant="20" id="lxr-h9-DSc"/>
                                             <constraint firstItem="jdB-Sq-h9G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LMz-Jv-y8r" secondAttribute="trailing" constant="8" symbolic="YES" id="s7V-iY-6Qa"/>
                                             <constraint firstItem="LMz-Jv-y8r" firstAttribute="leading" secondItem="oc7-5p-bz3" secondAttribute="leading" constant="20" id="skU-SO-2Sj"/>
@@ -434,14 +465,18 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="47S-Dq-1X7"/>
+                                    <constraint firstAttribute="height" constant="250" id="9ZZ-Tw-SxZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="yih-h0-dsz" secondAttribute="bottom" id="9wE-MX-ckc"/>
                                     <constraint firstItem="oc7-5p-bz3" firstAttribute="top" secondItem="pH5-MV-kQi" secondAttribute="top" id="FmR-tq-JSJ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rAF-3O-5Bx" secondAttribute="trailing" constant="20" symbolic="YES" id="RvX-nh-YRB"/>
                                     <constraint firstItem="rAF-3O-5Bx" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" constant="30" id="X7L-fE-NuO"/>
                                     <constraint firstItem="rAF-3O-5Bx" firstAttribute="centerX" secondItem="pH5-MV-kQi" secondAttribute="centerX" id="db2-nS-eDN"/>
+                                    <constraint firstItem="yih-h0-dsz" firstAttribute="top" secondItem="oc7-5p-bz3" secondAttribute="bottom" id="eET-g8-Zgo"/>
+                                    <constraint firstAttribute="trailing" secondItem="yih-h0-dsz" secondAttribute="trailing" id="jYf-DW-TvF"/>
                                     <constraint firstAttribute="bottom" secondItem="rAF-3O-5Bx" secondAttribute="bottom" constant="8" id="mRS-0g-yUR"/>
                                     <constraint firstItem="oc7-5p-bz3" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" id="mf0-0J-aLy"/>
                                     <constraint firstAttribute="trailing" secondItem="oc7-5p-bz3" secondAttribute="trailing" id="uwI-E2-LSA"/>
+                                    <constraint firstItem="yih-h0-dsz" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" id="xH1-zB-sxp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -476,6 +511,7 @@
                         <outlet property="monthLabel" destination="LY1-cm-YG7" id="XIg-oW-Pim"/>
                         <outlet property="plantActivityDayLabel" destination="jdB-Sq-h9G" id="7iO-pa-oEA"/>
                         <outlet property="plantActivityMonthLabel" destination="LMz-Jv-y8r" id="L3b-Kx-dhM"/>
+                        <outlet property="plantActivityTableView" destination="yih-h0-dsz" id="sfJ-uA-xOu"/>
                         <outlet property="plantActivityYearLabel" destination="LHN-X9-EW7" id="2jl-WV-SNU"/>
                         <outlet property="plantsCaredForDateView" destination="oc7-5p-bz3" id="Oid-ER-Eae"/>
                         <outlet property="plantsCaredForListView" destination="pH5-MV-kQi" id="UUd-ns-BtZ"/>

@@ -389,7 +389,7 @@
                                         <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="sectionIndexBackgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="50" id="cbt-QI-6cS" customClass="activityCell" customModule="Tlaloc" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" rowHeight="50" id="cbt-QI-6cS" customClass="activityCell" customModule="Tlaloc" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="294" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cbt-QI-6cS" id="oRy-Du-8Xs">

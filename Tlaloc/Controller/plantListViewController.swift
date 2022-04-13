@@ -427,6 +427,14 @@ extension plantListViewController
         let plantCalandarList = PlantCalendar(context: managedContext)
         
         let saveDate = Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: selectedDate)
+        let alreadyInCoreData = checkRecordExists(saveDate!, plantName: plantNameHolder, wasWatered: plantWasWatered)
+        
+        if(alreadyInCoreData)
+        {
+            completion(false)
+            debugPrint("FOUND IT IN CORE DATA: NOT SAVING")
+            return
+        }
         plantCalandarList.activeDay = saveDate
         debugPrint("THIS IS THE DATE GETTING SAVED")
         debugPrint(saveDate!)
@@ -436,14 +444,6 @@ extension plantListViewController
         debugPrint(selectedDate)
         debugPrint(plantNameHolder)
         debugPrint(plantWasWatered)
-        
-        let alreadyInCoreData = checkRecordExists(saveDate!, plantName: plantNameHolder, wasWatered: plantWasWatered)
-        
-        if(alreadyInCoreData)
-        {
-            completion(true)
-            return
-        }
         
         do
         {
@@ -477,6 +477,7 @@ extension plantListViewController
         do
         {
             results = try managedContext.fetch(fetchRequest)
+            debugPrint("The results:", results.count)
         }
         catch
         {

@@ -31,12 +31,15 @@ class plantListViewController: UIViewController
     var selectedDate = Date()
     var totalSquares = [String]()
     var plantNameHolder: String = "placeholder"
+    @IBOutlet weak var plantInstructionsView: UIView!
     var plantWasWatered: Bool = true
     @IBOutlet weak var plantsCaredForListView: UIView!
     @IBOutlet weak var plantsCaredForDateView: UIView!
     @IBOutlet weak var plantActivityDayLabel: UILabel!
     @IBOutlet weak var plantActivityMonthLabel: UILabel!
     @IBOutlet weak var plantActivityYearLabel: UILabel!
+    @IBOutlet weak var plantinstructionsViewHeader: UIView!
+    @IBOutlet weak var plantInstructionsViewExitBtn: UIButton!
     
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
@@ -51,6 +54,9 @@ class plantListViewController: UIViewController
         plantsCaredForDateView.layer.cornerRadius = 15.0
         plantsCaredForListView.layer.cornerRadius = 15.0
         plantActivityTableView.layer.cornerRadius = 15.0
+        plantInstructionsViewExitBtn.layer.cornerRadius = 15.0
+        plantinstructionsViewHeader.layer.cornerRadius = 15.0
+        plantInstructionsView.layer.cornerRadius = 15.0
         plantsCaredForListView.isHidden = true
         calendarView.isHidden = true
         closedPlantActivityBtn.layer.cornerRadius = 15.0
@@ -69,6 +75,16 @@ class plantListViewController: UIViewController
             let someDateTime = formatter.date(from: "00:00:00")
             preferredNotifTime = someDateTime!
         }
+        
+        if(isAppAlreadyLaunchedOnce())
+        {
+            plantInstructionsView.isHidden = true
+        }
+        else
+        {
+            plantInstructionsView.isHidden = false
+        }
+        
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool)
@@ -156,6 +172,10 @@ class plantListViewController: UIViewController
         setMonthView()
     }
     
+    @IBAction func exitPlantInstructionBtnWasPressed(_ sender: Any)
+    {
+        plantInstructionsView.isHidden = true
+    }
     //handles in the case the user wants to switch the calendar to the next month
     @IBAction func nextMonthBtnWasPressed(_ sender: Any)
     {
@@ -170,6 +190,18 @@ class plantListViewController: UIViewController
     override open var shouldAutorotate: Bool
     {
         return false
+    }
+    
+    func isAppAlreadyLaunchedOnce() -> Bool {
+        let defaults = UserDefaults.standard
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
+            print("App already launched")
+            return true
+        } else {
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("App launched first time")
+            return false
+        }
     }
 }
 

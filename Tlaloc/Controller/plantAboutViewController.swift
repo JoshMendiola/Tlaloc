@@ -55,4 +55,9 @@ class plantAboutViewController: UIViewController
         dismissDetailFromRight()
     }
     
+    override open var shouldAutorotate: Bool
+    {
+        return false
+    }
+    
 }

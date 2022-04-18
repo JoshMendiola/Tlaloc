@@ -208,7 +208,7 @@
                                         <segments>
                                             <segment title="Water"/>
                                             <segment title="Fertilizer"/>
-                                            <segment title="Calender"/>
+                                            <segment title="Calendar"/>
                                         </segments>
                                         <connections>
                                             <action selector="tableChoice:" destination="t8T-QK-UxA" eventType="valueChanged" id="N5V-R0-MOe"/>
@@ -232,7 +232,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DGO-IT-ydu" secondAttribute="bottom" id="yYZ-km-rHR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4G-me-CXA">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4G-me-CXA">
                                 <rect key="frame" x="0.0" y="219" width="414" height="677"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW8-6u-L3h">
@@ -381,7 +381,7 @@
                                     <constraint firstAttribute="trailing" secondItem="yIw-3g-RJv" secondAttribute="trailing" id="wkh-KT-4aN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH5-MV-kQi">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH5-MV-kQi">
                                 <rect key="frame" x="45" y="339" width="324" height="350"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yih-h0-dsz">
@@ -454,7 +454,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAF-3O-5Bx">
                                         <rect key="frame" x="30" y="302.5" width="264" height="39.5"/>
-                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.37753906250000002" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.72549019609999998" green="0.27450980390000002" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Close">
                                             <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="21"/>
@@ -481,6 +481,64 @@
                                     <constraint firstItem="yih-h0-dsz" firstAttribute="leading" secondItem="pH5-MV-kQi" secondAttribute="leading" id="xH1-zB-sxp"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-0p-uPT">
+                                <rect key="frame" x="40" y="249" width="334" height="574"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bh-8W-lRi">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TLALOC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUc-Yr-JQG">
+                                                <rect key="frame" x="119" y="30" width="96" height="31.5"/>
+                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="26"/>
+                                                <color key="textColor" red="0.96862745098039216" green="0.64313725490196072" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.37753906250000002" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="UUc-Yr-JQG" firstAttribute="centerX" secondItem="2Bh-8W-lRi" secondAttribute="centerX" id="TXY-Eg-SOS"/>
+                                            <constraint firstItem="UUc-Yr-JQG" firstAttribute="top" secondItem="2Bh-8W-lRi" secondAttribute="top" constant="30" id="jnE-E6-32e"/>
+                                            <constraint firstAttribute="height" constant="80" id="t9l-SF-7L6"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esx-xz-LDo">
+                                        <rect key="frame" x="30" y="507" width="274" height="45"/>
+                                        <color key="backgroundColor" red="0.72549019607843135" green="0.27450980392156865" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="9AF-yv-bYS"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Exit">
+                                            <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="25"/>
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="exitPlantInstructionBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Liu-zz-q30"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T1s-oS-WNr">
+                                        <rect key="frame" x="30" y="88" width="274" height="404"/>
+                                        <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <mutableString key="text">Welcome to Tlaloc !  Tlaloc helps remind you of when to tend to your plants water and fertilization cycles.  To use the app, all you have to do is register your plants with the "add plant" button. Input all of the information and click "add plant"  When your plant hits 0, swipe left on your plant in the table, and it will set a new timer and notification for you  You can also use the calendar to keep more intimate track of each plant, and set the time for when you want to recieve notifications in the "About" section  Now set forth and keep your plants happy and healthy !</mutableString>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2Bh-8W-lRi" secondAttribute="trailing" id="2co-O3-7Rr"/>
+                                    <constraint firstItem="T1s-oS-WNr" firstAttribute="leading" secondItem="6Ia-0p-uPT" secondAttribute="leading" constant="30" id="4Ld-J5-U0C"/>
+                                    <constraint firstItem="2Bh-8W-lRi" firstAttribute="leading" secondItem="6Ia-0p-uPT" secondAttribute="leading" id="PH6-Nl-3Oq"/>
+                                    <constraint firstItem="esx-xz-LDo" firstAttribute="top" secondItem="T1s-oS-WNr" secondAttribute="bottom" constant="15" id="VQf-sk-QHo"/>
+                                    <constraint firstItem="esx-xz-LDo" firstAttribute="centerX" secondItem="6Ia-0p-uPT" secondAttribute="centerX" id="aEI-c8-2me"/>
+                                    <constraint firstAttribute="bottom" secondItem="esx-xz-LDo" secondAttribute="bottom" constant="22" id="cGd-im-0ss"/>
+                                    <constraint firstItem="esx-xz-LDo" firstAttribute="leading" secondItem="6Ia-0p-uPT" secondAttribute="leading" constant="30" id="fYt-KC-JKA"/>
+                                    <constraint firstItem="T1s-oS-WNr" firstAttribute="top" secondItem="2Bh-8W-lRi" secondAttribute="bottom" constant="8" symbolic="YES" id="kwm-eZ-f04"/>
+                                    <constraint firstAttribute="trailing" secondItem="T1s-oS-WNr" secondAttribute="trailing" constant="30" id="oQ5-cV-2UM"/>
+                                    <constraint firstItem="2Bh-8W-lRi" firstAttribute="top" secondItem="6Ia-0p-uPT" secondAttribute="top" id="riV-hx-s7o"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -492,12 +550,16 @@
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8OB-BS-H2o"/>
                             <constraint firstItem="9ZO-Q6-Vji" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8a4-Kd-RAN"/>
                             <constraint firstItem="pH5-MV-kQi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="A7G-3J-F1U"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Ia-0p-uPT" secondAttribute="trailing" constant="40" id="Pwe-AB-Pev"/>
+                            <constraint firstItem="6Ia-0p-uPT" firstAttribute="top" secondItem="9ZO-Q6-Vji" secondAttribute="bottom" constant="90" id="QAL-Bs-jHD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6Ia-0p-uPT" secondAttribute="bottom" constant="39" id="Rqq-f1-RYj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o4G-me-CXA" secondAttribute="trailing" id="SaS-NB-uci"/>
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TVH-Lg-GmB"/>
                             <constraint firstAttribute="bottom" secondItem="o4G-me-CXA" secondAttribute="bottom" id="X2e-dD-Jn0"/>
                             <constraint firstAttribute="bottom" secondItem="bnH-g2-v6a" secondAttribute="bottom" id="ZRL-r1-xpv"/>
                             <constraint firstItem="pH5-MV-kQi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cuF-Jv-fGf"/>
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eAy-JH-9bh"/>
+                            <constraint firstItem="6Ia-0p-uPT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="eeP-Qg-ELi"/>
                             <constraint firstItem="o4G-me-CXA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gc2-vK-A8S"/>
                             <constraint firstItem="o4G-me-CXA" firstAttribute="top" secondItem="9ZO-Q6-Vji" secondAttribute="bottom" constant="60" id="kZZ-wX-lPz"/>
                             <constraint firstItem="bnH-g2-v6a" firstAttribute="top" secondItem="9ZO-Q6-Vji" secondAttribute="bottom" id="v8Y-fa-q7T"/>
@@ -515,6 +577,9 @@
                         <outlet property="plantActivityMonthLabel" destination="LMz-Jv-y8r" id="L3b-Kx-dhM"/>
                         <outlet property="plantActivityTableView" destination="yih-h0-dsz" id="sfJ-uA-xOu"/>
                         <outlet property="plantActivityYearLabel" destination="LHN-X9-EW7" id="2jl-WV-SNU"/>
+                        <outlet property="plantInstructionsView" destination="6Ia-0p-uPT" id="FvF-GM-9S8"/>
+                        <outlet property="plantInstructionsViewExitBtn" destination="esx-xz-LDo" id="pZp-Xg-Kwh"/>
+                        <outlet property="plantinstructionsViewHeader" destination="2Bh-8W-lRi" id="g9P-Sl-9af"/>
                         <outlet property="plantsCaredForDateView" destination="oc7-5p-bz3" id="Oid-ER-Eae"/>
                         <outlet property="plantsCaredForListView" destination="pH5-MV-kQi" id="UUd-ns-BtZ"/>
                         <outlet property="segmentedController" destination="38D-u6-e73" id="p9d-tX-X32"/>
@@ -902,7 +967,7 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Choose Image">
                                                     <fontDescription key="titleFontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="19"/>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.72526999079999999" green="0.27350834870000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.72549019607843135" green="0.27450980392156865" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="chooseImgBtnWasPressed:" destination="A0h-SC-sMI" eventType="touchUpInside" id="dKM-jE-Zck"/>
@@ -1263,6 +1328,9 @@
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="pixelplant" width="1300" height="1300"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

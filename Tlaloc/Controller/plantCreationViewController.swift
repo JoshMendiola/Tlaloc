@@ -114,6 +114,11 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         }
     }
     
+    override open var shouldAutorotate: Bool
+    {
+        return false
+    }
+    
     //handles what would happen if the create button was pressed
     @IBAction func createPlantBtnWasPressed(_ sender: Any)
     {

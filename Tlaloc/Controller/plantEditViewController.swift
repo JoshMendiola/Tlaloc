@@ -221,6 +221,11 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
             updateBtn.alpha = 0.5
         }
     }
+    
+    override open var shouldAutorotate: Bool
+    {
+        return false
+    }
 }
 
 

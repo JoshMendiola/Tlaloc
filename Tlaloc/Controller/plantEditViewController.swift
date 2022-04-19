@@ -29,13 +29,18 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
     //initalizers and viewcontroller presentation
     func initdata(dex: Int)
     {
+        //sets the index value to the one passed to the initilalization object
         self.dex = dex
+        
+        //handles what occurs in the case no notification time was set in the about menu
         if timeKeeper.object(forKey: "desiredTime") != nil
         {
+            //saves it to the userdefaults
             preferredNotifTime = (timeKeeper.object(forKey: "desiredTime") as? Date)!
         }
         else
         {
+            //defaults the notification time value to midnight
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm:ss"
             let someDateTime = formatter.date(from: "00:00:00")
@@ -45,20 +50,29 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //adds done button the keyboards
         self.addDoneButtonOnKeyboard()
+        
+        //sets delegates and fetches core data objects
         waterDayCount.delegate = self
         fertilizerDayCount.delegate = self
         plantNameEditor.delegate = self
         fetchCoreDataObjects()
+        
+        //sets rounded corner to all of the views to fit the UI theme
         plantNameEditor.layer.cornerRadius = 10.0
         updateBtn.layer.cornerRadius = 25.0
         deleteBtn.layer.cornerRadius = 25.0
         waterDayCount.layer.cornerRadius = 10.0
         fertilizerDayCount.layer.cornerRadius = 10.0
         changeImgBtn.layer.cornerRadius = 25.0
+        
+        //sets text to the values saved in core data for these specific plants
         plantNameEditor.text = plants[dex].plantName
         waterDayCount.text = String(plants[dex].daysBetweenWater)
         fertilizerDayCount.text = String(plants[dex].daysBetweenFertilizer)
+        
         var img: UIImage
         
         //checks what image to hold for the plant
@@ -74,6 +88,7 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
         //checks if plant needs fertilizer
         if plants[dex].needsFertilizer == false
         {
+            //determines thta if the plant does NOT need fertilizer, then it should disable the field as a whol
             plantNeedsFertilizerSwitch.isOn = false
             fertilizerDayCount.alpha = 0.5
             fertilizerDayCount.isUserInteractionEnabled = false

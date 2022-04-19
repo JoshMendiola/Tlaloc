@@ -12,6 +12,7 @@ import AVFoundation
 
 class plantCreationViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
+    //IBOutlets for various buttons and widgets on the screen
     @IBOutlet weak var plantName: UITextView!
     @IBOutlet weak var plantSpecies: UITextView!
     @IBOutlet weak var waterDayCount: UITextField!
@@ -20,31 +21,42 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var chooseImgBtn: UIButton!
     @IBOutlet weak var needsFertilizerBtn: UISwitch!
+    
+    //variables thatw will be accessed throughout the program, such as the image tha is displayed, wether the plant needs fertilizer or not, and the time in which the user wants to recieve notifications
     var currentImage: UIImage = UIImage(named: "pixelplant")!
     var fertilizerAllowed: Bool = true
     var preferredNotifTime: Date = Date()
+    //accessing the user defaults to help with notification scheduling
     let timeKeeper = UserDefaults.standard
+    
     //handles viewcontroller presentation
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.addDoneButtonOnKeyboard()
+        
+        //sets proper delegation
         plantName.delegate = self
         plantSpecies.delegate = self
         waterDayCount.delegate = self
         fertilizerDayCount.delegate = self
+        
+        //rounds the corners of various objects
         waterDayCount.layer.cornerRadius = 10.0
         fertilizerDayCount.layer.cornerRadius = 10.0
         plantName.layer.cornerRadius = 10.0
         plantSpecies.layer.cornerRadius = 10.0
         plantImage.layer.cornerRadius = 10.0
+        chooseImgBtn.layer.cornerRadius = 25.0
+        plantCreationBtn.layer.cornerRadius = 15.0
+        
+        //sets the minimum font in which the plant creation buttons text can appear in, a difficult button to prettify in terms of its text
+        plantCreationBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        plantCreationBtn.titleLabel?.minimumScaleFactor = 0.5
+        
         currentImage = UIImage(named: "pixelplant")!
         fertilizerAllowed = true
         plantImage.image = currentImage
-        chooseImgBtn.layer.cornerRadius = 25.0
-        plantCreationBtn.layer.cornerRadius = 15.0
-        plantCreationBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        plantCreationBtn.titleLabel?.minimumScaleFactor = 0.5
         
         
         //handles the desired time of notifications
@@ -114,11 +126,6 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         }
     }
     
-    override open var shouldAutorotate: Bool
-    {
-        return false
-    }
-    
     //handles what would happen if the create button was pressed
     @IBAction func createPlantBtnWasPressed(_ sender: Any)
     {
@@ -132,6 +139,8 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
             }
         }
     }
+    
+    //handles what occurs in the case the user clicks the needs fertilizer button, a button that determines wether a plant actually requires and keeps track of fertilization effects
     @IBAction func needsFertilizerBtnWasPressed(_ sender: Any)
     {
         if needsFertilizerBtn.isOn
@@ -166,6 +175,12 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         debugPrint(futureFertilizerDate, futureWaterDate)
         
         return (futureFertilizerDate, futureWaterDate)
+    }
+    
+    //ensures this view controller does not autorotate, an action in which the UI was not designed for
+    override open var shouldAutorotate: Bool
+    {
+        return false
     }
 }
 
@@ -246,7 +261,9 @@ extension plantCreationViewController
         }
     }
     
-    func addDoneButtonOnKeyboard(){
+    //a function that adds a done button onto a keyboard that allows it to be dismissed in the case that a user is done typing when using it
+    func addDoneButtonOnKeyboard()
+    {
             let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
             doneToolbar.barStyle = .default
 
@@ -263,6 +280,7 @@ extension plantCreationViewController
             fertilizerDayCount.inputAccessoryView = doneToolbar
         }
 
+        //ab obective C function that provides functionality to when the done button on the keyboard is pressed, resigning, or disappearing, the keyboard thta is currently displayed
         @objc func doneButtonAction()
         {
             plantName.resignFirstResponder()
@@ -271,12 +289,14 @@ extension plantCreationViewController
             fertilizerDayCount.resignFirstResponder()
         }
     
+        //creates a randomized string from the list of letters, this is key in creating different plant ID's which make processing them in the core data objects much easier
         func randomString(length: Int) -> String
         {
           let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
           return String((0..<length).map{ _ in letters.randomElement()! })
         }
     
+        //combines the date from a date object and a time from another date object to create one mega date, this date is used in processing when to schedule notifications when the plant is created
         func combineDateWithTime(date: Date, time: Date) -> Date?
         {
             let calendar = NSCalendar.current
@@ -304,6 +324,7 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
     {
         checkCameraAccess()
     }
+    
     //sets the image with the new one taken
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
         {
@@ -314,10 +335,40 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
             self.dismiss(animated: true, completion: nil)
         }
     
+    //checks if the app has access to the camera or camera roll, in the case that it does not, it will handle what to do next
+    func checkCameraAccess()
+    {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .denied:
+                //gives the user the option to change the app settings in the case that the user did not give access to the camera
+                print("Denied, request permission from settings")
+                presentCameraSettings()
+            case .restricted:
+                print("Restricted, device owner must approve")
+            case .authorized:
+                //handles what happens in the case that the camera is allowed for use
+                print("Authorized, proceed")
+                accessAllowed()
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { success in
+                    if success {
+                        print("Permission granted, proceed")
+                        self.accessAllowed()
+                    } else {
+                        print("Permission denied")
+                    }
+                }
+            @unknown default:
+                return
+            }
+        }
+    
+    //handles what happens in the case camera access is allowed
     func accessAllowed()
     {
         DispatchQueue.main.async
         {
+            //defaults to using the user camera if available
             if UIImagePickerController.isSourceTypeAvailable(.camera)
             {
                 let imagePickerController = UIImagePickerController()
@@ -326,6 +377,7 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
                 imagePickerController.allowsEditing = true
                 self.present(imagePickerController, animated: true, completion: nil)
             }
+            //otherwise, uses the camera roll or saved images in the device
             else
             {
                 let imagePickerController = UIImagePickerController()
@@ -350,27 +402,4 @@ extension plantCreationViewController: UIImagePickerControllerDelegate, UINaviga
         })
         present(alertController, animated: true, completion: nil)
     }
-    func checkCameraAccess() {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-            case .denied:
-                print("Denied, request permission from settings")
-                presentCameraSettings()
-            case .restricted:
-                print("Restricted, device owner must approve")
-            case .authorized:
-                print("Authorized, proceed")
-                accessAllowed()
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video) { success in
-                    if success {
-                        print("Permission granted, proceed")
-                        self.accessAllowed()
-                    } else {
-                        print("Permission denied")
-                    }
-                }
-            @unknown default:
-                return
-            }
-        }
 }

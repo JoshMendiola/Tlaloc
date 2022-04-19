@@ -13,26 +13,24 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class plantListViewController: UIViewController
 {
-    //intializes the variables including the segmented control, the tableview, and time and date keepers
+    //creates separate arrays each holding values from different core data entities, with two from plant calendar, one permanent, holding all values of the entity, and one temporary,  only holding the value from a specified month of time
     var plants: [PlantInformation] = []
+    //permenant
     var plantCalendarInfo: [PlantCalendar] = []
+    //temporary
     var plantActivityInfo: [PlantCalendar] = []
-    private var tableDecision: Int = 0
+    
+    
+    //IBOutlets for the various objects and widgets displayed on the view controller
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var plantActivityTableView: UITableView!
     @IBOutlet weak var segmentedController: segmentedControllerExt!
     @IBOutlet weak var aboutBtn: UIButton!
-    var preferredNotifTime: Date = Date()
-    let timeKeeper = UserDefaults.standard
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var closedPlantActivityBtn: UIButton!
-    var selectedDate = Date()
-    var totalSquares = [String]()
-    var plantNameHolder: String = "placeholder"
     @IBOutlet weak var plantInstructionsView: UIView!
-    var plantWasWatered: Bool = true
     @IBOutlet weak var plantsCaredForListView: UIView!
     @IBOutlet weak var plantsCaredForDateView: UIView!
     @IBOutlet weak var plantActivityDayLabel: UILabel!
@@ -41,15 +39,32 @@ class plantListViewController: UIViewController
     @IBOutlet weak var plantinstructionsViewHeader: UIView!
     @IBOutlet weak var plantInstructionsViewExitBtn: UIButton!
     
+    //sets the variables required for holding of certain variables among functions, such as the plants name, the current date to that is being proceessed, or what decision the user made on the table they want to be looking at
+    private var tableDecision: Int = 0
+    var preferredNotifTime: Date = Date()
+    var selectedDate = Date()
+    var totalSquares = [String]()
+    var plantNameHolder: String = "placeholder"
+    var plantWasWatered: Bool = true
+    
+    //userdefaults for setting notification time
+    let timeKeeper = UserDefaults.standard
+    
     //these set up the proper presentation of the view controller and its objects
     override func viewDidLoad()
     {
+        //sets delegation of each object to theself
         tableView.delegate = self
         tableView.dataSource = self
         plantActivityTableView.delegate = self
         plantActivityTableView.dataSource = self
+        
+        //hides objects that should not be displayed unless told so
         tableView.isHidden = false
-        segmentedController.defaultConfiguration()
+        plantsCaredForListView.isHidden = true
+        calendarView.isHidden = true
+        
+        //sets corner radius for objects, rounding the corners to look more appealing
         aboutBtn.layer.cornerRadius = 10.0
         plantsCaredForDateView.layer.cornerRadius = 15.0
         plantsCaredForListView.layer.cornerRadius = 15.0
@@ -57,12 +72,16 @@ class plantListViewController: UIViewController
         plantInstructionsViewExitBtn.layer.cornerRadius = 15.0
         plantinstructionsViewHeader.layer.cornerRadius = 15.0
         plantInstructionsView.layer.cornerRadius = 15.0
-        plantsCaredForListView.isHidden = true
-        calendarView.isHidden = true
         closedPlantActivityBtn.layer.cornerRadius = 15.0
-        fetchCoreDataObjects()
+        
+        //sets configuration for different objects
+        segmentedController.defaultConfiguration()
         setCellView()
         setMonthView()
+        
+        //fetches objects from the core data
+        fetchCoreDataObjects()
+        
         //formats the dates to set the preferred time for the user to see notifications for when the swipe action is used
         if timeKeeper.object(forKey: "desiredTime") != nil
         {
@@ -76,6 +95,7 @@ class plantListViewController: UIViewController
             preferredNotifTime = someDateTime!
         }
         
+        //checks if app has already been launched before to see if the instructions view controller should display
         if(isAppAlreadyLaunchedOnce())
         {
             plantInstructionsView.isHidden = true
@@ -87,10 +107,16 @@ class plantListViewController: UIViewController
         
         super.viewDidLoad()
     }
+    
+    //handles what occurs everytime the view is reloaded, such as coming back from the plant creation screen
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        
+        //fetches new information from core data
         fetchCoreDataObjects()
+        
+        //reloads the data of the specific tables
         tableView.reloadData()
         plantActivityTableView.reloadData()
         calendarCollectionView.reloadData()
@@ -152,20 +178,20 @@ class plantListViewController: UIViewController
         }
     }
     
-    //segues into the next view controller
+    //segues into the add plant view controller
     @IBAction func addPlantBtnWasPressed(_ sender: Any)
     {
         guard let plantCreationViewController = storyboard?.instantiateViewController(withIdentifier: "plantCreationViewController") else {return}
         presentDetail(plantCreationViewController)
     }
-    //segues into the about section
+    //segues into the about view controller
     @IBAction func aboutBtnWasPressed(_ sender: Any)
     {
         guard let plantAboutViewController = storyboard?.instantiateViewController(withIdentifier: "plantAboutViewController") else {return}
         presentDetailFromLeft(plantAboutViewController)
     }
     
-    //handles in the case the user wants to switch the calendar to the previous monht
+    //handles in the case the user wants to switch the calendar to the previous month
     @IBAction func previousMonthBtnWasPressed(_ sender: Any)
     {
         selectedDate = calendarExt().minusMonth(date: selectedDate)
@@ -182,17 +208,170 @@ class plantListViewController: UIViewController
         selectedDate = calendarExt().plusMonth(date: selectedDate)
         setMonthView()
     }
+    
+    //closed the view controller that displays all of the active plants on a given day, or the plantsCaredFor view
     @IBAction func closePlantActivityBtnWasPressed(_ sender: Any)
     {
         plantsCaredForListView.isHidden = true
     }
     
+    //prevents the view controller from autorotating, as the UI was not designed for dynamic rotation
     override open var shouldAutorotate: Bool
     {
         return false
     }
+}
+
+//This section manages the general fetching, grabbing and managaement of the values within the table
+extension plantListViewController
+{
     
-    func isAppAlreadyLaunchedOnce() -> Bool {
+    //fetches plants from the core data entites, and writing their information the various arrays declared in the intilalization of the viewcontroller
+    func fetch(completion: (_ complete: Bool) -> ())
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
+        
+        let fetchRequest = NSFetchRequest<PlantInformation>(entityName: "PlantInformation")
+        let calendarFetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
+        
+        do
+        {
+            plants = try managedContext.fetch(fetchRequest)
+            plantCalendarInfo = try managedContext.fetch(calendarFetchRequest)
+            completion(true)
+        }
+        catch
+        {
+            debugPrint("Could not fetch :( : \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
+    //checks to see if there are any references to this date in the core data entity at all, returning false if it doe not exist, and true if it does
+    func fetchCalenderInfo(dateToCheck: Date) -> Bool
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return false}
+        
+        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
+        
+        //predicate only grabbing values with a matching date component
+        let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
+        
+        
+        fetchRequest.predicate = pred
+        
+        do
+        {
+            plantCalendarInfo = try managedContext.fetch(fetchRequest)
+            if (plantCalendarInfo != [])
+            {
+                return true
+            }
+            return false
+        }
+        catch
+        {
+            debugPrint("Could not fetch :( : \(error.localizedDescription)")
+        }
+        return false
+    }
+    
+    //grabs all of the instances of plant activity on the specific date passed to it
+    func fetchPlantActivityInfo(dateToCheck: Date) -> [PlantCalendar]
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return []}
+        
+        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
+        
+        let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
+        
+        
+        fetchRequest.predicate = pred
+        
+        do
+        {
+            plantCalendarInfo = try managedContext.fetch(fetchRequest)
+            return plantCalendarInfo
+        }
+        catch
+        {
+            debugPrint("Could not fetch :( : \(error.localizedDescription)")
+        }
+        return []
+    }
+    
+    //saves the data into the core data entities
+    func save(completion: (_ finished: Bool) -> ())
+    {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext
+        else { return }
+        
+        let plantCalandarList = PlantCalendar(context: managedContext)
+        
+        //sets the time of each value to midnight making the storage easier as time does not add complexity to the search
+        let saveDate = Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: selectedDate)
+        let alreadyInCoreData = checkRecordExists(saveDate!, plantName: plantNameHolder, wasWatered: plantWasWatered)
+        
+        //checks if the value already exist in core data to avoid storing duplicate values, saving memory space and making the reading of the list much clearer to the user
+        if(alreadyInCoreData)
+        {
+            completion(false)
+            debugPrint("FOUND IN CORE DATA: NOT SAVING")
+            return
+        }
+        
+        //sets the values to be saved into core data
+        plantCalandarList.activeDay = saveDate
+        plantCalandarList.plantCaredFor = plantNameHolder
+        plantCalandarList.wasWatered = plantWasWatered
+        
+        
+        //attempts the save, returning false if the save was unsuccessful
+        do
+        {
+            try managedContext.save()
+            debugPrint("plantCalendar info was saved!")
+            completion(true)
+        }
+        catch
+        {
+            debugPrint("Could not save !: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
+    //checks if the plantcalendar entity already contains an oject with matching values, to determine if it should save it or not. Returning true in the case that it does exist, and false if it does not
+    func checkRecordExists(_ dateToCheck: Date, plantName: String, wasWatered: Bool) -> Bool {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext
+        else { return false}
+        
+        
+        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
+        
+        //predicate looks for a match in all three values
+        let pred = NSPredicate(format: "activeDay == %@ && plantCaredFor == %@ && wasWatered == %@", argumentArray: [dateToCheck,plantName, wasWatered])
+        
+        fetchRequest.predicate = pred
+        var results: [PlantCalendar] = []
+        
+        do
+        {
+            results = try managedContext.fetch(fetchRequest)
+            debugPrint("The results:", results.count)
+        }
+        catch
+        {
+            print("error executing fetch request: \(error)")
+        }
+
+        //return true if there are more than 0 results found, otherwise returning false
+        return results.count > 0
+
+    }
+    
+    //returns true if the app has ever been launched before, saving the usage into the userdefaults in the case that the app is launching for the first time. Required in checking to see if the instruction screen should be displayed or not
+    func isAppAlreadyLaunchedOnce() -> Bool
+    {
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
             print("App already launched")
@@ -202,6 +381,25 @@ class plantListViewController: UIViewController
             print("App launched first time")
             return false
         }
+    }
+    
+    //this handles the calculations of combining both the dates and time, to create one mega date
+    func combineDateWithTime(date: Date, time: Date) -> Date?
+    {
+        let calendar = NSCalendar.current
+        
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+
+        var mergedComponments = DateComponents()
+        mergedComponments.year = dateComponents.year!
+        mergedComponments.month = dateComponents.month!
+        mergedComponments.day = dateComponents.day!
+        mergedComponments.hour = timeComponents.hour!
+        mergedComponments.minute = timeComponents.minute!
+        mergedComponments.second = timeComponents.second!
+    
+        return calendar.date(from: mergedComponments)
     }
 }
 
@@ -242,7 +440,9 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    //initalizes basic standards of the tableview
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
         return 1
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
@@ -331,20 +531,20 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
                         //makes the notification request
                         let fertilizerRequest = UNNotificationRequest(identifier: (self.plants[indexPath.row].plantID! + "Fertilizer"), content: fertilizerContent, trigger: fertilizerTrigger)
                         UNUserNotificationCenter.current().add(fertilizerRequest)
+                        
+                        //saves the data in the case that the plant actually requires fertilizer
+                        self.save { (complete) in
+                            if complete
+                            {
+                                return
+                            }
+                        }
                     }
                     //reloads the table
                     self.fetchCoreDataObjects()
                     tableView.reloadData()
                 }
                 resetAction.backgroundColor = UIColor.systemBrown
-                
-                //saves the data
-                self.save { (complete) in
-                    if complete
-                    {
-                        return
-                    }
-                }
                 return UISwipeActionsConfiguration(actions: [resetAction])
             }
         }
@@ -363,182 +563,6 @@ extension plantListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-//This section manages the general fetching, grabbing and managaement of the values within the table
-extension plantListViewController
-{
-    func removePlant(atIndexPath indexPath: IndexPath)
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
-        managedContext.delete(plants[indexPath.row])
-        do
-        {
-            try managedContext.save()
-        }
-        catch
-        {
-            debugPrint("Could not remove: \(error.localizedDescription)")
-        }
-    }
-    func fetch(completion: (_ complete: Bool) -> ())
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
-        
-        let fetchRequest = NSFetchRequest<PlantInformation>(entityName: "PlantInformation")
-        let calendarFetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
-        
-        do
-        {
-            plants = try managedContext.fetch(fetchRequest)
-            plantCalendarInfo = try managedContext.fetch(calendarFetchRequest)
-            completion(true)
-        }
-        catch
-        {
-            debugPrint("Could not fetch :( : \(error.localizedDescription)")
-            completion(false)
-        }
-    }
-    
-    //checks to see if there are any references to this date in the system at all
-    func fetchCalenderInfo(dateToCheck: Date) -> Bool
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return false}
-        
-        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
-        
-        let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
-        
-        
-        fetchRequest.predicate = pred
-        
-        do
-        {
-            plantCalendarInfo = try managedContext.fetch(fetchRequest)
-            if (plantCalendarInfo != [])
-            {
-                return true
-            }
-            return false
-        }
-        catch
-        {
-            debugPrint("Could not fetch :( : \(error.localizedDescription)")
-        }
-        return false
-    }
-    
-    //grabs all of the instances of plant activity on the specific date passed to it
-    func fetchPlantActivityInfo(dateToCheck: Date) -> [PlantCalendar]
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return []}
-        
-        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
-        
-        let pred = NSPredicate(format: "activeDay == %@", argumentArray: [dateToCheck])
-        
-        
-        fetchRequest.predicate = pred
-        
-        do
-        {
-            plantCalendarInfo = try managedContext.fetch(fetchRequest)
-            return plantCalendarInfo
-        }
-        catch
-        {
-            debugPrint("Could not fetch :( : \(error.localizedDescription)")
-        }
-        return []
-    }
-    
-    func save(completion: (_ finished: Bool) -> ())
-    {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext
-        else { return }
-        
-        let plantCalandarList = PlantCalendar(context: managedContext)
-        
-        let saveDate = Calendar.current.date(bySettingHour: 00, minute: 00, second: 00, of: selectedDate)
-        let alreadyInCoreData = checkRecordExists(saveDate!, plantName: plantNameHolder, wasWatered: plantWasWatered)
-        
-        if(alreadyInCoreData)
-        {
-            completion(false)
-            debugPrint("FOUND IT IN CORE DATA: NOT SAVING")
-            return
-        }
-        plantCalandarList.activeDay = saveDate
-        debugPrint("THIS IS THE DATE GETTING SAVED")
-        debugPrint(saveDate!)
-        plantCalandarList.plantCaredFor = plantNameHolder
-        plantCalandarList.wasWatered = plantWasWatered
-        
-        debugPrint(selectedDate)
-        debugPrint(plantNameHolder)
-        debugPrint(plantWasWatered)
-        
-        do
-        {
-            try managedContext.save()
-            debugPrint("plantCalendar info was saved!")
-            completion(true)
-        }
-        catch
-        {
-            debugPrint("Could not save !: \(error.localizedDescription)")
-            completion(false)
-        }
-    }
-    
-    func checkRecordExists(_ dateToCheck: Date, plantName: String, wasWatered: Bool) -> Bool {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext
-        else { return false}
-        
-        
-        let fetchRequest = NSFetchRequest<PlantCalendar>(entityName: "PlantCalendar")
-        
-        debugPrint(dateToCheck)
-        debugPrint(plantName)
-        debugPrint(wasWatered)
-        
-        let pred = NSPredicate(format: "activeDay == %@ && plantCaredFor == %@ && wasWatered == %@", argumentArray: [dateToCheck,plantName, wasWatered])
-        
-        fetchRequest.predicate = pred
-        var results: [PlantCalendar] = []
-        
-        do
-        {
-            results = try managedContext.fetch(fetchRequest)
-            debugPrint("The results:", results.count)
-        }
-        catch
-        {
-            print("error executing fetch request: \(error)")
-        }
-
-        return results.count > 0
-
-    }
-    
-    //this handles the calculations of combining both the dates and time, to create one mega date
-    func combineDateWithTime(date: Date, time: Date) -> Date?
-    {
-        let calendar = NSCalendar.current
-        
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-
-        var mergedComponments = DateComponents()
-        mergedComponments.year = dateComponents.year!
-        mergedComponments.month = dateComponents.month!
-        mergedComponments.day = dateComponents.day!
-        mergedComponments.hour = timeComponents.hour!
-        mergedComponments.minute = timeComponents.minute!
-        mergedComponments.second = timeComponents.second!
-    
-        return calendar.date(from: mergedComponments)
-    }
-}
 
 extension plantListViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
@@ -552,8 +576,11 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
     //this determines the interior setup for each cell as it is loaded
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
+        //creates cell and sets the number of the date it corresponds to, if it does
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! calendarCell
         cell.dayLabel.text = totalSquares[indexPath.item]
+        
+        //handles what occurs in the case that the cell is displaying an actual calendar date and should NOT be empty
         if(totalSquares[indexPath.item] != "")
         {
             //grabs desired month value
@@ -565,10 +592,13 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
             let newDate = combineDateWithDay(Int(totalSquares[indexPath.item])!,monthValue: monthValue!, yearValue: yearValue!)
             cell.configureCell(selectedDate: newDate, wasAnActiveDay: fetchCalenderInfo(dateToCheck: newDate))
         }
+        //handles what the cell should look like in the case it does NOT contain a corresponding date in the calendar
         else
         {
             cell.configureNonDateCell()
         }
+        
+        //sets delegate and corner radius of cell
         cell.layer.cornerRadius = 5.0
         cell.delegate = self
         return cell
@@ -630,9 +660,13 @@ extension plantListViewController: UICollectionViewDelegate, UICollectionViewDat
 
 extension plantListViewController: calendarCellDelegate
 {
+    //handles what happens in the case that the cells button is pressed, using the delegate written specifically for calendar cells to allow for dynamic creation of each button, only appear and being handled by the code if the date in the cell has activity associated with it
     func plantActivityBtnWasPressed(dateToShow: Date)
     {
+        //grabs activity associated with this date
         plantActivityInfo = fetchPlantActivityInfo(dateToCheck: dateToShow)
+        
+        //reloads the cell and sets the values within the plantActivity view to properly display the selected date
         self.plantActivityTableView.reloadData()
         plantsCaredForListView.isHidden = false
         plantActivityDayLabel.text = String(calendarExt().dayString(date: dateToShow))

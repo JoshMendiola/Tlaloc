@@ -209,6 +209,7 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
             updateBtn.alpha = 0.5
         }
     }
+    
     //changes button alpha to let user know if they can update their plant
     func textFieldDidEndEditing(_ textField: UITextField)
     {
@@ -222,6 +223,7 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
         }
     }
     
+    //determines if the controller should autorotate, returning false as this view controller (or any of them) should not autorotate given the view is not built to support that
     override open var shouldAutorotate: Bool
     {
         return false
@@ -231,9 +233,9 @@ class plantEditViewController: UIViewController, UITextViewDelegate, UITextField
 
 
 
-
 extension plantEditViewController
 {
+    //this removes and deletes a plant from the core data, given the index path of the desired plant to delete
     func removePlant(atIndexPath indexPath: IndexPath)
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
@@ -247,6 +249,8 @@ extension plantEditViewController
             debugPrint("Could not remove: \(error.localizedDescription)")
         }
     }
+    
+    //fetches an array of objects from the core data entity PlantInformation, returns true if the fetch is succesful, and returns false in the case that it does not
     func fetch(completion: (_ complete: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
@@ -264,6 +268,8 @@ extension plantEditViewController
             completion(false)
         }
     }
+    
+    //saves to the core data, returns true is succesful, false if not
     func save(completion: (_ finished: Bool) -> ())
     {
         guard let managedContext = appDelegate?.persistentContainer.viewContext
@@ -280,6 +286,8 @@ extension plantEditViewController
             completion(false)
         }
     }
+    
+    //takes in two dates, and extracts the date and time values from each, combining the into one megadate to use when setting notification times, usually the time object is taken from the userdefaults which a user would set in the about view controller
     func combineDateWithTime(date: Date, time: Date) -> Date?
     {
         let calendar = NSCalendar.current
@@ -297,6 +305,8 @@ extension plantEditViewController
     
         return calendar.date(from: mergedComponments)
     }
+    
+    //calculates two dates, each a certain amount of days ahead of the passed into it, used to calculate when the specific watering and fertilization of each plant should occur
     func calculateNextDate(waterDayCount: Int16, fertilizerDayCount: Int16) -> (Date?, Date?)
     {
         let date = Date()
@@ -311,7 +321,9 @@ extension plantEditViewController
         return (futureFertilizerDate, futureWaterDate)
     }
     
-    func addDoneButtonOnKeyboard(){
+    //function that adds a done button on the top of the keyboard when displaed, which makes registering when a user is done typing much easier for operations like checking if certain buttons should be accesible to the user yet
+    func addDoneButtonOnKeyboard()
+    {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
 
@@ -326,6 +338,8 @@ extension plantEditViewController
         waterDayCount.inputAccessoryView = doneToolbar
         fertilizerDayCount.inputAccessoryView = doneToolbar
     }
+    
+    //an objective C function which gives specific text editing boxes the ability to go away when the user clicks the done button
     @objc func doneButtonAction()
     {
         plantNameEditor.resignFirstResponder()
@@ -333,14 +347,17 @@ extension plantEditViewController
         fertilizerDayCount.resignFirstResponder()
     }
     
+    //checks if all values are validly filled before allowing the update button to be able to be interacted with
     func inputIsValid() -> Bool
     {
         if plantNameEditor.text != "" && waterDayCount.text != "" && Int16(waterDayCount.text!)! > 0
         {
+            //if the plant does not need fertilizer, it does not consider how empty the fertilizer field is
             if(needsFertilizer == false)
             {
                 return true
             }
+            //otherwise, it checks if fertilizer is properly filled in
             else if needsFertilizer == true && fertilizerDayCount.text != "" && Int16(fertilizerDayCount.text!)! > 0
             {
                 return true
@@ -361,29 +378,59 @@ extension plantEditViewController
 
 extension plantEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
+    
+    //this handles what happens when a user clicks the change image button
     @IBAction func changeImgBtnWasPressed(_ sender: Any)
     {
         checkCameraAccess()
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    
+    //processes if the user has allowed camera access to the app, if there is no camera access, it provides the user the option to change that otherwise, it runs as normal
+    func checkCameraAccess()
+    {
+        switch AVCaptureDevice.authorizationStatus(for: .video)
         {
-            let possibleImage = info[.editedImage] as? UIImage
-            plantImage.image = possibleImage!
-            debugPrint("setting image!")
-            self.dismiss(animated: true, completion: nil)
+            case .denied:
+                print("Denied, request permission from settings")
+                presentCameraSettings()
+            case .restricted:
+                print("Restricted, device owner must approve")
+            case .authorized:
+                print("Authorized, proceed")
+                accessAllowed()
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { success in
+                    if success
+                    {
+                        print("Permission granted, proceed")
+                        self.accessAllowed()
+                    }
+                    else
+                    {
+                        print("Permission denied")
+                    }
+                }
+            @unknown default:
+                return
         }
+    }
+
+    //handles what occurs in the case that the user has allowed the camera to be accessed
     func accessAllowed()
     {
         DispatchQueue.main.async
         {
+            //defaults to the camera if access is allowed
             if UIImagePickerController.isSourceTypeAvailable(.camera)
             {
+                //sets delegates and puts up the camera so the user can take a picture of their plants
                 let imagePickerController = UIImagePickerController()
                 imagePickerController.delegate = self
                 imagePickerController.sourceType = .camera
                 imagePickerController.allowsEditing = true
                 self.present(imagePickerController, animated: true, completion: nil)
             }
+            //if the user does not have a camera, it defaults to the camera roll instead of the camera itself
             else
             {
                 let imagePickerController = UIImagePickerController()
@@ -395,6 +442,7 @@ extension plantEditViewController: UIImagePickerControllerDelegate, UINavigation
             }
         }
     }
+    
     //these functions make sure that their is valid camera access to avoid the app crashing in the case the user did not want to take pictures of their plants (for some reason >:( )
     func presentCameraSettings()
     {
@@ -409,27 +457,13 @@ extension plantEditViewController: UIImagePickerControllerDelegate, UINavigation
         })
         present(alertController, animated: true, completion: nil)
     }
-    func checkCameraAccess() {
-            switch AVCaptureDevice.authorizationStatus(for: .video) {
-            case .denied:
-                print("Denied, request permission from settings")
-                presentCameraSettings()
-            case .restricted:
-                print("Restricted, device owner must approve")
-            case .authorized:
-                print("Authorized, proceed")
-                accessAllowed()
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video) { success in
-                    if success {
-                        print("Permission granted, proceed")
-                        self.accessAllowed()
-                    } else {
-                        print("Permission denied")
-                    }
-                }
-            @unknown default:
-                return
-            }
+    
+    //sets the image from the one picked from whatever (camera/camera roll) is used to select or determine the image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+        {
+            let possibleImage = info[.editedImage] as? UIImage
+            plantImage.image = possibleImage!
+            debugPrint("setting image!")
+            self.dismiss(animated: true, completion: nil)
         }
 }

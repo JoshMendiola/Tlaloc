@@ -10,6 +10,8 @@ import SafariServices
 
 class plantAboutViewController: UIViewController
 {
+    
+    //these are all IBOutlets connecting to the various featurss of the view controller, each working to maintain the look and function of the VC. The userdefaults is also included in order to be able to save the time in which notifications are to be set, which should be able to be changed on this page
     @IBOutlet weak var donationTextView: UITextView!
     @IBOutlet weak var donateBtn: UIButton!
     @IBOutlet weak var notifTimePicker: UIDatePicker!
@@ -18,6 +20,8 @@ class plantAboutViewController: UIViewController
     
     override func viewDidLoad()
     {
+        
+        //sets up UI attributes such as rounding corners and text colors
         super.viewDidLoad()
         donateBtn.layer.cornerRadius = 25.0
         donationTextView.layer.cornerRadius = 15.0
@@ -31,16 +35,14 @@ class plantAboutViewController: UIViewController
         }
         else
         {
+            //correctly formats the default value in which the user has never altered the notification time before, formatting it correctly so it can be altered in the future. the default time is midnight
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm:ss"
             let someDateTime = formatter.date(from: "00:00:00")
             notifTimePicker.date = someDateTime!
         }
     }
-    @IBAction func backBtnWasPressed(_ sender: Any)
-    {
-        dismissDetailFromRight()
-    }
+    
     //url leading to the plantwithaprupose page
     @IBAction func donateBtnWasPressed(_ sender: Any)
     {
@@ -48,6 +50,7 @@ class plantAboutViewController: UIViewController
         let svc = SFSafariViewController(url: url!)
         present(svc, animated: true, completion: nil)
     }
+    
     //sets the time specificed in the scroller
     @IBAction func confirmTimeBtnWasPressed(_ sender: Any)
     {
@@ -55,6 +58,13 @@ class plantAboutViewController: UIViewController
         dismissDetailFromRight()
     }
     
+    //dismisses the view controller in the case the back button was pressed
+    @IBAction func backBtnWasPressed(_ sender: Any)
+    {
+        dismissDetailFromRight()
+    }
+    
+    //stops the view controller from autorotating, locking the viewcontroller in the upright orientation
     override open var shouldAutorotate: Bool
     {
         return false

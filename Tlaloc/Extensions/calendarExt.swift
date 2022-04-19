@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//NOTE:: This class has 100% test coverage
 
 //these extensions exist to further serve and simplify the code requried for the calendar in plantListViewController, each handling specific calculations that make writing calendar code easier
 class calendarExt

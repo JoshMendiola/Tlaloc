@@ -32,7 +32,6 @@ class calendarCell: UICollectionViewCell
         self.selectedDateMonth = Calendar.current.dateComponents([.month], from: selectedDate).month!
         self.selectedDateYear = Calendar.current.dateComponents([.year], from: selectedDate).year!
         
-        plantWasCaredForThatDayBtn.isHidden = false
         self.backgroundColor = UIColor(displayP3Red: 235/256, green: 168/256, blue: 69/256, alpha: 1.0)
         
         //checks if this cell has any acitivity associated with it, displaying the button in the case it does, not displaying it in the case it does not
@@ -40,6 +39,11 @@ class calendarCell: UICollectionViewCell
         {
             //if day was active, rounds off the button to prettify the calendar
             self.plantWasCaredForThatDayBtn.layer.cornerRadius = 15.0
+            plantWasCaredForThatDayBtn.isHidden = false
+        }
+        else
+        {
+            plantWasCaredForThatDayBtn.isHidden = true
         }
     }
     

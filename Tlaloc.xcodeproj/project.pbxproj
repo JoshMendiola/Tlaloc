@@ -19,7 +19,7 @@
 		9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */; };
 		9B7012E92804A75F008EE793 /* activityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7012E82804A75F008EE793 /* activityCell.swift */; };
 		9B8038212803B81C003E5454 /* calendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8038202803B81C003E5454 /* calendarCell.swift */; };
-		9B8403C0280F2CC4006F93A7 /* TlalocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8403BF280F2CC4006F93A7 /* TlalocTests.swift */; };
+		9B8403C0280F2CC4006F93A7 /* CalendarExtTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8403BF280F2CC4006F93A7 /* CalendarExtTest.swift */; };
 		9B8973C22799B8EC00CE4BD0 /* plantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8973C12799B8EC00CE4BD0 /* plantCell.swift */; };
 		9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */; };
 		9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BABF33427A9BF3D00471037 /* plantEditViewController.swift */; };
@@ -54,7 +54,7 @@
 		9B7012E82804A75F008EE793 /* activityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityCell.swift; sourceTree = "<group>"; };
 		9B8038202803B81C003E5454 /* calendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendarCell.swift; sourceTree = "<group>"; };
 		9B8403BD280F2CC4006F93A7 /* TlalocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TlalocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B8403BF280F2CC4006F93A7 /* TlalocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TlalocTests.swift; sourceTree = "<group>"; };
+		9B8403BF280F2CC4006F93A7 /* CalendarExtTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtTest.swift; sourceTree = "<group>"; };
 		9B8973C12799B8EC00CE4BD0 /* plantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantCell.swift; sourceTree = "<group>"; };
 		9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantAboutViewController.swift; sourceTree = "<group>"; };
 		9BABF33427A9BF3D00471037 /* plantEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantEditViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		9B8403BE280F2CC4006F93A7 /* TlalocTests */ = {
 			isa = PBXGroup;
 			children = (
-				9B8403BF280F2CC4006F93A7 /* TlalocTests.swift */,
+				9B8403BF280F2CC4006F93A7 /* CalendarExtTest.swift */,
 			);
 			path = TlalocTests;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B8403C0280F2CC4006F93A7 /* TlalocTests.swift in Sources */,
+				9B8403C0280F2CC4006F93A7 /* CalendarExtTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

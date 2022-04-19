@@ -19,11 +19,22 @@
 		9B68B21127A05A0700B39B69 /* viewControllerPresentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */; };
 		9B7012E92804A75F008EE793 /* activityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7012E82804A75F008EE793 /* activityCell.swift */; };
 		9B8038212803B81C003E5454 /* calendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8038202803B81C003E5454 /* calendarCell.swift */; };
+		9B8403C0280F2CC4006F93A7 /* TlalocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8403BF280F2CC4006F93A7 /* TlalocTests.swift */; };
 		9B8973C22799B8EC00CE4BD0 /* plantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8973C12799B8EC00CE4BD0 /* plantCell.swift */; };
 		9B8C67CF27E2D16C00A392C5 /* plantAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */; };
 		9BABF33527A9BF3D00471037 /* plantEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BABF33427A9BF3D00471037 /* plantEditViewController.swift */; };
 		9BB2DE4927A1F7C200F98B8C /* plantCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2DE4827A1F7C200F98B8C /* plantCreationViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B8403C1280F2CC4006F93A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B20D7A42797E3BA00C69825 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B20D7AB2797E3BA00C69825;
+			remoteInfo = Tlaloc;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9B0FA8DB27FA8E370081D474 /* calendarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarExt.swift; sourceTree = "<group>"; };
@@ -42,6 +53,8 @@
 		9B68B21027A05A0700B39B69 /* viewControllerPresentExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewControllerPresentExt.swift; sourceTree = "<group>"; };
 		9B7012E82804A75F008EE793 /* activityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityCell.swift; sourceTree = "<group>"; };
 		9B8038202803B81C003E5454 /* calendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calendarCell.swift; sourceTree = "<group>"; };
+		9B8403BD280F2CC4006F93A7 /* TlalocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TlalocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8403BF280F2CC4006F93A7 /* TlalocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TlalocTests.swift; sourceTree = "<group>"; };
 		9B8973C12799B8EC00CE4BD0 /* plantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantCell.swift; sourceTree = "<group>"; };
 		9B8C67CE27E2D16C00A392C5 /* plantAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantAboutViewController.swift; sourceTree = "<group>"; };
 		9BABF33427A9BF3D00471037 /* plantEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plantEditViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +69,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9B8403BA280F2CC4006F93A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -63,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				9B20D7AE2797E3BA00C69825 /* Tlaloc */,
+				9B8403BE280F2CC4006F93A7 /* TlalocTests */,
 				9B20D7AD2797E3BA00C69825 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				9B20D7AC2797E3BA00C69825 /* Tlaloc.app */,
+				9B8403BD280F2CC4006F93A7 /* TlalocTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +122,14 @@
 				9B0FA8DB27FA8E370081D474 /* calendarExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9B8403BE280F2CC4006F93A7 /* TlalocTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B8403BF280F2CC4006F93A7 /* TlalocTests.swift */,
+			);
+			path = TlalocTests;
 			sourceTree = "<group>";
 		};
 		9B8973BF2799B89F00CE4BD0 /* View */ = {
@@ -143,6 +173,24 @@
 			productReference = 9B20D7AC2797E3BA00C69825 /* Tlaloc.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9B8403BC280F2CC4006F93A7 /* TlalocTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B8403C5280F2CC4006F93A7 /* Build configuration list for PBXNativeTarget "TlalocTests" */;
+			buildPhases = (
+				9B8403B9280F2CC4006F93A7 /* Sources */,
+				9B8403BA280F2CC4006F93A7 /* Frameworks */,
+				9B8403BB280F2CC4006F93A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B8403C2280F2CC4006F93A7 /* PBXTargetDependency */,
+			);
+			name = TlalocTests;
+			productName = TlalocTests;
+			productReference = 9B8403BD280F2CC4006F93A7 /* TlalocTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -150,11 +198,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					9B20D7AB2797E3BA00C69825 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					9B8403BC280F2CC4006F93A7 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 9B20D7AB2797E3BA00C69825;
 					};
 				};
 			};
@@ -173,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				9B20D7AB2797E3BA00C69825 /* Tlaloc */,
+				9B8403BC280F2CC4006F93A7 /* TlalocTests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,6 +238,13 @@
 				9B20D7BF2797E3BB00C69825 /* LaunchScreen.storyboard in Resources */,
 				9B20D7BC2797E3BB00C69825 /* Assets.xcassets in Resources */,
 				9B20D7B72797E3BA00C69825 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8403BB280F2CC4006F93A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +271,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9B8403B9280F2CC4006F93A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8403C0280F2CC4006F93A7 /* TlalocTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B8403C2280F2CC4006F93A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B20D7AB2797E3BA00C69825 /* Tlaloc */;
+			targetProxy = 9B8403C1280F2CC4006F93A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9B20D7B52797E3BA00C69825 /* Main.storyboard */ = {
@@ -421,6 +497,44 @@
 			};
 			name = Release;
 		};
+		9B8403C3280F2CC4006F93A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6T5W6F8TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jmendiola.TlalocTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tlaloc.app/Tlaloc";
+			};
+			name = Debug;
+		};
+		9B8403C4280F2CC4006F93A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6T5W6F8TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jmendiola.TlalocTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tlaloc.app/Tlaloc";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -438,6 +552,15 @@
 			buildConfigurations = (
 				9B20D7C42797E3BB00C69825 /* Debug */,
 				9B20D7C52797E3BB00C69825 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B8403C5280F2CC4006F93A7 /* Build configuration list for PBXNativeTarget "TlalocTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B8403C3280F2CC4006F93A7 /* Debug */,
+				9B8403C4280F2CC4006F93A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

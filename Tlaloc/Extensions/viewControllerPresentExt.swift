@@ -9,6 +9,7 @@ import UIKit
 
 extension UIViewController
 {
+    //this function makes a view controller appear as if coming from the right, returning no value and written to streamline the animation that follows from trying to switch view controllers
     func presentDetail(_ viewControllerToPresent: UIViewController)
     {
         let transition = CATransition()
@@ -21,7 +22,7 @@ extension UIViewController
         
         present(viewControllerToPresent, animated: false, completion: nil)
     }
-    
+    //this is the same but instead appears from the left
     func presentDetailFromLeft(_ viewControllerToPresent: UIViewController)
     {
         let transition = CATransition()
@@ -35,6 +36,8 @@ extension UIViewController
         present(viewControllerToPresent, animated: false, completion: nil)
     }
     
+    
+    //this handles viewcontroller dismissal, going back to the previous view controller from the left
     func dismissDetail()
     {
         let transition = CATransition()
@@ -45,7 +48,7 @@ extension UIViewController
         
         dismiss(animated: false, completion: nil)
     }
-    
+    //this does the same but from the right
     func dismissDetailFromRight()
     {
         let transition = CATransition()

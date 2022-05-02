@@ -172,7 +172,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fj-oU-jaS">
-                                                            <rect key="frame" x="329" y="10.5" width="28" height="42"/>
+                                                            <rect key="frame" x="316" y="10.5" width="28" height="42"/>
                                                             <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="35"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -187,7 +187,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="6ZT-ld-eWg" secondAttribute="trailing" constant="14" id="Xvc-T5-dB1"/>
                                                         <constraint firstAttribute="trailing" secondItem="6ZT-ld-eWg" secondAttribute="trailing" constant="14" id="ZFW-Pv-SAa"/>
                                                         <constraint firstAttribute="bottom" secondItem="6ZT-ld-eWg" secondAttribute="bottom" constant="17" id="dxO-Tq-zdV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="0Fj-oU-jaS" secondAttribute="trailing" constant="57" id="jav-NZ-Lnm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0Fj-oU-jaS" secondAttribute="trailing" constant="70" id="jav-NZ-Lnm"/>
                                                         <constraint firstAttribute="bottom" secondItem="6ZT-ld-eWg" secondAttribute="bottom" constant="17" id="q41-39-wGc"/>
                                                         <constraint firstItem="3OS-uW-d76" firstAttribute="leading" secondItem="i6c-T3-FSf" secondAttribute="leadingMargin" id="tFX-Wg-7DL"/>
                                                         <constraint firstItem="0Fj-oU-jaS" firstAttribute="top" secondItem="i6c-T3-FSf" secondAttribute="top" constant="10.5" id="vBU-j0-KdX"/>
@@ -196,6 +196,7 @@
                                                 <color key="backgroundColor" red="0.96862745100000003" green="0.64313725489999995" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="dayCount" destination="0Fj-oU-jaS" id="X8Q-ge-xSn"/>
+                                                    <outlet property="plantActionImage" destination="6ZT-ld-eWg" id="oXU-5I-bys"/>
                                                     <outlet property="plantImage" destination="3OS-uW-d76" id="UBq-fy-j5l"/>
                                                     <outlet property="plantName" destination="DLa-g2-Plv" id="zRY-CD-oKA"/>
                                                     <outlet property="plantSpecies" destination="ovg-pm-69l" id="enJ-4m-MEq"/>
@@ -734,7 +735,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pixelplant" translatesAutoresizingMaskIntoConstraints="NO" id="elA-jh-oot">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plantloc" translatesAutoresizingMaskIntoConstraints="NO" id="elA-jh-oot">
                                                 <rect key="frame" x="45" y="379.5" width="130" height="141"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="130" id="Cb8-XB-dR8"/>
@@ -1159,8 +1160,8 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art by: Maddi Cybuski" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-uA-mHG">
-                                                <rect key="frame" x="14" y="818" width="212" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art by: Maciej Tomczyk, Maddi Cybuski" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-uA-mHG">
+                                                <rect key="frame" x="14" y="818" width="370" height="20"/>
                                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1327,6 +1328,7 @@
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
         <image name="pixelplant" width="1300" height="1300"/>
+        <image name="plantloc" width="64" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

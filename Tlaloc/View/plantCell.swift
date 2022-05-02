@@ -14,6 +14,7 @@ class plantCell: UITableViewCell
     @IBOutlet weak var plantSpecies: UILabel!
     @IBOutlet weak var dayCount: UILabel!
     @IBOutlet weak var plantImage: UIImageView!
+    @IBOutlet weak var plantActionImage: UIImageView!
     
     //configures the cell properly
     func configureCell(plant: PlantInformation, tableChoice: Int)
@@ -45,6 +46,7 @@ class plantCell: UITableViewCell
         if tableChoice == 0
         {
             let timeUntilWater = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextWaterDate!).day!
+            plantActionImage.image = UIImage(named: "tlalocwater")!
             if(timeUntilWater <= 0)
             {
                 dayCount.text = String("0")
@@ -58,6 +60,7 @@ class plantCell: UITableViewCell
         //checks if the user wants to see fertilizer and the plant does not need to be fertilized
         else if tableChoice == 1 && plant.needsFertilizer == false
         {
+            plantActionImage.image = UIImage(named: "tlalocfert")!
                 dayCount.text = ("-")
         }
         
@@ -66,7 +69,7 @@ class plantCell: UITableViewCell
         {
             //calculates amount of days until the date saved in the core data entity
             let timeUntilFertilizer = Calendar.current.dateComponents([.day], from: currentDate, to: plant.nextFertilizerDate!).day!
-            
+            plantActionImage.image = UIImage(named: "tlalocfert")!
             if(timeUntilFertilizer <= 0)
             {
                 dayCount.text = String("0")

@@ -23,7 +23,7 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
     @IBOutlet weak var needsFertilizerBtn: UISwitch!
     
     //variables thatw will be accessed throughout the program, such as the image tha is displayed, wether the plant needs fertilizer or not, and the time in which the user wants to recieve notifications
-    var currentImage: UIImage = UIImage(named: "pixelplant")!
+    var currentImage: UIImage = UIImage(named: "plantloc")!
     var fertilizerAllowed: Bool = true
     var preferredNotifTime: Date = Date()
     //accessing the user defaults to help with notification scheduling
@@ -54,7 +54,7 @@ class plantCreationViewController: UIViewController, UITextViewDelegate, UITextF
         plantCreationBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         plantCreationBtn.titleLabel?.minimumScaleFactor = 0.5
         
-        currentImage = UIImage(named: "pixelplant")!
+        currentImage = UIImage(named: "plantloc")!
         fertilizerAllowed = true
         plantImage.image = currentImage
         

@@ -3,7 +3,7 @@
 "0Fj-oU-jaS.text" = "14";
 
 /* Class = "UIButton"; configuration.title = "Delete Plant"; ObjectID = "0S5-ZD-7xi"; */
-"0S5-ZD-7xi.configuration.title" = "Borra tu planta";
+"0S5-ZD-7xi.configuration.title" = "Delete Plant";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0S5-ZD-7xi"; */
 "0S5-ZD-7xi.normalTitle" = "Button";
@@ -12,82 +12,166 @@
 "1HE-jC-Hzs.text" = "TLALOC";
 
 /* Class = "UILabel"; text = "Days between fertilizing"; ObjectID = "2c0-dI-w6l"; */
-"2c0-dI-w6l.text" = "Días entre fertilizaciónes";
+"2c0-dI-w6l.text" = "Days between fertilizing";
 
 /* Class = "UISegmentedControl"; 38D-u6-e73.segmentTitles[0] = "Water"; ObjectID = "38D-u6-e73"; */
-"38D-u6-e73.segmentTitles[0]" = "Aqua";
+"38D-u6-e73.segmentTitles[0]" = "Water";
 
 /* Class = "UISegmentedControl"; 38D-u6-e73.segmentTitles[1] = "Fertilizer"; ObjectID = "38D-u6-e73"; */
-"38D-u6-e73.segmentTitles[1]" = "Fertilizante";
+"38D-u6-e73.segmentTitles[1]" = "Fertilizer";
+
+/* Class = "UISegmentedControl"; 38D-u6-e73.segmentTitles[2] = "Calendar"; ObjectID = "38D-u6-e73"; */
+"38D-u6-e73.segmentTitles[2]" = "Calendar";
 
 /* Class = "UILabel"; text = "Days between Waterings"; ObjectID = "3Ts-0P-b9C"; */
-"3Ts-0P-b9C.text" = "Días entre riegos";
+"3Ts-0P-b9C.text" = "Days between Waterings";
+
+/* Class = "UILabel"; text = "Art by: Maddi Cybuski"; ObjectID = "8PX-uA-mHG"; */
+"8PX-uA-mHG.text" = "Art by: Maddi Cybuski";
 
 /* Class = "UIButton"; configuration.title = "Update"; ObjectID = "8RK-9p-GKG"; */
-"8RK-9p-GKG.configuration.title" = "Actualizer";
+"8RK-9p-GKG.configuration.title" = "Update";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8RK-9p-GKG"; */
 "8RK-9p-GKG.normalTitle" = "Button";
 
+/* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "93j-Oc-eu9"; */
+"93j-Oc-eu9.text" = "Plant Schedules";
+
 /* Class = "UILabel"; text = "Days between fertilizer"; ObjectID = "9Hs-fm-z7x"; */
-"9Hs-fm-z7x.text" = "Días entre fertilizaciónes";
+"9Hs-fm-z7x.text" = "Days between fertilizer";
+
+/* Class = "UILabel"; text = "App created by: Joshua Mendiola"; ObjectID = "AJd-hJ-FRi"; */
+"AJd-hJ-FRi.text" = "App created by: Joshua Mendiola";
 
 /* Class = "UILabel"; text = "Plant name"; ObjectID = "Ca6-8b-XNs"; */
-"Ca6-8b-XNs.text" = "Nombre de planta";
+"Ca6-8b-XNs.text" = "Plant name";
 
 /* Class = "UILabel"; text = "Luis"; ObjectID = "DLa-g2-Plv"; */
 "DLa-g2-Plv.text" = "Luis";
 
+/* Class = "UILabel"; text = "Tue"; ObjectID = "EEy-15-qPg"; */
+"EEy-15-qPg.text" = "Tue";
+
+/* Class = "UILabel"; text = "TLALOC"; ObjectID = "FWY-dc-jkP"; */
+"FWY-dc-jkP.text" = "TLALOC";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "HTq-jE-Zzk"; */
+"HTq-jE-Zzk.normalTitle" = "Button";
+
 /* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "IE2-8d-yAi"; */
-"IE2-8d-yAi.text" = "Horarios de la planta";
+"IE2-8d-yAi.text" = "Plant Schedules";
 
 /* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "Ieo-jD-GeJ"; */
-"Ieo-jD-GeJ.text" = "Horarios de la planta";
+"Ieo-jD-GeJ.text" = "Plant Schedules";
 
 /* Class = "UILabel"; text = "What is your plants name ?"; ObjectID = "Jae-2B-nMR"; */
-"Jae-2B-nMR.text" = " ¿Como se llama tu planta?";
+"Jae-2B-nMR.text" = "What is your plants name ?";
 
 /* Class = "UILabel"; text = "What is your plants species ?"; ObjectID = "KFN-bP-FSy"; */
-"KFN-bP-FSy.text" = "¿Cual es la especie de tu planta?";
+"KFN-bP-FSy.text" = "What is your plants species ?";
+
+/* Class = "UILabel"; text = "Special thanks to: Illeana Montejano, Jenny Doan, Magnolia Westfall, and Yvonne Mendiola"; ObjectID = "L8N-CE-3uV"; */
+"L8N-CE-3uV.text" = "Special thanks to: Illeana Montejano, Jenny Doan, Magnolia Westfall, and Yvonne Mendiola";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LHN-X9-EW7"; */
+"LHN-X9-EW7.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LMz-Jv-y8r"; */
+"LMz-Jv-y8r.text" = "Label";
 
 /* Class = "UILabel"; text = "TLALOC"; ObjectID = "LTx-p3-gSm"; */
 "LTx-p3-gSm.text" = "TLALOC";
 
+/* Class = "UILabel"; text = "November"; ObjectID = "LY1-cm-YG7"; */
+"LY1-cm-YG7.text" = "November";
+
+/* Class = "UILabel"; text = "Sun"; ObjectID = "LhQ-qn-FnF"; */
+"LhQ-qn-FnF.text" = "Sun";
+
 /* Class = "UILabel"; text = "Species:"; ObjectID = "Mcy-1b-F2p"; */
-"Mcy-1b-F2p.text" = "Especies:";
+"Mcy-1b-F2p.text" = "Species:";
 
 /* Class = "UILabel"; text = "Name:"; ObjectID = "OWD-Gc-2R7"; */
-"OWD-Gc-2R7.text" = "Nombre:";
+"OWD-Gc-2R7.text" = "Name:";
 
 /* Class = "UITextView"; text = "Plant Species"; ObjectID = "PQf-ep-Qbn"; */
-"PQf-ep-Qbn.text" = "Especies de planta";
+"PQf-ep-Qbn.text" = "Plant Species";
+
+/* Class = "UITextView"; text = "Rated a 92.82 on CharityNavigator.org, PlantWithPurpose serves impoverished indigenous communities in Mexico, empowering them to send thier children to schools, pay for healthcare, and allowing them to live without fear of having to leave to find better work opportunities. Over 75% of indigenous communtiies in mexico struggle with poverty, and a donation to an organization such as this would mean a lot to me, the developer. This app is free and will always remain free, I only ask for you to click the link at the bottom and consider giving any sum, big or small, to a cause as noble and humanitarian as this."; ObjectID = "Q8C-Y3-kCY"; */
+"Q8C-Y3-kCY.text" = "Rated a 92.82 on CharityNavigator.org, PlantWithPurpose serves impoverished indigenous communities in Mexico, empowering them to send thier children to schools, pay for healthcare, and allowing them to live without fear of having to leave to find better work opportunities. Over 75% of indigenous communtiies in mexico struggle with poverty, and a donation to an organization such as this would mean a lot to me, the developer. This app is free and will always remain free, I only ask for you to click the link at the bottom and consider giving any sum, big or small, to a cause as noble and humanitarian as this.";
 
 /* Class = "UIButton"; configuration.title = "Add Plant"; ObjectID = "RXD-Cj-c3t"; */
-"RXD-Cj-c3t.configuration.title" = "Añadir";
+"RXD-Cj-c3t.configuration.title" = "Add Plant";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RXD-Cj-c3t"; */
 "RXD-Cj-c3t.normalTitle" = "Button";
 
+/* Class = "UIButton"; configuration.title = "Confirm"; ObjectID = "S26-wL-NL2"; */
+"S26-wL-NL2.configuration.title" = "Confirm";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "S26-wL-NL2"; */
+"S26-wL-NL2.normalTitle" = "Button";
+
 /* Class = "UILabel"; text = "TLALOC"; ObjectID = "SZ9-V0-3yK"; */
 "SZ9-V0-3yK.text" = "TLALOC";
 
+/* Class = "UITextView"; text = "Welcome to Tlaloc !  Tlaloc helps remind you of when to tend to your plants water and fertilization cycles.  To use the app, all you have to do is register your plants with the \"add plant\" button. Input all of the information and click \"add plant\"  When your plant hits 0, swipe left on your plant in the table, and it will set a new timer and notification for you  You can also use the calendar to keep more intimate track of each plant, and set the time for when you want to recieve notifications in the \"About\" section  Now set forth and keep your plants happy and healthy !"; ObjectID = "T1s-oS-WNr"; */
+"T1s-oS-WNr.text" = "Welcome to Tlaloc !  Tlaloc helps remind you of when to tend to your plants water and fertilization cycles.  To use the app, all you have to do is register your plants with the \"add plant\" button. Input all of the information and click \"add plant\"  When your plant hits 0, swipe left on your plant in the table, and it will set a new timer and notification for you  You can also use the calendar to keep more intimate track of each plant, and set the time for when you want to recieve notifications in the \"About\" section  Now set forth and keep your plants happy and healthy !";
+
+/* Class = "UILabel"; text = "TLALOC"; ObjectID = "UUc-Yr-JQG"; */
+"UUc-Yr-JQG.text" = "TLALOC";
+
+/* Class = "UILabel"; text = "Sat"; ObjectID = "WoM-ze-nGL"; */
+"WoM-ze-nGL.text" = "Sat";
+
+/* Class = "UILabel"; text = "Thur"; ObjectID = "aG1-yQ-GNG"; */
+"aG1-yQ-GNG.text" = "Thur";
+
+/* Class = "UILabel"; text = "31"; ObjectID = "cdd-0D-vp0"; */
+"cdd-0D-vp0.text" = "31";
+
 /* Class = "UIButton"; configuration.title = "Change Image"; ObjectID = "d8p-BB-xJ6"; */
-"d8p-BB-xJ6.configuration.title" = "Cambiar";
+"d8p-BB-xJ6.configuration.title" = "Change Image";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "d8p-BB-xJ6"; */
 "d8p-BB-xJ6.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Days between water"; ObjectID = "eHI-o8-jv5"; */
-"eHI-o8-jv5.text" = "Días entre riegos";
+"eHI-o8-jv5.text" = "Days between water";
+
+/* Class = "UILabel"; text = "What time would you like to recieve plant notifications?"; ObjectID = "eqh-S2-KIl"; */
+"eqh-S2-KIl.text" = "What time would you like to recieve plant notifications?";
+
+/* Class = "UIButton"; configuration.title = "Exit"; ObjectID = "esx-xz-LDo"; */
+"esx-xz-LDo.configuration.title" = "Exit";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "esx-xz-LDo"; */
+"esx-xz-LDo.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "You have no plants registered"; ObjectID = "fRI-ti-DOP"; */
-"fRI-ti-DOP.text" = "No tienes plantas registradas";
+"fRI-ti-DOP.text" = "You have no plants registered";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gBR-KD-Tah"; */
 "gBR-KD-Tah.normalTitle" = "Button";
 
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gKx-Oi-dS0"; */
+"gKx-Oi-dS0.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Mon"; ObjectID = "hGX-g4-fg7"; */
+"hGX-g4-fg7.text" = "Mon";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hW8-6u-L3h"; */
+"hW8-6u-L3h.normalTitle" = "Button";
+
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "j3N-sv-8YT"; */
 "j3N-sv-8YT.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jdB-Sq-h9G"; */
+"jdB-Sq-h9G.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "k1b-ry-mmo"; */
+"k1b-ry-mmo.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "mlM-JS-axS"; */
 "mlM-JS-axS.normalTitle" = "Button";
@@ -95,15 +179,41 @@
 /* Class = "UILabel"; text = "Desert Gem Cacti"; ObjectID = "ovg-pm-69l"; */
 "ovg-pm-69l.text" = "Desert Gem Cacti";
 
+/* Class = "UIButton"; configuration.title = "Close"; ObjectID = "rAF-3O-5Bx"; */
+"rAF-3O-5Bx.configuration.title" = "Close";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rAF-3O-5Bx"; */
+"rAF-3O-5Bx.normalTitle" = "Button";
+
 /* Class = "UILabel"; text = "Plant Schedules"; ObjectID = "rOH-Ix-O2d"; */
-"rOH-Ix-O2d.text" = "Horarios de planta";
+"rOH-Ix-O2d.text" = "Plant Schedules";
+
+/* Class = "UILabel"; text = "Wed"; ObjectID = "te1-E5-55u"; */
+"te1-E5-55u.text" = "Wed";
+
+/* Class = "UIButton"; configuration.title = "Donate Now"; ObjectID = "vMf-PT-CLH"; */
+"vMf-PT-CLH.configuration.title" = "Donate Now";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vMf-PT-CLH"; */
+"vMf-PT-CLH.normalTitle" = "Button";
 
 /* Class = "UITextView"; text = "Plant Name"; ObjectID = "vSr-j6-jIw"; */
-"vSr-j6-jIw.text" = "Nombre de planta";
+"vSr-j6-jIw.text" = "Plant Name";
+
+/* Class = "UIButton"; configuration.title = "About"; ObjectID = "vse-Lk-Lav"; */
+"vse-Lk-Lav.configuration.title" = "About";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vse-Lk-Lav"; */
+"vse-Lk-Lav.normalTitle" = "Button";
 
 /* Class = "UIButton"; configuration.title = "Choose Image"; ObjectID = "x6m-KI-64m"; */
-"x6m-KI-64m.configuration.title" = "Cambiar";
+"x6m-KI-64m.configuration.title" = "Choose Image";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "x6m-KI-64m"; */
 "x6m-KI-64m.normalTitle" = "Button";
 
+/* Class = "UILabel"; text = "Fri"; ObjectID = "yfI-cp-e98"; */
+"yfI-cp-e98.text" = "Fri";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zkA-Vk-lWG"; */
+"zkA-Vk-lWG.normalTitle" = "Button";

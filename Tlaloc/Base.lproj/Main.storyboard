@@ -521,7 +521,7 @@
                                         <rect key="frame" x="30" y="88" width="274" height="404"/>
                                         <color key="backgroundColor" red="0.77647060160000003" green="0.63921570780000003" blue="0.4196078479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <string key="text">Welcome to Tlaloc !  Tlaloc helps remind you of when to tend to your plants water and fertilization cycles.  To use the app, all you have to do is register your plants with the "add plant" button. Input all of the information and click "add plant"  When your plant hits 0, swipe left on your plant in the table, and it will set a new timer and notification for you  You can also use the calendar to keep more intimate track of each plant, and set the time for when you want to recieve notifications in the "About" section  Now set forth and keep your plants happy and healthy !</string>
-                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -1160,14 +1160,14 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art by: Maciej Tomczyk, Maddi Cybuski" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-uA-mHG">
-                                                <rect key="frame" x="14" y="818" width="370" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art by: Maciej Tomczyk, Maddi Cybuski" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-uA-mHG">
+                                                <rect key="frame" x="14" y="818" width="370" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special thanks to: Illeana Montejano, Jenny Doan, Magnolia Westfall, and Yvonne Mendiola" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-CE-3uV">
-                                                <rect key="frame" x="14" y="838" width="386" height="100"/>
+                                                <rect key="frame" x="14" y="837.5" width="386" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="wpp-dy-Op6"/>
                                                 </constraints>
@@ -1176,7 +1176,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What time would you like to recieve plant notifications?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqh-S2-KIl">
-                                                <rect key="frame" x="14" y="978" width="386" height="70"/>
+                                                <rect key="frame" x="14" y="977.5" width="386" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="ahM-i3-sCI"/>
                                                 </constraints>
@@ -1185,7 +1185,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYD-uR-Xv3">
-                                                <rect key="frame" x="30" y="1078" width="150" height="50"/>
+                                                <rect key="frame" x="30" y="1077.5" width="150" height="50"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="NCg-dv-fDx"/>
@@ -1196,7 +1196,7 @@
                                                 </date>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S26-wL-NL2">
-                                                <rect key="frame" x="252" y="1085" width="86" height="37"/>
+                                                <rect key="frame" x="252" y="1084.5" width="86" height="37"/>
                                                 <color key="backgroundColor" red="0.92156863209999995" green="0.65882354970000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Confirm">
@@ -1330,9 +1330,6 @@
         <image name="pixelplant" width="1300" height="1300"/>
         <image name="plantloc" width="64" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

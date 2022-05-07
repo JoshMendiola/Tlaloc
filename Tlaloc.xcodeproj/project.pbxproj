@@ -439,9 +439,9 @@
 				DEVELOPMENT_TEAM = G6T5W6F8TB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tlaloc/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to the photo library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Tlaloc needs access to your camera to set photos for your plants";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To upload photos of your plants";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Tlaloc needs access to your photo library to set photos for your plants";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -454,7 +454,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.0;
+				MARKETING_VERSION = 2.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jmendiola.Tlaloc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -473,9 +473,9 @@
 				DEVELOPMENT_TEAM = G6T5W6F8TB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tlaloc/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to the photo library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Tlaloc needs access to your camera to set photos for your plants";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To upload photos of your plants";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Tlaloc needs access to your photo library to set photos for your plants";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -488,7 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.0;
+				MARKETING_VERSION = 2.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = jmendiola.Tlaloc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
